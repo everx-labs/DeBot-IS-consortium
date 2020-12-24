@@ -7,6 +7,6 @@ Each new interface must create a folder, which has a readme.md desciption of an 
 
 ### Interface submission proccess:
 
-You should create a specifications proposal, discuss it. 
-After the discussion is over and proposal is accepted you should submit examples in both Solidity and C++. 
-Only proposals with examples will be published.
+* You should create a specifications proposal, discuss it. 
+* After the discussion is over and proposal is accepted you should submit examples in both Solidity and C++. 
+* Only proposals with examples will be published.
