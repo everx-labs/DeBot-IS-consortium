@@ -60,9 +60,10 @@ __interface IMsg {
 
 	[[internal, answer_id]]
 	SendStatus send(cell message, bool def_signer);
-
-}
+	
 };
+
+}}
 ```
 
 ## Code Example
