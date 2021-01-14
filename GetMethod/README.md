@@ -43,9 +43,9 @@ __interface IGetMethod {
 
 	[[internal]]
 	void run(uint32 answerId, cell message);
-
-}
 };
+
+}}
 ```
 
 ## Code Example
