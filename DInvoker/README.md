@@ -60,9 +60,9 @@ __interface IDInvoker {
 	void invoke(address callee, cell request);
 	[[internal]]
 	void complete(address caller, cell response);
-
-}
 };
+
+}}
 ```
 
 ## Code Example
