@@ -8,12 +8,12 @@ contract ExampleContract {
 
     function start() public {
 		
-		Stdin.getStr(tvm.functionId(setText), 	  "enter your name:");
-		Stdin.getInt(tvm.functionId(setInteger), "enter number:");
-		Stdin.getAddr(tvm.functionId(setAddress),"enter address:");
-		Stdin.getCell(tvm.functionId(setCell),   "enter boc:");
-		Stdin.getTons(tvm.functionId(setTons),   "enter tons:");
-
+		Stdin.inputStr(tvm.functionId(setText),    "enter your name:");
+		Stdin.inputInt(tvm.functionId(setInteger), "enter number:");
+		Stdin.inputAddr(tvm.functionId(setAddress),"enter address:");
+		Stdin.inputCell(tvm.functionId(setCell),   "enter boc:");
+		Stdin.inputTons(tvm.functionId(setTons),   "enter tons:");
+		Stdin.inputBoolean(tvm.functionId(setYesOrNo), "say yes or no:");
 	}
 
 	function setText(string value) public {
@@ -29,6 +29,9 @@ contract ExampleContract {
 	}
 
 	function setCell(TvmCell value) public {
+	}
+	
+	function setYesOrNo(bool value) public {
 	}
     
 }

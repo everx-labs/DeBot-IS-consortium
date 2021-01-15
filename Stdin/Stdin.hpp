@@ -5,17 +5,18 @@ namespace tvm { namespace schema {
 __interface IStdin {
 
 	[[internal, answer_id]]
-	string getStr(string prompt);
+	string inputStr(string prompt);
 	[[internal, answer_id]]
-	uint256 getInt(string prompt);
+	uint256 inputInt(string prompt);
 	[[internal, answer_id]]
-	int256 getUint(string prompt);
+	int256 inputUint(string prompt);
 	[[internal, answer_id]]
-	address getAddr(string prompt);
+	address inputAddr(string prompt);
 	[[internal, answer_id]]
-	cell getCell(string prompt);
+	cell inputCell(string prompt);
 	[[internal, answer_id]]
-	uint128 getTons(string prompt);
-
+	uint128 inputTons(string prompt);
+	[[internal, answer_id]]
+	bool inputBoolean(string prompt);
 }
 };
