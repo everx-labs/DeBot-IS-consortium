@@ -19,6 +19,6 @@ contract ExampleContract {
     }
 
     function setDecode(string str) public pure {
-        require(str=="aaa",100);
+        require(str=="aaa",101);
     }
 } 
