@@ -17,9 +17,8 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 
 `getBlockHashs` - get H2 and H3 hashes from security card. 
 The browser should call several functions from the sacurity card library to get H2 and H3. The workflow:
-1. call getRootKeyStatus, if the returned keyStatus is not equal to the "generated", you must call the generateSeed function;
-2. get H2 using the getHashOfEncryptedPassword function;
-3. get H3 using getHashOfCommonSecret function.
+1. get H2 using the getHashOfEncryptedPassword function;
+2. get H3 using getHashOfCommonSecret function.
 
 arguments: 
 
@@ -30,7 +29,7 @@ returns:
 	h2: uint256 - H2 hash
 	h3: uint256 - H3 hash
 
-`verifyPassword` - verify security card initial data.
+`turnOnWallet` - verify and setup security card initial data.
 
 arguments: 
 
@@ -75,29 +74,16 @@ returns:
 
 	recoveryData : bytes - recovery data
 
-`resetCard` - reset security card keys
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	pubkey  : uint256 - security card public key	
-
-returns: 
-
-	result: bool - result of operation
-
-
 
 ## Declaration in Solidity
 
 ```jsx
 interface ISecurityCardManagement {
     function getBlockHashs(uint32 answerId) public returns (uint256 h2, uint256 h3); 
-    function verifyPassword(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs) public returns (uint256 pubkey);
+    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs) public returns (uint256 pubkey);
     function addSigningBox(uint32 answerId, uint256 pubkey) public return (bool result);
     function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
-    function resetCard(uint32 answerId, uint256 pubkey) pubcic return (bool result);
 }
 ```
 
@@ -116,15 +102,13 @@ __interface ISecurityCardManagement {
 	[[internal, answer_id]]
 	blockHashRes getBlockHashs();
 	[[internal, answer_id]]
-	uint256 verifyPassword(uint128 p1, uint16 iv, uint32 esc);
+	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc);
 	[[internal, answer_id]]
 	bool_t addSigningBox(uint256 pubkey);
 	[[internal, answer_id]]
 	bool_t setRecoveryData(bytes recoveryData);
 	[[internal, answer_id]]
 	bytes getRecoveryData();
-	[[internal, answer_id]]
-	bool_t resetCard(uint256 pubkey);
 
 }
 };

@@ -14,11 +14,10 @@ contract ExampleContract {
 		bytes recoveryData;
 
 		SecurityCardManagemenet.getBlockHashs(tvm.functionId(setBlockHashs));
-		SecurityCardManagemenet.verifyPassword(tvm.functionId(setVerify),p1,iv,ecs);
+		SecurityCardManagemenet.turnOnWallet(tvm.functionId(setVerify),p1,iv,ecs);
 		SecurityCardManagemenet.addSigningBox(tvm.functionId(setAddSBRes), pubkey);
 		SecurityCardManagemenet.setRecoveryData(tvm.functionId(setRecoveryRes), recoveryData);
 		SecurityCardManagemenet.getRecoveryData(tvm.functionId(setRecovery));
-		SecurityCardManagemenet.resetCard(tvm.functionId(setReset), uint256 pubkey);
 	}
 
 	function setBlockHashs(uint256 h2, uint256 h3) public {
@@ -35,8 +34,5 @@ contract ExampleContract {
 
  	function setRecovery(bytes recoveryData){
 	}
-
-	function setResetRes(bool result) public {
-	}	
     
 }
