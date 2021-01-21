@@ -13,7 +13,7 @@ contract ExampleContract {
     }
 
     function test() public {
-        string json = "{\"name\":\"Joe\",\"city\":\"York\",\"age\":\"73\"}"
+        string json = "{\"name\":\"Joe\",\"city\":\"York\",\"age\":\"73\"}";
 	JsonDeserialize.deserialize(tvm.functionId(setResult), json, "Info");
     }
 
