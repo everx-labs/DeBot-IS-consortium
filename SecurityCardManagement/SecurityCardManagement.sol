@@ -1,7 +1,7 @@
 pragma solidity >= 0.6.0;
 interface ISecurityCardManagement {
     function getBlockHashs(uint32 answerId) external returns (uint256 h2, uint256 h3); 
-    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs) external returns (uint256 pubkey);
+    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs, uint16 pin) external returns (uint256 pubkey);
     function addSigningBox(uint32 answerId, uint256 pubkey) external return (bool result);
     function setRecoveryData(uint32 answerId, bytes recoveryData) external return (bool result);
     function getRecoveryData(uint32 answerId) external return (bytes recoveryData);
@@ -17,9 +17,9 @@ library SecurityCardManagemenet {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_SCMANAGEMENT);
 		ISecurityCardManagement(addr).getBlockHashs(answerId);
 	}
-	function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs) public pure {
+	function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs, uint16 pin) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_SCMANAGEMENT);
-		ISecurityCardManagement(addr).verifyPassword(answerId, p1, iv, ecs);
+		ISecurityCardManagement(addr).verifyPassword(answerId, p1, iv, ecs, pin);
 	}
 	function addSigningBox(uint32 answerId, uint256 pubkey) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_SCMANAGEMENT);

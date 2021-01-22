@@ -12,7 +12,7 @@ __interface ISecurityCardManagement {
 	[[internal, answer_id]]
 	blockHashRes getBlockHashs();
 	[[internal, answer_id]]
-	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc);
+	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc, uint16 pin);
 	[[internal, answer_id]]
 	bool_t addSigningBox(uint256 pubkey);
 	[[internal, answer_id]]

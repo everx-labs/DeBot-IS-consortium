@@ -37,6 +37,7 @@ arguments:
 	p1      : uint128 - authentication password
 	iv      : uint16 - vector for AES128 CBC initialization for encrypting P1
 	ecs     : uint32 - encrypted common secret
+	pin	: uint16 - security card pin code
 
 returns: 
 
@@ -80,7 +81,7 @@ returns:
 ```jsx
 interface ISecurityCardManagement {
     function getBlockHashs(uint32 answerId) public returns (uint256 h2, uint256 h3); 
-    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs) public returns (uint256 pubkey);
+    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs, uint16 pin) public returns (uint256 pubkey);
     function addSigningBox(uint32 answerId, uint256 pubkey) public return (bool result);
     function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
@@ -102,7 +103,7 @@ __interface ISecurityCardManagement {
 	[[internal, answer_id]]
 	blockHashRes getBlockHashs();
 	[[internal, answer_id]]
-	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc);
+	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc, uint16 pin);
 	[[internal, answer_id]]
 	bool_t addSigningBox(uint256 pubkey);
 	[[internal, answer_id]]
