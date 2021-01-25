@@ -1,15 +1,15 @@
-# Stdin Interface
+# Terminal Interface
 
 **Status**: Proposed
 
 | Name      | ID                                                                |
 | :-------- | :---------------------------------------------------------------- |
-| Stdin     | 8796536366ee21852db56dccb60bc564598b618c865fc50c8b1ab740bba128e3  |
+| Terminal  | 8796536366ee21852db56dccb60bc564598b618c865fc50c8b1ab740bba128e3  |
 
 
 ## Description
 
-Allows to get input from user for basic types like integers, addresses, public keys, strings, cells.
+Simple input/output. Allows to print string messages to the user and get input from the user for simple types like integers, strings, booleans.
 
 ## Functions
 
@@ -25,7 +25,7 @@ arguments:
 
 returns: 
 
-	value: bytes - string entered by user.
+	value: bytes - utf8 string entered by user.
 
 `inputInt` - prints prompt message to the user and returns singed integer entered by user
 
@@ -51,31 +51,6 @@ returns:
 
 	value: uint256 - integer entered by user
 
-`inputAddr` - prints prompt message to the user and returns address entered by user
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	
-	prompt: bytes - string printed to the user and describing what to enter
-
-returns: 
-
-	value: uint256 - signed integer entered by user
-
-`inputCell` - prints prompt message to the user and returns root cell of tree of cells.
-Remark: user can type cell data in serialized form encoded in base64 format.
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	
-	prompt: bytes - string printed to the user and describing what to enter
-
-returns: 
-
-	value: cell - root cell of tree of cells
-
 `inputBoolean` - prints prompt message to the user and returns true or false choise (yes or no)
 
 arguments: 
@@ -88,19 +63,56 @@ returns:
 
 	value: bool - user choice converted to true or false
 
+`inputTons` - prints prompt message to the user and returns number of nanotons entered by user.
+
+arguments: 
+
+	answerId: uint32 - function id of result callback
+	
+	prompt: bytes - string printed to the user and describing what to enter
+
+returns: 
+
+	value: uint128 - number of nanotons.
+
+`print` - shows string message to the user
+
+arguments: 
+
+	message: bytes - utf8 string as byte array
+
+returns: 
+
+	void
+
+`printf` - shows formatted string message to the user
+
+arguments: 
+
+	format: bytes - utf8 string as byte array that must be printed to the user
+
+	fargs: cell - cell with serialized format arguments that must be inserted into `format` string replacing format specifiers (subsequences between `{}` brackets).
+
+	Format specifier is one of ABI type like `{int32}`, `{address}`, `{cell}`, `{uint256[]}` and so on or one of the following types:
+		- `{utime}` - prints unixtime in UTC date time format. Format argument is an `uint32` integer.
+		- `{value}` - prints number of tons in `decimal.float` format with 9 digits after `.`.
+
+returns: 
+
+	void
+
 ## Declaration in Solidity
 
 ```jsx
-interface IStdin {
+interface ITerminal {
 
 	function inputStr(uint32 answerId, string prompt) external returns (string value);
 	function inputInt (uint32 answerId, string prompt) external returns (int256 value);
 	function inputUint(uint32 answerId, string prompt) external returns (uint256 value);
-	function inputAddr(uint32 answerId, string prompt) external returns (address value);
-	function inputCell(uint32 answerId, string prompt) external returns (TvmCell value);
 	function inputTons(uint32 answerId, string prompt) external returns (uint128 value);
 	function inputBoolean(uint32 answerId, string prompt) external returns (bool value);
-
+	function print(string message) external;
+	function printf(string format, Tvmcell fargs) external;
 }
 ```
 
@@ -109,7 +121,7 @@ interface IStdin {
 ```cpp
 namespace tvm { namespace schema {
 
-__interface IStdin {
+__interface ITerminal {
 
 	[[internal, answer_id]]
 	string inputStr(string prompt);
@@ -125,7 +137,10 @@ __interface IStdin {
 	uint128 inputTons(string prompt);
 	[[internal, answer_id]]
 	bool inputBoolean(string prompt);
-
+	[[internal]]
+	void print(string message);
+	[[internal]]
+	void printf(string format, cell fargs);
 }
 };
 ```

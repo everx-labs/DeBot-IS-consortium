@@ -18,5 +18,10 @@ __interface IStdin {
 	uint128 inputTons(string prompt);
 	[[internal, answer_id]]
 	bool inputBoolean(string prompt);
-}
+	[[internal]]
+	void print(string message);
+	[[internal]]
+	void printf(string format, cell fargs);
 };
+
+}}
