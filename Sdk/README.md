@@ -106,6 +106,7 @@ returns:
 
 	uncomp: bytes - uncompressed byte array
 
+
 >Deprecated: convertTokens, getAccountState, loadBocFromFile, encryptAuth, genKeypairFromSecret.
 
 ## Declaration in Solidity
