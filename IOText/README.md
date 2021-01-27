@@ -9,7 +9,7 @@
 
 ## Description
 
-Browser Interface. Allow to input and output multiline text.
+Browser Interface. Allow to input and output multi-line text.
 
 ## Functions
 
