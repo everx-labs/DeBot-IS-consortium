@@ -10,24 +10,19 @@ contract ExampleContract {
 		uint128 p1;
 		uint16 iv;
 		uint32 ecs;
-		uint16 pin;
 		uint256 pubkey;
 		bytes recoveryData;
 
-		SecurityCardManagemenet.getBlockHashs(tvm.functionId(setBlockHashs));
-		SecurityCardManagemenet.turnOnWallet(tvm.functionId(setVerify),p1,iv,ecs,pin);
-		SecurityCardManagemenet.addSigningBox(tvm.functionId(setAddSBRes), pubkey);
+		SecurityCardManagemenet.getBlockHashes(tvm.functionId(setBlockHashes));
+		SecurityCardManagemenet.turnOnWallet(tvm.functionId(setVerify),p1,iv,ecs);
 		SecurityCardManagemenet.setRecoveryData(tvm.functionId(setRecoveryRes), recoveryData);
 		SecurityCardManagemenet.getRecoveryData(tvm.functionId(setRecovery));
 	}
 
-	function setBlockHashs(uint256 h2, uint256 h3) public {
+	function setBlockHashes(uint256 h2, uint256 h3) public {
 	}
 
 	function setVerify(uint256 pubkey) public {
-	}
-
-	function setAddSBRes(bool result) public {
 	}
 
 	function setRecoveryRes(bool result) public {

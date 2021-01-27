@@ -10,11 +10,9 @@ struct blockHashsRes {
 __interface ISecurityCardManagement {
 
 	[[internal, answer_id]]
-	blockHashRes getBlockHashs();
+	blockHashRes getBlockHashes();
 	[[internal, answer_id]]
-	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc, uint16 pin);
-	[[internal, answer_id]]
-	bool_t addSigningBox(uint256 pubkey);
+	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc);
 	[[internal, answer_id]]
 	bool_t setRecoveryData(bytes recoveryData);
 	[[internal, answer_id]]

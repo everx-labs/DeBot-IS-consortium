@@ -15,8 +15,8 @@ Allows to manage security card.
 
 Since DeBot is a smart contract then all functions work asyncronously by design. It means that they don't return anything despite the fact that all have `returns` value in their specification. Result callback will be called later and it must have arguments defined in `returns` section.
 
-`getBlockHashs` - get H2 and H3 hashes from security card. 
-The browser should call several functions from the sacurity card library to get H2 and H3. The workflow:
+`getBlockHashes` - get H2 and H3 hashes from security card. 
+The browser should call several functions from the security card library to get H2 and H3. The workflow:
 1. get H2 using the getHashOfEncryptedPassword function;
 2. get H3 using getHashOfCommonSecret function.
 
@@ -29,7 +29,8 @@ returns:
 	h2: uint256 - H2 hash
 	h3: uint256 - H3 hash
 
-`turnOnWallet` - verify and setup security card initial data.
+`turnOnWallet` - verify and setup security card initial data. 
+Before forwarding the request to a security card, a browser must request a pin code and send it to the card with other data.
 
 arguments: 
 
@@ -37,22 +38,10 @@ arguments:
 	p1      : uint128 - authentication password
 	iv      : uint16 - vector for AES128 CBC initialization for encrypting P1
 	ecs     : uint32 - encrypted common secret
-	pin	: uint16 - security card pin code
 
 returns: 
 
 	pubkey: uint256 - security card public key
-
-`addSigningBox` - add security card signing box to browser. Notify browser to add security card.
-
-arguments: 
-
-	answerId: uint32 - function id of result callback	
-	pubkey  : uint256 - security card public key
-	
-returns: 
-
-	result: bool - result of operation
 
 `setRecoveryData` - set recovery data to security card
 
@@ -80,9 +69,8 @@ returns:
 
 ```jsx
 interface ISecurityCardManagement {
-    function getBlockHashs(uint32 answerId) public returns (uint256 h2, uint256 h3); 
-    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs, uint16 pin) public returns (uint256 pubkey);
-    function addSigningBox(uint32 answerId, uint256 pubkey) public return (bool result);
+    function getBlockHashes(uint32 answerId) public returns (uint256 h2, uint256 h3); 
+    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 ecs) public returns (uint256 pubkey);
     function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
 }
@@ -101,11 +89,9 @@ struct blockHashRes {
 __interface ISecurityCardManagement {
 
 	[[internal, answer_id]]
-	blockHashRes getBlockHashs();
+	blockHashRes getBlockHashes();
 	[[internal, answer_id]]
-	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc, uint16 pin);
-	[[internal, answer_id]]
-	bool_t addSigningBox(uint256 pubkey);
+	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 esc);
 	[[internal, answer_id]]
 	bool_t setRecoveryData(bytes recoveryData);
 	[[internal, answer_id]]
