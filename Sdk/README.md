@@ -60,7 +60,7 @@ arguments:
 
 returns: 
 
-	decrypted: bytes - encrypted or decrypted data
+	output: bytes - encrypted or decrypted data
 
 `signHash` - sign hash with user key.
 

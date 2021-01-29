@@ -1,0 +1,99 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "getBalance",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"name":"nanotokens","type":"uint128"}
+			]
+		},
+		{
+			"name": "getAccountType",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"name":"acc_type","type":"int8"}
+			]
+		},
+		{
+			"name": "getAccountCodeHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"name":"code_hash","type":"uint256"}
+			]
+		},
+		{
+			"name": "chacha20",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"data","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"key","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"output","type":"bytes"}
+			]
+		},
+		{
+			"name": "signHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"hash","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"arg1","type":"bytes"}
+			]
+		},
+		{
+			"name": "genRandom",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"length","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"buffer","type":"bytes"}
+			]
+		},
+		{
+			"name": "compress7z",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"uncompressed","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"comp","type":"bytes"}
+			]
+		},
+		{
+			"name": "uncompress7z",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"compressed","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"uncomp","type":"bytes"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
