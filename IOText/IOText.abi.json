@@ -1,0 +1,37 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "input",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"text","type":"bytes"}
+			]
+		},
+		{
+			"name": "output",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"text","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"bool"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
