@@ -89,7 +89,7 @@ returns:
 
 arguments: 
 
-	format: bytes - utf8 string as byte array that must be printed to the user
+	fmt: bytes - utf8 string as byte array that must be printed to the user
 
 	fargs: cell - cell with serialized format arguments that must be inserted into `format` string replacing format specifiers (subsequences between `{}` brackets).
 
@@ -140,7 +140,7 @@ __interface ITerminal {
 	[[internal]]
 	void print(string message);
 	[[internal]]
-	void printf(string format, cell fargs);
+	void printf(string fmt, cell fargs);
 }
 };
 ```
