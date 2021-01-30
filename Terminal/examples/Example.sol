@@ -13,7 +13,7 @@ contract ExampleContract {
 		Terminal.inputTons(tvm.functionId(setTons),   "enter tons:");
 		Terminal.inputBoolean(tvm.functionId(setYesOrNo), "say yes or no:");
 		Terminal.print("I am Debot");
-		Builder b;
+		TvmBuilder b;
 		b.store(int8(1), uint32(10));
 		Terminal.printf("Enter number beetween {int8} and {uint32}", b.toCell());
 	}

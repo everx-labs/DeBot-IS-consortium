@@ -8,7 +8,7 @@ interface ITerminal {
 	function inputTons(uint32 answerId, string prompt) external returns (uint128 value);
 	function inputBoolean(uint32 answerId, string prompt) external returns (bool value);
 	function print(string message) external;
-	function printf(string format, Tvmcell fargs) external;
+	function printf(string fmt, TvmCell fargs) external;
 
 }
 
@@ -41,8 +41,20 @@ library Terminal {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		ITerminal(addr).print(message);
 	}
-	function printf(string format, TvmCell fargs) public pure {
+	function printf(string fmt, TvmCell fargs) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
-		ITerminal(addr).printf(format, fargs);
+		ITerminal(addr).printf(fmt, fargs);
 	}
+}
+
+contract TerminalABI is ITerminal {
+	
+	function inputStr(uint32 answerId, string prompt) external override returns (string value) {}
+	function inputInt (uint32 answerId, string prompt) external override returns (int256 value) {}
+	function inputUint(uint32 answerId, string prompt) external override returns (uint256 value) {}
+	function inputTons(uint32 answerId, string prompt) external override returns (uint128 value) {}
+	function inputBoolean(uint32 answerId, string prompt) external override returns (bool value) {}
+	function print(string message) external override {}
+	function printf(string fmt, TvmCell fargs) external override {}
+
 }
