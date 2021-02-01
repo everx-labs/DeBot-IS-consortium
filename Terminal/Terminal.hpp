@@ -19,9 +19,9 @@ __interface IStdin {
 	[[internal, answer_id]]
 	bool inputBoolean(string prompt);
 	[[internal]]
-	void print(string message);
+	bool print(string message);
 	[[internal]]
-	void printf(string format, cell fargs);
+	bool printf(string fmt, cell fargs);
 };
 
 }}

@@ -7,8 +7,8 @@ interface ITerminal {
 	function inputUint(uint32 answerId, string prompt) external returns (uint256 value);
 	function inputTons(uint32 answerId, string prompt) external returns (uint128 value);
 	function inputBoolean(uint32 answerId, string prompt) external returns (bool value);
-	function print(string message) external;
-	function printf(string fmt, TvmCell fargs) external;
+	function print(uint32 answerId, string message) external;
+	function printf(uint32 answerId, string fmt, TvmCell fargs) external;
 
 }
 
@@ -37,24 +37,24 @@ library Terminal {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		ITerminal(addr).inputBoolean(answerId, prompt);
 	}
-	function print(string message) public pure {
+	function print(uint32 answerId, string message) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
-		ITerminal(addr).print(message);
+		ITerminal(addr).print(answerId, message);
 	}
-	function printf(string fmt, TvmCell fargs) public pure {
+	function printf(uint32 answerId, string fmt, TvmCell fargs) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
-		ITerminal(addr).printf(fmt, fargs);
+		ITerminal(addr).printf(answerId, fmt, fargs);
 	}
 }
 
 contract TerminalABI is ITerminal {
-	
-	function inputStr(uint32 answerId, string prompt) external override returns (string value) {}
+
+    function inputStr(uint32 answerId, string prompt) external override returns (string value) {}
 	function inputInt (uint32 answerId, string prompt) external override returns (int256 value) {}
 	function inputUint(uint32 answerId, string prompt) external override returns (uint256 value) {}
 	function inputTons(uint32 answerId, string prompt) external override returns (uint128 value) {}
 	function inputBoolean(uint32 answerId, string prompt) external override returns (bool value) {}
-	function print(string message) external override {}
-	function printf(string fmt, TvmCell fargs) external override {}
+	function print(uint32 answerId, string message) external override {}
+	function printf(uint32 answerId, string fmt, TvmCell fargs) external override {}
 
 }

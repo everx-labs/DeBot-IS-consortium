@@ -55,6 +55,7 @@
 		{
 			"name": "print",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"message","type":"bytes"}
 			],
 			"outputs": [
@@ -63,6 +64,7 @@
 		{
 			"name": "printf",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"fmt","type":"bytes"},
 				{"name":"fargs","type":"cell"}
 			],
