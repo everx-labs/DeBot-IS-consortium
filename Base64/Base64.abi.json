@@ -6,7 +6,7 @@
 			"name": "encode",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"str","type":"bytes"}
+				{"name":"data","type":"bytes"}
 			],
 			"outputs": [
 				{"name":"base64","type":"bytes"}
@@ -19,7 +19,7 @@
 				{"name":"base64","type":"bytes"}
 			],
 			"outputs": [
-				{"name":"str","type":"bytes"}
+				{"name":"data","type":"bytes"}
 			]
 		},
 		{

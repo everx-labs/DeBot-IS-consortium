@@ -20,7 +20,7 @@ arguments:
 
     answerId: uint32 - function id of result callback.
 
-    str: string - input string
+    data: bytes - input binary data
 
 returns: 
 
@@ -36,7 +36,7 @@ arguments:
 
 returns: 
 
-     str: string - output string
+     data: bytes - output binary data
 		
 ## Declaration in Solidity
 
@@ -45,8 +45,8 @@ returns:
 
 interface IBase64 {
 
-    function encode(uint32 answerId, string str) external returns (string base64);
-    function decode(uint32 answerId, string base64) external returns (string str);
+    function encode(uint32 answerId, bytes data) external returns (string base64);
+    function decode(uint32 answerId, string base64) external returns (bytes data);
 
 }
 ```
@@ -59,7 +59,7 @@ namespace tvm { namespace schema {
 __interface IBase64 {
 
 	[[internal, answer_id]]
-	string encode(string str);
+	string encode(bytes data);
         [[internal, answer_id]]
 	string decode(string base64);
 	

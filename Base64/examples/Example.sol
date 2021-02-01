@@ -8,9 +8,9 @@ import "Base64.sol";
 contract ExampleContract {
 
     function test() public {
-        string str = "aaa";
-	Base64.encode(tvm.functionId(setEncode), str);
-	string base64 = "YWFh";
+        bytes data = bytes("aaa");
+        Base64.encode(tvm.functionId(setEncode), data);
+        string base64 = "YWFh";
         Base64.decode(tvm.functionId(setDecode), base64);
     }
 
@@ -18,7 +18,7 @@ contract ExampleContract {
         require(base64=="YWFh",100);
     }
 
-    function setDecode(string str) public pure {
-        require(str=="aaa",101);
+    function setDecode(bytes data) public pure {
+        require(string(data)=="aaa",101);
     }
 } 
