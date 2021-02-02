@@ -32,12 +32,16 @@ returns:
 ## Declaration in Solidity
 
 ```jsx
-interface IMenu {
-    struct MenuItem {
+
+struct MenuItem {
         string title;
         string description;
+		uint32 handlerId;
     }
-	function select(string title, string description, MenuItem[] items) external;
+
+interface IMenu {
+    
+	function select(string title, string description, MenuItem[] items) external returns (uint32 index);
 }
 ```
 
