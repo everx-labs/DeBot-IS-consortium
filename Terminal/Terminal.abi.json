@@ -6,7 +6,8 @@
 			"name": "inputStr",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
+				{"name":"prompt","type":"bytes"},
+				{"name":"multiline","type":"bool"}
 			],
 			"outputs": [
 				{"name":"value","type":"bytes"}

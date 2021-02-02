@@ -2,7 +2,7 @@ pragma solidity >= 0.6.0;
 
 interface ITerminal {
 	
-	function inputStr(uint32 answerId, string prompt) external returns (string value);
+	function inputStr(uint32 answerId, string prompt, bool multiline) external returns (string value);
 	function inputInt (uint32 answerId, string prompt) external returns (int256 value);
 	function inputUint(uint32 answerId, string prompt) external returns (uint256 value);
 	function inputTons(uint32 answerId, string prompt) external returns (uint128 value);
@@ -17,9 +17,9 @@ library Terminal {
 	uint256 constant ID = 0x8796536366ee21852db56dccb60bc564598b618c865fc50c8b1ab740bba128e3;
 	int8 constant DEBOT_WC = -31;
 
-	function inputStr(uint32 answerId, string prompt) public pure {
+	function inputStr(uint32 answerId, string prompt, bool multiline) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
-		ITerminal(addr).inputStr(answerId, prompt);
+		ITerminal(addr).inputStr(answerId, prompt, multiline);
 	}
 	function inputInt(uint32 answerId, string prompt) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
@@ -49,7 +49,7 @@ library Terminal {
 
 contract TerminalABI is ITerminal {
 
-    function inputStr(uint32 answerId, string prompt) external override returns (string value) {}
+	function inputStr(uint32 answerId, string prompt, bool multiline) external override returns (string value) {}
 	function inputInt (uint32 answerId, string prompt) external override returns (int256 value) {}
 	function inputUint(uint32 answerId, string prompt) external override returns (uint256 value) {}
 	function inputTons(uint32 answerId, string prompt) external override returns (uint128 value) {}

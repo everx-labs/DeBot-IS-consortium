@@ -5,7 +5,7 @@ namespace tvm { namespace schema {
 __interface IStdin {
 
 	[[internal, answer_id]]
-	string inputStr(string prompt);
+	string inputStr(string prompt, bool multiline);
 	[[internal, answer_id]]
 	uint256 inputInt(string prompt);
 	[[internal, answer_id]]
