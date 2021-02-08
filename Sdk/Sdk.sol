@@ -13,11 +13,18 @@ function genRandom(uint32 answerId, uint32 length) external returns (bytes buffe
 function compress7z(uint32 answerId, bytes uncompressed) external returns (bytes comp);
 function uncompress7z(uint32 answerId, bytes compressed) external returns (bytes uncomp);
 //keys
-function mnemonicFromRandom(uint32 dict, uint32 wordCount)  external returns (string phrase);
-function mnemonicVerify(string phrase) external returns (bool valid);
-function mnemonicDeriveSignKeys(string phrase, string path) external returns (uint256 pub, uint256 sec);
+function mnemonicFromRandom(uint32 answerId, uint32 dict, uint32 wordCount)  external returns (string phrase);
+function mnemonicVerify(uint32 answerId, string phrase) external returns (bool valid);
+function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) external returns (uint256 pub, uint256 sec);
+//hdkey
+function hdkeyXprvFromMnemonic(uint32 answerId, string phrase) external returns (string xprv);
+function hdkeyDeriveFromXprv(uint32 answerId, string mainXprv, uint32 child_index, bool hardened) external returns (string xprv);
+function hdkeyDeriveFromXprvPath(uint32 answerId, string mainXprv, uint32 path)external returns (string xprv);
+function hdkeySecretFromXprv(uint32 answerId, string xprv) external returns (uint256 sec);
+function hdkeyPublicFromXprv(uint32 answerId, string xprv) external returns (uint256 pub);
+function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external returns (uint256 sec, uint256 pub);
 //string
-function cutString(string str, uint32 start, uint32 count) external returns (string cutstr);
+function cutString(uint32 answerId, string str, uint32 start, uint32 count) external returns (string cutstr);
 }
 
 
@@ -64,22 +71,48 @@ library Sdk {
 		ISdk(addr).uncompress7z(answerId, compressed);
 	}
 
-	function mnemonicFromRandom(uint32 dict, uint32 wordCount) public pure {
+	function mnemonicFromRandom(uint32 answerId, uint32 dict, uint32 wordCount) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).mnemonicFromRandom(dict, wordCount);
+		ISdk(addr).mnemonicFromRandom(answerId, dict, wordCount);
 	}
-	function mnemonicVerify(string phrase) public pure {
+	function mnemonicVerify(uint32 answerId, string phrase) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).mnemonicVerify(phrase);
+		ISdk(addr).mnemonicVerify(answerId, phrase);
 	}
-	function mnemonicDeriveSignKeys(string phrase, string path) public pure {
+	function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).mnemonicDeriveSignKeys(phrase, path);
+		ISdk(addr).mnemonicDeriveSignKeys(answerId, phrase, path);
 	}
 
-	function cutString(string str, uint32 start, uint32 count) public pure {
+	//hdkey
+	function hdkeyXprvFromMnemonic(uint32 answerId, string phrase)public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).cutString(str, start, count);
+		ISdk(addr).hdkeyXprvFromMnemonic(answerId, phrase);
+	}
+	function hdkeyDeriveFromXprv(uint32 answerId, string mainXprv, uint32 child_index, bool hardened) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).hdkeyDeriveFromXprv(answerId, mainXprv, child_index, hardened);
+	}
+	function hdkeyDeriveFromXprvPath(uint32 answerId, string mainXprv, uint32 path) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).hdkeyDeriveFromXprvPath(answerId, mainXprv, path);
+	}
+	function hdkeySecretFromXprv(uint32 answerId, string xprv) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).hdkeySecretFromXprv(answerId, xprv);
+	}
+	function hdkeyPublicFromXprv(uint32 answerId, string xprv) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).hdkeyPublicFromXprv(answerId, xprv);
+	}
+	function naclSignKeypairFromSecretKey(uint32 answerId, uint256 secret) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclSignKeypairFromSecretKey(answerId, secret);
+	}
+
+	function cutString(uint32 answerId, string str, uint32 start, uint32 count) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).cutString(answerId, str, start, count);
 	}
 }
 
@@ -97,9 +130,16 @@ function genRandom(uint32 answerId, uint32 length) external override returns (by
 function compress7z(uint32 answerId, bytes uncompressed) external override returns (bytes comp) {}
 function uncompress7z(uint32 answerId, bytes compressed) external override returns (bytes uncomp) {}
 //keys
-function mnemonicFromRandom(uint32 dict, uint32 wordCount)  external override returns (string phrase) {}
-function mnemonicVerify(string phrase) external override returns (bool valid) {}
-function mnemonicDeriveSignKeys(string phrase, string path) external override returns (uint256 pub, uint256 sec) {}
+function mnemonicFromRandom(uint32 answerId, uint32 dict, uint32 wordCount)  external override returns (string phrase) {}
+function mnemonicVerify(uint32 answerId, string phrase) external override returns (bool valid) {}
+function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) external override returns (uint256 pub, uint256 sec) {}
+//hdkey
+function hdkeyXprvFromMnemonic(uint32 answerId, string phrase) external override returns (string xprv) {}
+function hdkeyDeriveFromXprv(uint32 answerId, string mainXprv, uint32 child_index, bool hardened) external override returns (string xprv) {}
+function hdkeyDeriveFromXprvPath(uint32 answerId, string mainXprv, uint32 path)external override returns (string xprv) {}
+function hdkeySecretFromXprv(uint32 answerId, string xprv) external override returns (uint256 sec) {}
+function hdkeyPublicFromXprv(uint32 answerId, string xprv) external override returns (uint256 pub) {}
+function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external override returns (uint256 sec, uint256 pub) {}
 //string
-function cutString(string str, uint32 start, uint32 count) external override returns (string cutstr) {}
+function cutString(uint32 answerId, string str, uint32 start, uint32 count) external override returns (string cutstr) {}
 }

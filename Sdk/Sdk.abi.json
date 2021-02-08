@@ -87,6 +87,7 @@
 		{
 			"name": "mnemonicFromRandom",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"dict","type":"uint32"},
 				{"name":"wordCount","type":"uint32"}
 			],
@@ -97,6 +98,7 @@
 		{
 			"name": "mnemonicVerify",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"phrase","type":"bytes"}
 			],
 			"outputs": [
@@ -106,6 +108,7 @@
 		{
 			"name": "mnemonicDeriveSignKeys",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"phrase","type":"bytes"},
 				{"name":"path","type":"bytes"}
 			],
@@ -115,8 +118,73 @@
 			]
 		},
 		{
+			"name": "hdkeyXprvFromMnemonic",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"phrase","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"xprv","type":"bytes"}
+			]
+		},
+		{
+			"name": "hdkeyDeriveFromXprv",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"mainXprv","type":"bytes"},
+				{"name":"child_index","type":"uint32"},
+				{"name":"hardened","type":"bool"}
+			],
+			"outputs": [
+				{"name":"xprv","type":"bytes"}
+			]
+		},
+		{
+			"name": "hdkeyDeriveFromXprvPath",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"mainXprv","type":"bytes"},
+				{"name":"path","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"xprv","type":"bytes"}
+			]
+		},
+		{
+			"name": "hdkeySecretFromXprv",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"xprv","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"sec","type":"uint256"}
+			]
+		},
+		{
+			"name": "hdkeyPublicFromXprv",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"xprv","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"pub","type":"uint256"}
+			]
+		},
+		{
+			"name": "naclSignKeypairFromSecretKey",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"secret","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"sec","type":"uint256"},
+				{"name":"pub","type":"uint256"}
+			]
+		},
+		{
 			"name": "cutString",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"str","type":"bytes"},
 				{"name":"start","type":"uint32"},
 				{"name":"count","type":"uint32"}
