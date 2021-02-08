@@ -182,7 +182,7 @@
 			]
 		},
 		{
-			"name": "cutString",
+			"name": "substring",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"str","type":"bytes"},
