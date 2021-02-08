@@ -131,8 +131,8 @@
 			"name": "hdkeyDeriveFromXprv",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"mainXprv","type":"bytes"},
-				{"name":"child_index","type":"uint32"},
+				{"name":"inXprv","type":"bytes"},
+				{"name":"childIndex","type":"uint32"},
 				{"name":"hardened","type":"bool"}
 			],
 			"outputs": [
@@ -143,8 +143,8 @@
 			"name": "hdkeyDeriveFromXprvPath",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"mainXprv","type":"bytes"},
-				{"name":"path","type":"uint32"}
+				{"name":"inXprv","type":"bytes"},
+				{"name":"path","type":"bytes"}
 			],
 			"outputs": [
 				{"name":"xprv","type":"bytes"}

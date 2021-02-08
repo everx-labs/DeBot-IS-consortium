@@ -18,8 +18,8 @@ function mnemonicVerify(uint32 answerId, string phrase) external returns (bool v
 function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) external returns (uint256 pub, uint256 sec);
 //hdkey
 function hdkeyXprvFromMnemonic(uint32 answerId, string phrase) external returns (string xprv);
-function hdkeyDeriveFromXprv(uint32 answerId, string mainXprv, uint32 child_index, bool hardened) external returns (string xprv);
-function hdkeyDeriveFromXprvPath(uint32 answerId, string mainXprv, uint32 path)external returns (string xprv);
+function hdkeyDeriveFromXprv(uint32 answerId, string inXprv, uint32 childIndex, bool hardened) external returns (string xprv);
+function hdkeyDeriveFromXprvPath(uint32 answerId, string inXprv, string path)external returns (string xprv);
 function hdkeySecretFromXprv(uint32 answerId, string xprv) external returns (uint256 sec);
 function hdkeyPublicFromXprv(uint32 answerId, string xprv) external returns (uint256 pub);
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external returns (uint256 sec, uint256 pub);
@@ -89,13 +89,13 @@ library Sdk {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
 		ISdk(addr).hdkeyXprvFromMnemonic(answerId, phrase);
 	}
-	function hdkeyDeriveFromXprv(uint32 answerId, string mainXprv, uint32 child_index, bool hardened) public pure {
+	function hdkeyDeriveFromXprv(uint32 answerId, string inXprv, uint32 childIndex, bool hardened) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).hdkeyDeriveFromXprv(answerId, mainXprv, child_index, hardened);
+		ISdk(addr).hdkeyDeriveFromXprv(answerId, inXprv, childIndex, hardened);
 	}
-	function hdkeyDeriveFromXprvPath(uint32 answerId, string mainXprv, uint32 path) public pure {
+	function hdkeyDeriveFromXprvPath(uint32 answerId, string inXprv, string path) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).hdkeyDeriveFromXprvPath(answerId, mainXprv, path);
+		ISdk(addr).hdkeyDeriveFromXprvPath(answerId, inXprv, path);
 	}
 	function hdkeySecretFromXprv(uint32 answerId, string xprv) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
@@ -135,8 +135,8 @@ function mnemonicVerify(uint32 answerId, string phrase) external override return
 function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) external override returns (uint256 pub, uint256 sec) {}
 //hdkey
 function hdkeyXprvFromMnemonic(uint32 answerId, string phrase) external override returns (string xprv) {}
-function hdkeyDeriveFromXprv(uint32 answerId, string mainXprv, uint32 child_index, bool hardened) external override returns (string xprv) {}
-function hdkeyDeriveFromXprvPath(uint32 answerId, string mainXprv, uint32 path)external override returns (string xprv) {}
+function hdkeyDeriveFromXprv(uint32 answerId, string inXprv, uint32 childIndex, bool hardened) external override returns (string xprv) {}
+function hdkeyDeriveFromXprvPath(uint32 answerId, string inXprv, string path)external override returns (string xprv) {}
 function hdkeySecretFromXprv(uint32 answerId, string xprv) external override returns (uint256 sec) {}
 function hdkeyPublicFromXprv(uint32 answerId, string xprv) external override returns (uint256 pub) {}
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external override returns (uint256 sec, uint256 pub) {}
