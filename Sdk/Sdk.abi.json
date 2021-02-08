@@ -85,6 +85,47 @@
 			]
 		},
 		{
+			"name": "mnemonicFromRandom",
+			"inputs": [
+				{"name":"dict","type":"uint32"},
+				{"name":"wordCount","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"phrase","type":"bytes"}
+			]
+		},
+		{
+			"name": "mnemonicVerify",
+			"inputs": [
+				{"name":"phrase","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"valid","type":"bool"}
+			]
+		},
+		{
+			"name": "mnemonicDeriveSignKeys",
+			"inputs": [
+				{"name":"phrase","type":"bytes"},
+				{"name":"path","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"pub","type":"uint256"},
+				{"name":"sec","type":"uint256"}
+			]
+		},
+		{
+			"name": "cutString",
+			"inputs": [
+				{"name":"str","type":"bytes"},
+				{"name":"start","type":"uint32"},
+				{"name":"count","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"cutstr","type":"bytes"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],

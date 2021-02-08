@@ -12,6 +12,12 @@ function genRandom(uint32 answerId, uint32 length) external returns (bytes buffe
 //7z
 function compress7z(uint32 answerId, bytes uncompressed) external returns (bytes comp);
 function uncompress7z(uint32 answerId, bytes compressed) external returns (bytes uncomp);
+//keys
+function mnemonicFromRandom(uint32 dict, uint32 wordCount)  external returns (string phrase);
+function mnemonicVerify(string phrase) external returns (bool valid);
+function mnemonicDeriveSignKeys(string phrase, string path) external returns (uint256 pub, uint256 sec);
+//string
+function cutString(string str, uint32 start, uint32 count) external returns (string cutstr);
 }
 
 
@@ -57,7 +63,24 @@ library Sdk {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
 		ISdk(addr).uncompress7z(answerId, compressed);
 	}
-	
+
+	function mnemonicFromRandom(uint32 dict, uint32 wordCount) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).mnemonicFromRandom(dict, wordCount);
+	}
+	function mnemonicVerify(string phrase) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).mnemonicVerify(phrase);
+	}
+	function mnemonicDeriveSignKeys(string phrase, string path) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).mnemonicDeriveSignKeys(phrase, path);
+	}
+
+	function cutString(string str, uint32 start, uint32 count) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).cutString(str, start, count);
+	}
 }
 
 contract SdkABI is ISdk {
@@ -73,4 +96,10 @@ function genRandom(uint32 answerId, uint32 length) external override returns (by
 //7z
 function compress7z(uint32 answerId, bytes uncompressed) external override returns (bytes comp) {}
 function uncompress7z(uint32 answerId, bytes compressed) external override returns (bytes uncomp) {}
+//keys
+function mnemonicFromRandom(uint32 dict, uint32 wordCount)  external override returns (string phrase) {}
+function mnemonicVerify(string phrase) external override returns (bool valid) {}
+function mnemonicDeriveSignKeys(string phrase, string path) external override returns (uint256 pub, uint256 sec) {}
+//string
+function cutString(string str, uint32 start, uint32 count) external override returns (string cutstr) {}
 }
