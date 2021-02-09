@@ -190,7 +190,7 @@
 				{"name":"count","type":"uint32"}
 			],
 			"outputs": [
-				{"name":"cutstr","type":"bytes"}
+				{"name":"substr","type":"bytes"}
 			]
 		},
 		{

@@ -24,7 +24,7 @@ function hdkeySecretFromXprv(uint32 answerId, string xprv) external returns (uin
 function hdkeyPublicFromXprv(uint32 answerId, string xprv) external returns (uint256 pub);
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external returns (uint256 sec, uint256 pub);
 //string
-function substring(uint32 answerId, string str, uint32 start, uint32 count) external returns (string cutstr);
+function substring(uint32 answerId, string str, uint32 start, uint32 count) external returns (string substr);
 }
 
 
@@ -141,5 +141,5 @@ function hdkeySecretFromXprv(uint32 answerId, string xprv) external override ret
 function hdkeyPublicFromXprv(uint32 answerId, string xprv) external override returns (uint256 pub) {}
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external override returns (uint256 sec, uint256 pub) {}
 //string
-function substring(uint32 answerId, string str, uint32 start, uint32 count) external override returns (string cutstr) {}
+function substring(uint32 answerId, string str, uint32 start, uint32 count) external override returns (string substr) {}
 }
