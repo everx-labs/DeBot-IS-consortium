@@ -1,24 +1,23 @@
 pragma solidity >= 0.6.0;
 
-struct SendStatus {
-	bool succeeded; 
-	int32 code;
-}
-
 interface IMsg {
 
-    function send(uint32 answerId, TvmCell message, bool defSigner) external returns (SendStatus status);
+    function sendWithKeypair(uint32 answerId, TvmCell message, uint256 pub, uint256 sec) external;
 
 }
 
 library Msg {
 
-	uint256 constant ID_MSG = 0x96517b3e086fdd7dbd0fb916ab59aad1c86bcc6e18376bfa847ac91fefb083a6;
+	uint256 constant ID_MSG = 0x475a5d1729acee4601c2a8cb67240e4da5316cc90a116e1b181d905e79401c51;
 	int8 constant DEBOT_WC = -31;
 
-	function send(uint32 answerId, TvmCell message, bool defSigner) public pure {
+	function sendWithKeypair(uint32 answerId, TvmCell message, uint256 pub, uint256 sec) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_MSG);
-		IMsg(addr).send(answerId, message, defSigner);
+		IMsg(addr).sendWithKeypair(answerId, message, pub, sec);
 	}
 
-} 
+}
+
+contract MsgABI is IMsg {
+    function sendWithKeypair(uint32 answerId, TvmCell message, uint256 pub, uint256 sec) external override {}
+}

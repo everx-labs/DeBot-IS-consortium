@@ -1,0 +1,28 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "sendWithKeypair",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"message","type":"cell"},
+				{"name":"pub","type":"uint256"},
+				{"name":"sec","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
