@@ -27,21 +27,6 @@ returns:
 
 	{ value: int256 }
 
----
-
-`uint` - prints prompt message to the user and returns unsinged integer entered by user
-
-arguments:
-
-	answerId: uint32
-    prompt: bytes
-	min: uint256
-	max: uint256
-
-returns:
-
-	{ value: uint256 }
-
 ## Declaration in Solidity
 
 TODO: Add declaration
