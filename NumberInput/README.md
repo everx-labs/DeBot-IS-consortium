@@ -20,12 +20,12 @@ arguments:
 
 	answerId: uint32
     prompt: bytes
-	min: int32
-	max: int32
+	min: int256
+	max: int256
 
 returns:
 
-	{ value: int32 }
+	{ value: int256 }
 
 ---
 
@@ -35,12 +35,12 @@ arguments:
 
 	answerId: uint32
     prompt: bytes
-	min: uint32
-	max: uint32
+	min: uint256
+	max: uint256
 
 returns:
 
-	{ value: uint32 }
+	{ value: uint256 }
 
 ## Declaration in Solidity
 
