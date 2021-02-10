@@ -28,6 +28,22 @@ returns:
 
 	{ value: uint32[] }
 
+---
+
+`range` - prints prompt message to the user and returns date range entered by user.
+
+arguments:
+
+	answerId: uint32
+    prompt: bytes
+    min: uint32
+    max: uint32
+    exclude: uint32[]
+
+returns:
+
+	{ from: uint32, to: uint32 }
+
 ## Declaration in Solidity
 
 TODO: Add declaration
