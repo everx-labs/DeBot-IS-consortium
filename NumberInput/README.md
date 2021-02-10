@@ -3,9 +3,9 @@
 
 **Status**: Proposed
 
-| Name      | ID                                                                |
-| :-------- | :---------------------------------------------------------------- |
-| Menu      | c5a9558b2664aed7dc3e6123436d544f13ffe69ab0e259412f48c6d1c8588401  |
+| Name        | ID                                                                |
+| :---------- | :---------------------------------------------------------------- |
+| NumberInput | c5a9558b2664aed7dc3e6123436d544f13ffe69ab0e259412f48c6d1c8588401  |
 
 
 ## Description
@@ -14,7 +14,7 @@ Interface for number input.
 
 ## Functions
 
-`int` - returns singed integer entered by user
+`int` - prints prompt message to the user and returns singed integer entered by user
 
 arguments:
 
@@ -29,7 +29,7 @@ returns:
 
 ---
 
-`uint` - returns unsinged integer entered by user
+`uint` - prints prompt message to the user and returns unsinged integer entered by user
 
 arguments:
 
