@@ -21,13 +21,5 @@ contract ExampleContract {
 	function setText(string value) public {
 	}
 
-	function setInteger(int256 value) public {
-	}
-
-	function setTons(uint128 value) public {
-	}
-
-	function setYesOrNo(bool value) public {
-	}
     
 }
