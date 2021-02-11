@@ -7,8 +7,8 @@ import "Terminal.sol";
 contract ExampleContract {
 
     function start() public {
-		
-		Terminal.input(tvm.functionId(setText),    "enter your name:");
+
+		Terminal.input(tvm.functionId(setText), "enter your name:");
 		Terminal.print("I am Debot");
 		TvmBuilder b;
 		b.store(int8(1), uint32(10));
@@ -16,7 +16,8 @@ contract ExampleContract {
 	}
 
 	function setText(string value) public {
+        // continue here
 	}
 
-    
+
 }

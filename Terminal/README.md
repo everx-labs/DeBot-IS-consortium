@@ -9,86 +9,38 @@
 
 ## Description
 
-Simple input/output. Allows to print string messages to the user and get input from the user for simple types like integers, strings, booleans.
+Simple input/output. Allows to print string messages to the user and get input string from the user.
 
 ## Functions
 
 Since DeBot is a smart contract then all functions work asyncronously by design. It means that they don't return anything despite the fact that all have `returns` value in their specification. Result callback will be called later and it must have arguments defined in `returns` section.
 
-`inputStr` - prints prompt message to the user and returns string entered by user
+`input` - prints prompt message to the user and returns string entered by user
 
-arguments: 
+arguments:
 
 	answerId: uint32 - function id of result callback
-	
+
 	prompt: bytes - string printed to the user and describing what to enter
 
 	multiline: bool - allow multiline text input
-returns: 
+returns:
 
 	value: bytes - utf8 string entered by user.
 
-`inputInt` - prints prompt message to the user and returns singed integer entered by user
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	
-	prompt: bytes - string printed to the user and describing what to enter
-
-returns: 
-
-	value: int256 - integer entered by user
-
-`inputUint` - prints prompt message to the user and returns unsinged integer entered by user
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	
-	prompt: bytes - string printed to the user and describing what to enter
-
-returns: 
-
-	value: uint256 - integer entered by user
-
-`inputBoolean` - prints prompt message to the user and returns true or false choise (yes or no)
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	
-	prompt: bytes - string printed to the user and describing what to enter
-
-returns: 
-
-	value: bool - user choice converted to true or false
-
-`inputTons` - prints prompt message to the user and returns number of nanotons entered by user.
-
-arguments: 
-
-	answerId: uint32 - function id of result callback
-	
-	prompt: bytes - string printed to the user and describing what to enter
-
-returns: 
-
-	value: uint128 - number of nanotons.
-
 `print` - shows string message to the user
 
-arguments: 
+arguments:
 
 	message: bytes - utf8 string as byte array
 
-returns: 
+returns:
 
 	void
 
 `printf` - shows formatted string message to the user
 
-arguments: 
+arguments:
 
 	fmt: bytes - utf8 string as byte array that must be printed to the user
 
@@ -96,9 +48,9 @@ arguments:
 
 	Format specifier is one of ABI type like `{int32}`, `{address}`, `{cell}`, `{uint256[]}` and so on or one of the following types:
 		- `{utime}` - prints unixtime in UTC date time format. Format argument is an `uint32` integer.
-		- `{value}` - prints number of tons in `decimal.float` format with 9 digits after `.`.
+		- `{ton}` - prints number of tons in `decimal.float` format with 9 digits after `.`.
 
-returns: 
+returns:
 
 	void
 
@@ -119,7 +71,6 @@ interface ITerminal {
 namespace tvm { namespace schema {
 
 __interface ITerminal {
-
 	[[internal, answer_id]]
 	string input(string prompt, bool multiline);
 	[[internal]]
@@ -127,6 +78,7 @@ __interface ITerminal {
 	[[internal]]
 	void printf(string fmt, cell fargs);
 }
+
 };
 ```
 

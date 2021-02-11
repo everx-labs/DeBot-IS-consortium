@@ -1,12 +1,8 @@
-pragma solidity >= 0.6.0;
+pragma ton-solidity ^0.35.0;
 
 interface ITerminal {
-	
-	function inputStr(uint32 answerId, string prompt, bool multiline) external returns (string value);
-	function inputInt (uint32 answerId, string prompt) external returns (int256 value);
-	function inputUint(uint32 answerId, string prompt) external returns (uint256 value);
-	function inputTons(uint32 answerId, string prompt) external returns (uint128 value);
-	function inputBoolean(uint32 answerId, string prompt) external returns (bool value);
+
+	function input(uint32 answerId, string prompt, bool multiline) external returns (string value);
 	function print(uint32 answerId, string message) external;
 	function printf(uint32 answerId, string fmt, TvmCell fargs) external;
 
@@ -19,7 +15,7 @@ library Terminal {
 
 	function input(uint32 answerId, string prompt, bool multiline) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
-		ITerminal(addr).inputStr(answerId, prompt, multiline);
+		ITerminal(addr).input(answerId, prompt, multiline);
 	}
 	function print(uint32 answerId, string message) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
