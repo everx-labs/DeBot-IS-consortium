@@ -23,6 +23,7 @@ arguments:
 	
 	prompt: bytes - string printed to the user and describing what to enter
 
+	multiline: bool - allow multiline text input
 returns: 
 
 	value: bytes - utf8 string entered by user.
