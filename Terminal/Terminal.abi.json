@@ -3,7 +3,7 @@
 	"header": ["time"],
 	"functions": [
 		{
-			"name": "inputStr",
+			"name": "input",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"},
@@ -11,46 +11,6 @@
 			],
 			"outputs": [
 				{"name":"value","type":"bytes"}
-			]
-		},
-		{
-			"name": "inputInt",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
-			],
-			"outputs": [
-				{"name":"value","type":"int256"}
-			]
-		},
-		{
-			"name": "inputUint",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
-			],
-			"outputs": [
-				{"name":"value","type":"uint256"}
-			]
-		},
-		{
-			"name": "inputTons",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
-			],
-			"outputs": [
-				{"name":"value","type":"uint128"}
-			]
-		},
-		{
-			"name": "inputBoolean",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
-			],
-			"outputs": [
-				{"name":"value","type":"bool"}
 			]
 		},
 		{
