@@ -33,11 +33,7 @@ library Terminal {
 
 contract TerminalABI is ITerminal {
 
-	function inputStr(uint32 answerId, string prompt, bool multiline) external override returns (string value) {}
-	function inputInt (uint32 answerId, string prompt) external override returns (int256 value) {}
-	function inputUint(uint32 answerId, string prompt) external override returns (uint256 value) {}
-	function inputTons(uint32 answerId, string prompt) external override returns (uint128 value) {}
-	function inputBoolean(uint32 answerId, string prompt) external override returns (bool value) {}
+	function input(uint32 answerId, string prompt, bool multiline) external override returns (string value) {}
 	function print(uint32 answerId, string message) external override {}
 	function printf(uint32 answerId, string fmt, TvmCell fargs) external override {}
 
