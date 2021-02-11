@@ -8,10 +8,7 @@ contract ExampleContract {
 
     function start() public {
 		
-		Terminal.inputStr(tvm.functionId(setText),    "enter your name:");
-		Terminal.inputInt(tvm.functionId(setInteger), "enter number:");
-		Terminal.inputTons(tvm.functionId(setTons),   "enter tons:");
-		Terminal.inputBoolean(tvm.functionId(setYesOrNo), "say yes or no:");
+		Terminal.input(tvm.functionId(setText),    "enter your name:");
 		Terminal.print("I am Debot");
 		TvmBuilder b;
 		b.store(int8(1), uint32(10));
