@@ -107,11 +107,7 @@ returns:
 ```jsx
 interface ITerminal {
 
-	function inputStr(uint32 answerId, string prompt) external returns (string value);
-	function inputInt (uint32 answerId, string prompt) external returns (int256 value);
-	function inputUint(uint32 answerId, string prompt) external returns (uint256 value);
-	function inputTons(uint32 answerId, string prompt) external returns (uint128 value);
-	function inputBoolean(uint32 answerId, string prompt) external returns (bool value);
+	function input(uint32 answerId, string prompt) external returns (string value);
 	function print(string message) external;
 	function printf(string format, Tvmcell fargs) external;
 }
