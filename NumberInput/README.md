@@ -29,7 +29,11 @@ returns:
 
 ## Declaration in Solidity
 
-TODO: Add declaration
+interface INumberInput {
+
+	function select(uint32 answerId, string prompt, int256 min, int256 max) external returns (int256 value);
+
+}
 
 ## Declaration in C++
 
