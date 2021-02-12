@@ -14,7 +14,7 @@ Interface for number input.
 
 ## Functions
 
-`int` - prints prompt message to the user and returns singed integer entered by user
+`get` - prints prompt message to the user and returns singed integer entered by user
 
 arguments:
 
