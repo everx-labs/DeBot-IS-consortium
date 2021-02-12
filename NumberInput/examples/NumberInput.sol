@@ -8,7 +8,7 @@ interface INumberInput {
 
 library NumberInput {
 
-	uint256 constant ID = 0x05606e612a821f3ecf72621a28304c5ae5fcf7681637bf9aaf74954a190175b5;
+	uint256 constant ID = 0xc5a9558b2664aed7dc3e6123436d544f13ffe69ab0e259412f48c6d1c8588401;
 	int8 constant DEBOT_WC = -31;
 
 	function get(uint32 answerId, string prompt, int256 min, int256 max) public pure {
