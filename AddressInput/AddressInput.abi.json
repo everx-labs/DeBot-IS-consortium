@@ -11,13 +11,6 @@
 			"outputs": [
 				{"name":"value","type":"address"}
 			]
-		},
-		{
-			"name": "constructor",
-			"inputs": [
-			],
-			"outputs": [
-			]
 		}
 	],
 	"data": [
