@@ -31,7 +31,7 @@ returns:
 
 interface INumberInput {
 
-	function select(uint32 answerId, string prompt, int256 min, int256 max) external returns (int256 value);
+	function get(uint32 answerId, string prompt, int256 min, int256 max) external returns (int256 value);
 
 }
 
