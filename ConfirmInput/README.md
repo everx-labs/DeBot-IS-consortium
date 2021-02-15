@@ -41,7 +41,7 @@ TODO: Add declaration
 
 ### Solidity
 
-TODO: Add example
+Example.sol
 
 ### C++
 
