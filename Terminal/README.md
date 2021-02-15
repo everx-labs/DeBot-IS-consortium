@@ -1,6 +1,6 @@
 # Terminal Interface
 
-**Status**: Proposed
+**Status**: Accepted
 
 | Name      | ID                                                                |
 | :-------- | :---------------------------------------------------------------- |
