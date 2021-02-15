@@ -30,7 +30,11 @@ returns:
 
 ## Declaration in Solidity
 
-TODO: Add declaration
+interface IAmountInput {
+
+	function get(uint32 answerId, string prompt, uint8 decimals, uint256 min, uint256 max) external returns (uint256 value);
+
+}
 
 ## Declaration in C++
 
