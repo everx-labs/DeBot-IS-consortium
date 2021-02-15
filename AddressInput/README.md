@@ -17,11 +17,13 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 
 `select` - allows to get TON standard address selected by user.
 
-arguments: 
+arguments:
 
 	answerId: uint32 - function id of result callback
-	
-returns: 
+
+    prompt: bytes - utf-8 string to print to the user before input.
+
+returns:
 
 	value: address - address selected by user.
 
@@ -29,7 +31,7 @@ returns:
 
 ```jsx
 interface IAddressInput {
-	function select(uint32 answerId) external returns (address value);
+	function select(uint32 answerId, string prompt) external returns (address value);
 }
 ```
 
@@ -41,8 +43,8 @@ namespace tvm { namespace schema {
 __interface IAddressInput {
 
 	[[internal, answer_id]]
-	address select();
-	
+	address select(string prompt);
+
 };
 
 }}
