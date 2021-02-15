@@ -35,7 +35,14 @@ interface IConfirmInput {
 
 ## Declaration in C++
 
-TODO: Add declaration
+namespace tvm { namespace schema {
+
+__interface IConfirmInput {
+	[[internal, answer_id]]
+	bool_t select(string prompt);
+}
+
+}};
 
 ## Code Example
 
