@@ -18,10 +18,10 @@ Interface for number input.
 
 arguments:
 
-	answerId: uint32
-    prompt: bytes
-	min: int256
-	max: int256
+    answerId: uint32 - id of callback function.
+    prompt: bytes - utf-8 string to print to the user before input.
+    min: int256 - minimal value allowed to input.
+    max: int256 - maximum value allowed to input. 
 
 returns:
 
