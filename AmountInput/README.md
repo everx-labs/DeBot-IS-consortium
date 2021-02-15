@@ -14,7 +14,7 @@ Interface for amount input.
 
 ## Functions
 
-`get` - prints prompt message to the user and returns number of nanotons entered by user.
+`get` - prints prompt message to the user and returns amount of tokens entered by user.
 
 arguments:
 
