@@ -19,8 +19,8 @@ Interface for amount input.
 arguments:
 
 	answerId: uint32
-    prompt: bytes
-    step: uint256
+	prompt: bytes
+	decimal: uint8
 	min: uint256
 	max: uint256
 
