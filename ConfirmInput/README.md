@@ -27,7 +27,11 @@ returns:
 
 ## Declaration in Solidity
 
-TODO: Add declaration
+interface IConfirmInput {
+
+	function select(uint32 answerId, string prompt) external returns (bool value);
+
+}
 
 ## Declaration in C++
 
