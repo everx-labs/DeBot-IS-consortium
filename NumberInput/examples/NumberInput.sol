@@ -1,4 +1,4 @@
-pragma ton-solidity ^0.35.0;
+pragma ton-solidity >=0.35.0;
 
 interface INumberInput {
 
@@ -13,7 +13,7 @@ library NumberInput {
 
 	function get(uint32 answerId, string prompt, int256 min, int256 max) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
-		INumberInput(addr).select(answerId, prompt, min, max);
+		INumberInput(addr).get(answerId, prompt, min, max);
 	}
 }
 
