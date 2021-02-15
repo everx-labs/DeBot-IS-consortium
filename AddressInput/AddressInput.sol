@@ -1,4 +1,4 @@
-pragma ton-solidity ^0.35.0;
+pragma ton-solidity >=0.35.0;
 
 interface IAddressInput {
 	function select(uint32 answerId, string prompt) external returns (address value);
