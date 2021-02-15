@@ -18,8 +18,8 @@ Interface for confirm input.
 
 arguments:
 
-	handlerId: uint32
-    prompt: bytes
+	answerId: uint32 - id of function callback.
+	prompt: bytes - utf-8 string to print to the user before input.
 
 returns:
 
