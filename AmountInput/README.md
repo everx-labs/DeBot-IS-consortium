@@ -26,7 +26,7 @@ arguments:
 
 returns:
 
-	{ value: uint128 }
+	{ value: uint128 } - amount of tokens multiplied by `10^decimals`. To get the integer part of an amount debot should divide value by `10^decimals`.
 
 ## Declaration in Solidity
 
