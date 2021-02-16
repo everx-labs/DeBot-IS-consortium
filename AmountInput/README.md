@@ -18,11 +18,11 @@ Interface for amount input.
 
 arguments:
 
-	answerId: uint32
-	prompt: bytes
-	decimal: uint8
-	min: uint256
-	max: uint256
+	answerId: uint32 - id of function callback.
+	prompt: bytes - utf-8 string to print to the user before input.
+	decimal: uint8 - number of decimals used by amount token, e.g. 9 - means that browser should multiply token amount to 1000000000 to get its debot represenation.
+	min: uint256 - minimal amount that can be entered by user.
+	max: uint256 - maximum amount that can be entered by user.
 
 returns:
 
