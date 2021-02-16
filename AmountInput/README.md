@@ -21,12 +21,12 @@ arguments:
 	answerId: uint32 - id of function callback.
 	prompt: bytes - utf-8 string to print to the user before input.
 	decimal: uint8 - number of decimals used by amount token, e.g. 9 - means that browser should multiply token amount to 1000000000 to get its debot represenation.
-	min: uint256 - minimal amount that can be entered by user.
-	max: uint256 - maximum amount that can be entered by user.
+	min: uint128 - minimal amount that can be entered by user.
+	max: uint128 - maximum amount that can be entered by user.
 
 returns:
 
-	{ value: uint256 }
+	{ value: uint128 }
 
 ## Declaration in Solidity
 
