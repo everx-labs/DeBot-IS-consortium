@@ -10,7 +10,7 @@ contract ExampleContract {
 		AmountInput.get(tvm.functionId(setAmount), "Enter amount of tons:",  9, 1e9, 100e9);
 	}
 
-	function setAmount(uint256 value) public {
+	function setAmount(uint128 value) public {
         // TODO: continue here
 	}
 
