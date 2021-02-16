@@ -20,6 +20,6 @@ library AmountInput {
 
 contract AmountInputABI is IAmountInput {
 
-	function get(uint32 answerId, string prompt, uint8 decimals, uint256 min, uint256 max) external override returns (uint256 value) {}
+	function get(uint32 answerId, string prompt, uint8 decimals, uint128 min, uint128 max) external override returns (uint128 value) {}
 
 }
