@@ -2,7 +2,7 @@ pragma ton-solidity >=0.35.0;
 
 interface IAmountInput {
 
-	function get(uint32 answerId, string prompt, uint8 decimals, uint256 min, uint256 max) external returns (uint256 value);
+	function get(uint32 answerId, string prompt, uint8 decimals, uint128 min, uint128 max) external returns (uint128 value);
 
 }
 
