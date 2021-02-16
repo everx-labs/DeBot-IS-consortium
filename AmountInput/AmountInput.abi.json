@@ -8,11 +8,11 @@
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"},
 				{"name":"decimals","type":"uint8"},
-				{"name":"min","type":"uint256"},
-				{"name":"max","type":"uint256"}
+				{"name":"min","type":"uint128"},
+				{"name":"max","type":"uint128"}
 			],
 			"outputs": [
-				{"name":"value","type":"uint256"}
+				{"name":"value","type":"uint128"}
 			]
 		},
 		{
