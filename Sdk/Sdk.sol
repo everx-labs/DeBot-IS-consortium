@@ -25,6 +25,10 @@ function hdkeyPublicFromXprv(uint32 answerId, string xprv) external returns (uin
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external returns (uint256 sec, uint256 pub);
 //string
 function substring(uint32 answerId, string str, uint32 start, uint32 count) external returns (string substr);
+//sc
+function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes encrypted);
+function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes decrypted);
+function naclKeypairFromSecret(uint32 answerId, uint256 secret) external returns (uint256 publicKey, uint256 secretKey);
 }
 
 
@@ -114,6 +118,19 @@ library Sdk {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
 		ISdk(addr).substring(answerId, str, start, count);
 	}
+
+	function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclBox(answerId, decrypted, nonce, publicKey, secretKey);
+	}
+	function naclBoxOpen(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclBoxOpen(answerId, decrypted, nonce, publicKey, secretKey);
+	}
+	function naclKeypairFromSecret(uint32 answerId, uint256 secret) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclKeypairFromSecret(answerId, secret);
+	}
 }
 
 contract SdkABI is ISdk {
@@ -142,4 +159,10 @@ function hdkeyPublicFromXprv(uint32 answerId, string xprv) external override ret
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external override returns (uint256 sec, uint256 pub) {}
 //string
 function substring(uint32 answerId, string str, uint32 start, uint32 count) external override returns (string substr) {}
+//sc
+function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes encrypted) {}
+function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes decrypted) {}
+function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
+
+
 }

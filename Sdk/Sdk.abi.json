@@ -194,6 +194,43 @@
 			]
 		},
 		{
+			"name": "naclBox",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"decrypted","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"publicKey","type":"uint256"},
+				{"name":"secretKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"encrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "naclBoxOpen",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"encrypted","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"publicKey","type":"uint256"},
+				{"name":"secretKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"decrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "naclKeypairFromSecret",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"secret","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"publicKey","type":"uint256"},
+				{"name":"secretKey","type":"uint256"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],
