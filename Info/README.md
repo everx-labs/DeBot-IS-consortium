@@ -8,7 +8,7 @@ It's basic functions in debots for getting of info about debot and work with thi
 
 returns:
 
-    address: bytes - Free TON address
+    address: address - Free TON address
 
     name: bytes - name of debot ex. [DePool]
 
