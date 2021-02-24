@@ -41,8 +41,8 @@ library Sdk {
 	uint256 constant ITF_ADDR = 0x8fc6454f90072c9f1f6d3313ae1608f64f4a0660c6ae9f42c68b6a79e2a1bc4b;
 	int8 constant DEBOT_WC = -31;
 
-	int8 constant BASE64 = 0;
-	int8 constant HEX = 1;
+	uint8 constant BASE64 = 0;
+	uint8 constant HEX = 1;
 
 
 	function getBalance(uint32 answerId, address addr) public pure {
