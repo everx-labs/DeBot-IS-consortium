@@ -231,6 +231,28 @@
 			]
 		},
 		{
+			"name": "encode",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"data","type":"bytes"},
+				{"name":"encoding","type":"uint8"}
+			],
+			"outputs": [
+				{"name":"encoded","type":"bytes"}
+			]
+		},
+		{
+			"name": "decode",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"data","type":"bytes"},
+				{"name":"encoding","type":"uint8"}
+			],
+			"outputs": [
+				{"name":"decoded","type":"bytes"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],

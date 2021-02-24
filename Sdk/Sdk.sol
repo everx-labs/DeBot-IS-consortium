@@ -29,6 +29,9 @@ function substring(uint32 answerId, string str, uint32 start, uint32 count) exte
 function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes encrypted);
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes decrypted);
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external returns (uint256 publicKey, uint256 secretKey);
+//encoding
+function encode(uint32 answerId, bytes data, uint8 encoding) external returns (bytes encoded);
+function decode(uint32 answerId, bytes data, uint8 encoding) external returns (bytes decoded);
 }
 
 
@@ -37,6 +40,9 @@ library Sdk {
 
 	uint256 constant ITF_ADDR = 0x8fc6454f90072c9f1f6d3313ae1608f64f4a0660c6ae9f42c68b6a79e2a1bc4b;
 	int8 constant DEBOT_WC = -31;
+
+	int8 constant BASE64 = 0;
+	int8 constant HEX = 1;
 
 
 	function getBalance(uint32 answerId, address addr) public pure {
@@ -131,6 +137,15 @@ library Sdk {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
 		ISdk(addr).naclKeypairFromSecret(answerId, secret);
 	}
+
+	function encode(uint32 answerId, bytes data, uint8 encoding) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).encode(answerId, data, encoding);
+	}
+	function decode(uint32 answerId, bytes data, uint8 encoding) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).decode(answerId, data, encoding);
+	}
 }
 
 contract SdkABI is ISdk {
@@ -163,6 +178,8 @@ function substring(uint32 answerId, string str, uint32 start, uint32 count) exte
 function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes encrypted) {}
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes decrypted) {}
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
-
+//encoding
+function encode(uint32 answerId, bytes data, uint8 encoding) external override returns (bytes encoded) {}
+function decode(uint32 answerId, bytes data, uint8 encoding) external override returns (bytes decoded) {}
 
 }
