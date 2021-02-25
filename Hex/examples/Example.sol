@@ -2,20 +2,20 @@ pragma solidity >= 0.6.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "Base64.sol";
+import "Hex.sol";
 
 
 contract ExampleContract {
 
     function test() public {
         bytes data = bytes("aaa");
-        Base64.encode(tvm.functionId(setEncode), data);
-        string base64 = "YWFh";
-        Base64.decode(tvm.functionId(setDecode), base64);
+        Hex.encode(tvm.functionId(setEncode), data);
+        string hexstr = "616161";
+        Hex.decode(tvm.functionId(setDecode), hexstr);
     }
 
-    function setEncode(string base64) public pure {
-        require(base64=="YWFh",100);
+    function setEncode(string hexstr) public pure {
+        require(base64=="616161",100);
     }
 
     function setDecode(bytes data) public pure {

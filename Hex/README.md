@@ -1,20 +1,20 @@
 > :warning: **This Interface should be implemented by DeBot Engine**
-# Base64 Interface
+# Hex System Interface
 
 **Status**: Proposed
 
 | Name         | ID                                                                |
 | :----------- | :---------------------------------------------------------------- |
-| Base64       | 8913b27b45267aad3ee08437e64029ac38fb59274f19adca0b23c4f957c8cfa1  |
+| Hex	       | edfbb00d6ebd16d57a1636774845af9499b400ba417da8552f40b1250256ff8f  |
 
 ## Description
 
-Allows you to encode and decode Base64 strings
+Allows you to encode and decode Hex strings
 > :warning: **This Interface should be implemented by DeBot Engine**
 
 ## Functions
 
-`encode` - encode string to base64 format.
+`encode` - encode data to hex format.
 
 arguments: 
 
@@ -24,7 +24,7 @@ arguments:
 
 returns: 
 
-     base64: string - base64 string
+     hexstr: string - hex string
 
 `decode` - decode string from base64 format.
 
@@ -32,7 +32,7 @@ arguments:
 
     answerId: uint32 - function id of result callback.
 
-    base64: string - base64 string
+    hexstr: string - hex string
 
 returns: 
 
@@ -43,10 +43,10 @@ returns:
 ```jsx
 
 
-interface IBase64 {
+interface IHex {
 
-    function encode(uint32 answerId, bytes data) external returns (string base64);
-    function decode(uint32 answerId, string base64) external returns (bytes data);
+    function encode(uint32 answerId, bytes data) external returns (string hexstr);
+    function decode(uint32 answerId, string hexstr) external returns (bytes data);
 
 }
 ```
@@ -56,12 +56,12 @@ interface IBase64 {
 ```cpp
 namespace tvm { namespace schema {
 
-__interface IBase64 {
+__interface IHex {
 
 	[[internal, answer_id]]
 	string encode(bytes data);
         [[internal, answer_id]]
-	string decode(string base64);
+	string decode(string hexstr);
 	
 };
 

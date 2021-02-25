@@ -2,12 +2,12 @@
 
 namespace tvm { namespace schema {
 
-__interface IBase64 {
+__interface IHex {
 
 	[[internal, answer_id]]
 	string deserialize(bytes data);
         [[internal, answer_id]]
-	string deserialize(string base64);
+	string deserialize(string hexstr);
 	
 };
 

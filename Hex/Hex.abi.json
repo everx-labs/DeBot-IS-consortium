@@ -9,14 +9,14 @@
 				{"name":"data","type":"bytes"}
 			],
 			"outputs": [
-				{"name":"base64","type":"bytes"}
+				{"name":"hexstr","type":"bytes"}
 			]
 		},
 		{
 			"name": "decode",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"base64","type":"bytes"}
+				{"name":"hexstr","type":"bytes"}
 			],
 			"outputs": [
 				{"name":"data","type":"bytes"}
