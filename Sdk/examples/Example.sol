@@ -43,29 +43,4 @@ contract ExampleContract {
 	function setUncomp(bytes uncomp) public {
 	}
 
-	function encodebase64() public {
-	    string str = "hello";
-	    Sdk.encode(tvm.functionId(getESdkB64),str,Sdk.BASE64);
-	}
-	function getESdkB64(bytes encoded) public {
-	    require(string(encoded)=="aGVsbG8=",155);
-	    Sdk.decode(tvm.functionId(getDSdkB64),encoded,Sdk.BASE64);
-	}
-	function getDSdkB64(bytes decoded) public {
-	    require(string(decoded)=="hello",156);
-	    Terminal.print(0,"test base64 encode-decode passed");
-	}
-	function encodehex() public {
-	    string str = "hello";
-	    Sdk.encode(tvm.functionId(getESdkHex),str,Sdk.HEX);
-	}
-	function getESdkHex(bytes encoded) public {
-	    require(string(encoded)=="68656c6c6f",157);
-	    Sdk.decode(tvm.functionId(getDSdkHex),encoded,Sdk.HEX);
-	}
-	function getDSdkHex(bytes decoded) public {
-	    require(string(decoded)=="hello",158);
-	    Terminal.print(0,"test hex encode-decode passed");
-	}
-
 }
