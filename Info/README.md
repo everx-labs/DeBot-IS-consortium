@@ -8,17 +8,17 @@ It's basic functions in debots for getting of info about debot and work with thi
 
 returns:
 
-    name: bytes - name of debot, e.g. "DePool"
+    name: bytes - utf-8 string with name of debot, e.g. "DePool"
 
     version: bytes - version of debot, e.g. "0.0.1"
 
-    publisher: bytes - whos deployed debot to blochain, e.g. "TON Labs"
+    publisher: bytes - utf-8 string with info about whos deployed debot to blochain, e.g. "TON Labs"
 
     key: bytes - (10-20 ch.) short description, e.g. "Work with DePools"
 
-    author: bytes - author of DeBot, e.g. "Nikita Monakhov"
+    author: bytes - utf-8 string with name of author of DeBot, e.g. "Nikita Monakhov"
 
-    support: bytes - Surf address
+    support: address - address of author for questions and donations
 
     hello: bytes - first messsage with DeBot description, e.g. "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start." 
 
