@@ -14,14 +14,15 @@ returns:
 
     publisher: bytes - utf-8 string with info about who has deployed debot to blokchain, e.g. "TON Labs"
 
-    key: bytes - (10-20 ch.) short description, e.g. "Work with DePools"
+    key: bytes - (10-20 ch.) utf-8 string with short description, e.g. "Work with DePools"
 
     author: bytes - utf-8 string with name of author of DeBot, e.g. "Ivan Ivanov".
 
     support: address - Free TON address of author for questions and donations
 
-    hello: bytes - first messsage with DeBot description, e.g. "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start." 
+    hello: bytes - utf-8 string with first messsage with DeBot description, e.g. "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start." 
 
+    language: bytes - utf-8 string with debot interface language, e.g. "en_US"
 ---
 
 `getRequiredInterfaces` - returns array of interfaces used by debot. Debot Browser should check if it supports all interfaces from this array. If anyone is not supported debot should not be started. 
