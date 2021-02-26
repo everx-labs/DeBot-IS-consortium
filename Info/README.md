@@ -28,7 +28,7 @@ returns:
 
 returns:
 
-    interfaces: uint256[] 
+    interfaces: uint256[] - array of interface ids
 
 ## Declaration in Solidity
 
