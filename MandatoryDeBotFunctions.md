@@ -53,7 +53,7 @@ returns:
         author = "Ivan Ivanov";
         support = address.makeAddrStd(0, 0x841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94);
         hello = "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start.";
-        language = "en_US";
+        language = "en";
     }
     }
 
