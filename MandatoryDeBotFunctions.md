@@ -22,7 +22,7 @@ returns:
 
     hello: bytes - utf-8 string with first messsage with DeBot description, e.g. "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start." 
 
-    language: bytes - utf-8 string with debot interface language, e.g. "en_US"
+    language: bytes - (ISO-639) utf-8 string with debot interface language, e.g. "en"
 ---
 
 `getRequiredInterfaces` - returns array of interfaces used by debot. Debot Browser should check if it supports all interfaces from this array. If anyone is not supported debot should not be started. 
