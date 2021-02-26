@@ -23,18 +23,19 @@ arguments:
 
 returns:
 
-	{ value: uint256 } - public key entered by user.
+	value: uint256 - public key entered by user.
 
 ## Declaration in Solidity
-
+```jsx
 interface IPubkeyInput {
 
 	function get(uint32 answerId, string prompt) external returns (uint256 value);
 
 }
+```
 
 ## Declaration in C++
-
+```cpp
 namespace tvm { namespace schema {
 
 __interface IPubkeyInput {
@@ -43,6 +44,7 @@ __interface IPubkeyInput {
 }
 
 }};
+```
 
 ## Code Example
 
