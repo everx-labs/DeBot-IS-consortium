@@ -1,6 +1,6 @@
 ## Description
 
-It's basic functions in debots for getting of info about debot and work with this
+Document describes the functions that every Debot should have.
 
 ## Functions
 
