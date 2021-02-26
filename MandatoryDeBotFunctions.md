@@ -24,7 +24,7 @@ returns:
 
 ---
 
-`getRequiredInterfaces` - returns array of required interfaces.
+`getRequiredInterfaces` - returns array of interfaces used by debot. Debot Browser should check if it supports all interfaces from this array. If anyone is not supported debot should not be started. 
 
 returns:
 
