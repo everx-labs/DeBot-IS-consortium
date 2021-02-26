@@ -16,7 +16,7 @@ returns:
 
     key: bytes - (10-20 ch.) short description, e.g. "Work with DePools"
 
-    author: bytes - utf-8 string with name of author of DeBot, e.g. "Nikita Monakhov"
+    author: bytes - utf-8 string with name of author of DeBot, e.g. "Ivan Ivanov".
 
     support: address - Free TON address of author for questions and donations
 
