@@ -35,8 +35,6 @@ returns:
     // Base contract for all debots
     abstract contract Debot {
     
-        i32 constant DEBOT_WC = -31;
-    
         function getRequiredInterfaces() virtual returns (uint256[] interfaces); 
     
     }
@@ -52,13 +50,3 @@ returns:
 ## Declaration in C++
 
 TODO: Add declaration
-
-## Code Example
-
-### Solidity
-
-TODO: Add example
-
-### C++
-
-TODO: Add example
