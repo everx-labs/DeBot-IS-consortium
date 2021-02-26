@@ -18,7 +18,7 @@ returns:
 
     author: bytes - utf-8 string with name of author of DeBot, e.g. "Nikita Monakhov"
 
-    support: address - address of author for questions and donations
+    support: address - Free TON address of author for questions and donations
 
     hello: bytes - first messsage with DeBot description, e.g. "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start." 
 
