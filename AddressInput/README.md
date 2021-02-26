@@ -15,7 +15,7 @@ Allows to input smart contract address.
 
 Since DeBot is a smart contract then all functions work asyncronously by design. It means that they don't return anything despite the fact that all have `returns` value in their specification. Result callback will be called later and it must have arguments defined in `returns` section.
 
-`get` - allows to get TON standard address geted by user.
+`get` - allows to get TON standard address selected by user.
 
 arguments:
 
@@ -25,7 +25,7 @@ arguments:
 
 returns:
 
-	value: address - address geted by user.
+	value: address - address selected by user.
 
 ## Declaration in Solidity
 
