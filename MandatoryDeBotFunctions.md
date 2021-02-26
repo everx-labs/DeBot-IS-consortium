@@ -37,7 +37,7 @@ returns:
     abstract contract Debot {
     
         function getRequiredInterfaces() virtual returns (uint256[] interfaces); 
-    
+    function getInfo() virtual returns (string name, string version, string publisher, string key, string author, address support, string hello, string language);
     }
     
     contract DebotA is Debot {
