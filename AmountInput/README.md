@@ -1,7 +1,7 @@
 
 # AmountInput Interface
 
-**Status**: Proposed
+**Status**: Accepted
 
 | Name        | ID                                                                |
 | :---------- | :---------------------------------------------------------------- |

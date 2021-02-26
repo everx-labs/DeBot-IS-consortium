@@ -1,7 +1,7 @@
 
 # ConfirmInput Interface
 
-**Status**: Proposed
+**Status**: Accepted
 
 | Name         | ID                                                                |
 | :----------- | :---------------------------------------------------------------- |
@@ -14,7 +14,7 @@ Interface for confirm input.
 
 ## Functions
 
-`select` - prints prompt message to the user and returns true or false choice
+`get` - prints prompt message to the user and returns true or false choice
 
 arguments:
 
@@ -29,7 +29,7 @@ returns:
 
 interface IConfirmInput {
 
-	function select(uint32 answerId, string prompt) external returns (bool value);
+	function get(uint32 answerId, string prompt) external returns (bool value);
 
 }
 
@@ -39,7 +39,7 @@ namespace tvm { namespace schema {
 
 __interface IConfirmInput {
 	[[internal, answer_id]]
-	bool_t select(string prompt);
+	bool_t get(string prompt);
 }
 
 }};
