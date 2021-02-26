@@ -12,7 +12,7 @@ returns:
 
     version: bytes - version of debot, e.g. "0.0.1"
 
-    publisher: bytes - utf-8 string with info about whos deployed debot to blochain, e.g. "TON Labs"
+    publisher: bytes - utf-8 string with info about who has deployed debot to blokchain, e.g. "TON Labs"
 
     key: bytes - (10-20 ch.) short description, e.g. "Work with DePools"
 
