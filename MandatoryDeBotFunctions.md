@@ -45,7 +45,16 @@ returns:
         function getRequiredInterfaces() override returns (uint256[] interfaces) {
         return [ID_TERMINAL, ID_MENU, ...];
         }
-    
+    function getInfo() override returns (string name, string version, string publisher, string key, string author, address support, string hello, string language) {
+        name = "Depool Debot";
+        version = "0.1.0";
+        publisher = "TON Labs";
+        key = "Works with DePools";
+        author = "Ivan Ivanov";
+        support = address.makeAddrStd(0, 0x841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94);
+        hello = "Hello, I'm a FreeTON Debot Kapellmeister. I know everything about DePools. Let's start.";
+        language = "en_US";
+    }
     }
 
 ## Declaration in C++
