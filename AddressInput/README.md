@@ -1,6 +1,6 @@
 # AddressInput Interface
 
-**Status**: Proposed
+**Status**: Accepted
 
 | Name         | ID                                                                |
 | :--------    | :---------------------------------------------------------------- |
@@ -15,7 +15,7 @@ Allows to input smart contract address.
 
 Since DeBot is a smart contract then all functions work asyncronously by design. It means that they don't return anything despite the fact that all have `returns` value in their specification. Result callback will be called later and it must have arguments defined in `returns` section.
 
-`select` - allows to get TON standard address selected by user.
+`get` - allows to get TON standard address selected by user.
 
 arguments:
 
@@ -31,7 +31,7 @@ returns:
 
 ```jsx
 interface IAddressInput {
-	function select(uint32 answerId, string prompt) external returns (address value);
+	function get(uint32 answerId, string prompt) external returns (address value);
 }
 ```
 
@@ -43,7 +43,7 @@ namespace tvm { namespace schema {
 __interface IAddressInput {
 
 	[[internal, answer_id]]
-	address select(string prompt);
+	address get(string prompt);
 
 };
 

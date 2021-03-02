@@ -7,7 +7,7 @@ import "AddressInput.sol";
 contract ExampleContract {
 
     function start() public {
-		AddressInput.select(tvm.functionId(setAddress), "Enter wallet address:");
+		AddressInput.get(tvm.functionId(setAddress), "Enter wallet address:");
 	}
 
 	function setAddress(address value) public {

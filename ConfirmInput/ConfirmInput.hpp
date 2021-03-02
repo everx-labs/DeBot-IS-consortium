@@ -2,7 +2,7 @@ namespace tvm { namespace schema {
 
 __interface IConfirmInput {
 	[[internal, answer_id]]
-	bool_t select(string prompt);
+	bool_t get(string prompt);
 }
 
 }};

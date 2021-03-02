@@ -7,7 +7,7 @@ import "ConfirmInput.sol";
 contract ExampleContract {
 
     function start() public {
-		ConfirmInput.select(tvm.functionId(setConfirm), "Say yes or no:");
+		ConfirmInput.get(tvm.functionId(setConfirm), "Say yes or no:");
 	}
 
 	function setConfirm(bool value) public {

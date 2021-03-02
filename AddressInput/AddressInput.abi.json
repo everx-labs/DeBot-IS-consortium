@@ -3,7 +3,7 @@
 	"header": ["time"],
 	"functions": [
 		{
-			"name": "select",
+			"name": "get",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"}

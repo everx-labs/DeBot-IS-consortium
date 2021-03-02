@@ -1,7 +1,7 @@
 
 # NumberInput Interface
 
-**Status**: Proposed
+**Status**: Accepted
 
 | Name        | ID                                                                |
 | :---------- | :---------------------------------------------------------------- |
@@ -21,7 +21,7 @@ arguments:
     answerId: uint32 - id of callback function.
     prompt: bytes - utf-8 string to print to the user before input.
     min: int256 - minimal value allowed to input.
-    max: int256 - maximum value allowed to input. 
+    max: int256 - maximum value allowed to input.
 
 returns:
 
