@@ -231,6 +231,19 @@
 			]
 		},
 		{
+			"name": "queryAccount",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"filter","type":"bytes"},
+				{"name":"result","type":"bytes"},
+				{"name":"order","type":"bytes"},
+				{"name":"limit","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"successed","type":"bool"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],
