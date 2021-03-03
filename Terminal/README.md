@@ -32,7 +32,9 @@ returns:
 
 arguments:
 
-	message: bytes - utf8 string as byte array
+    answerId: uint32 - function id of callback, can be 0.
+
+    message: bytes - utf8 string as byte array
 
 returns:
 
@@ -41,6 +43,8 @@ returns:
 `printf` - shows formatted string message to the user
 
 arguments:
+
+    answerId: uint32 - function id of callback, can be 0.
 
 	fmt: bytes - utf8 string as byte array that must be printed to the user
 
@@ -59,9 +63,9 @@ returns:
 ```jsx
 interface ITerminal {
 
-	function input(uint32 answerId, string prompt) external returns (string value);
-	function print(string message) external;
-	function printf(string format, Tvmcell fargs) external;
+	function input(uint32 answerId, string prompt, bool multiline) external returns (string value);
+	function print(uint32 answerId, string message) external;
+	function printf(uint32 answerId, string fmt, TvmCell fargs) external;
 }
 ```
 
