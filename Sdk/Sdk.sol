@@ -30,7 +30,7 @@ function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKe
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes decrypted);
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external returns (uint256 publicKey, uint256 secretKey);
 //query
-function queryAccount(uint32 answerId, string filter, string result, string order, uint32 limit) external returns (bool successed);
+function queryCollection(uint32 answerId, string collection, string filter, string result, string order, uint32 limit) external returns (bool successed);
 }
 
 
@@ -133,9 +133,9 @@ library Sdk {
 		ISdk(addr).naclKeypairFromSecret(answerId, secret);
 	}
 
-	function queryAccount(uint32 answerId, string filter, string result, string order, uint32 limit) public pure {
+	function queryCollection(uint32 answerId, string collection, string filter, string result, string order, uint32 limit) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).queryAccount(answerId, filter, result, order, limit);
+		ISdk(addr).queryCollection(answerId, collection, filter, result, order, limit);
  	}
 
 }
@@ -171,5 +171,5 @@ function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKe
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes decrypted) {}
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
 //query
-function queryAccount(uint32 answerId, string filter, string result, string order, uint32 limit) external override returns (bool successed) {}
+function queryCollection(uint32 answerId, string collection, string filter, string result, string order, uint32 limit) external override returns (bool successed) {}
 }

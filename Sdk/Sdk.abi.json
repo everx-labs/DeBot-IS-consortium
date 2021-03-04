@@ -231,9 +231,10 @@
 			]
 		},
 		{
-			"name": "queryAccount",
+			"name": "queryCollection",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
+				{"name":"collection","type":"bytes"},
 				{"name":"filter","type":"bytes"},
 				{"name":"result","type":"bytes"},
 				{"name":"order","type":"bytes"},
