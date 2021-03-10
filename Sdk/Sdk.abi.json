@@ -234,7 +234,7 @@
 			"name": "getAccountsByHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"hash","type":"bytes"}
+				{"name":"codeHash","type":"bytes"}
 			],
 			"outputs": [
 				{"components":[{"name":"id","type":"address"}],"name":"accounts","type":"tuple[]"}
@@ -244,7 +244,7 @@
 			"name": "getAccountsDataByHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"hash","type":"bytes"}
+				{"name":"codeHash","type":"bytes"}
 			],
 			"outputs": [
 				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accDatas","type":"tuple[]"}
