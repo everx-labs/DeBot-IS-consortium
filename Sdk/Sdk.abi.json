@@ -231,17 +231,23 @@
 			]
 		},
 		{
-			"name": "queryCollection",
+			"name": "getAccountsByHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"collection","type":"bytes"},
-				{"name":"filter","type":"bytes"},
-				{"name":"result","type":"bytes"},
-				{"name":"order","type":"bytes"},
-				{"name":"limit","type":"uint32"}
+				{"name":"hash","type":"bytes"}
 			],
 			"outputs": [
-				{"name":"successed","type":"bool"}
+				{"components":[{"name":"id","type":"address"}],"name":"accounts","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "getAccountsDataByHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"hash","type":"bytes"}
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accDatas","type":"tuple[]"}
 			]
 		},
 		{

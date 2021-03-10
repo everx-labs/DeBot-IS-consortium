@@ -1,4 +1,5 @@
 pragma solidity >= 0.6.0;
+
 interface ISdk {
 //account info
 function getBalance(uint32 answerId, address addr) external returns (uint128 nanotokens);
@@ -30,7 +31,15 @@ function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKe
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes decrypted);
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external returns (uint256 publicKey, uint256 secretKey);
 //query
-function queryCollection(uint32 answerId, string collection, string filter, string result, string order, uint32 limit) external returns (bool successed);
+struct AccAddr {
+    address id;
+}
+struct AccData {
+    address id;
+    TvmCell data;
+}
+function getAccountsByHash(uint32 answerId, string hash) external returns (AccAddr[] accounts);
+function getAccountsDataByHash(uint32 answerId, string hash) external returns (AccData[] accDatas);
 }
 
 
@@ -133,11 +142,15 @@ library Sdk {
 		ISdk(addr).naclKeypairFromSecret(answerId, secret);
 	}
 
-	function queryCollection(uint32 answerId, string collection, string filter, string result, string order, uint32 limit) public pure {
+	function getAccountsByHash(uint32 answerId, string hash) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
-		ISdk(addr).queryCollection(answerId, collection, filter, result, order, limit);
+		ISdk(addr).getAccountsByHash(answerId, hash);
  	}
-
+	
+	function getAccountsDataByHash(uint32 answerId, string hash) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).getAccountsDataByHash(answerId, hash);
+ 	}
 }
 
 contract SdkABI is ISdk {
@@ -171,5 +184,6 @@ function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKe
 function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes decrypted) {}
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
 //query
-function queryCollection(uint32 answerId, string collection, string filter, string result, string order, uint32 limit) external override returns (bool successed) {}
+function getAccountsByHash(uint32 answerId, string hash) external override returns (AccAddr[] accounts) {}
+function getAccountsDataByHash(uint32 answerId, string hash) external override returns (AccData[] accDatas) {}
 }
