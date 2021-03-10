@@ -247,7 +247,7 @@
 				{"name":"codeHash","type":"bytes"}
 			],
 			"outputs": [
-				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accDatas","type":"tuple[]"}
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
 			]
 		},
 		{

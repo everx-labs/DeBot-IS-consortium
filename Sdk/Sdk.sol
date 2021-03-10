@@ -39,7 +39,7 @@ struct AccData {
     TvmCell data;
 }
 function getAccountsByHash(uint32 answerId, string codeHash) external returns (AccAddr[] accounts);
-function getAccountsDataByHash(uint32 answerId, string codeHash) external returns (AccData[] accDatas);
+function getAccountsDataByHash(uint32 answerId, string codeHash) external returns (AccData[] accounts);
 }
 
 
@@ -185,5 +185,5 @@ function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publ
 function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
 //query
 function getAccountsByHash(uint32 answerId, string codeHash) external override returns (AccAddr[] accounts) {}
-function getAccountsDataByHash(uint32 answerId, string codeHash) external override returns (AccData[] accDatas) {}
+function getAccountsDataByHash(uint32 answerId, string codeHash) external override returns (AccData[] accounts) {}
 }
