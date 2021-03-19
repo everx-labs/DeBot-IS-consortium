@@ -16,31 +16,36 @@ Interface for menu.
 
 `select` - prints prompt message to the user and returns string entered by user
 
-arguments: 
+arguments:
 
-	title: bytes
-	
-	description: bytes
+	title: bytes - utf8 string with menu title.
 
-    items: MenuItem[]
+	description: bytes - utf8 string with a description of a menu. Optional, can be `""` (empty string).
 
-returns: 
+    items: MenuItem[] - array of menu items.
 
-	void
+returns:
 
+	index: uint32 - index of selected menu item starting from 0.
+
+MenuItem {
+    title: bytes - utf8 string with a short name of menu item.
+    description: string - utf8 string describing details of menu item. Optional, can be `""` (empty string).
+    handlerId: uint32 - id of a callback function to be called when this item is selected.
+}
 
 ## Declaration in Solidity
 
 ```jsx
 
 struct MenuItem {
-        string title;
-        string description;
-		uint32 handlerId;
-    }
+    string title;
+    string description;
+    uint32 handlerId;
+}
 
 interface IMenu {
-    
+
 	function select(string title, string description, MenuItem[] items) external returns (uint32 index);
 }
 ```
@@ -50,10 +55,16 @@ interface IMenu {
 ```cpp
 namespace tvm { namespace schema {
 
+struct MenuItem {
+    string title;
+    string description;
+    uint32 handlerId;
+}
+
 __interface IMenu {
 
 	[[internal]]
-	void select();
+	uint32 select(string title, string description, vector<MenuItem> items);
 }
 };
 ```
