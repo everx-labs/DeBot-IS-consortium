@@ -19,7 +19,7 @@ Interface for getting signing box and sign a data.
 arguments:
 
 	answerId: uint32 - id of function callback.
-	prompt: bytes - utf-8 string to print to the user before input.
+	prompt: bytes - utf-8 string to print to the user before input
 	possiblePublicKeys: uint256[] - keys for identification of signing box
 
 returns:
@@ -31,7 +31,7 @@ returns:
 arguments:
 
 	answerId: uint32 - id of function callback.
-	prompt: bytes - utf-8 string to print to the user before input.
+	prompt: bytes - utf-8 string to print to the user before input
 	data: bytes - data for signing
 	publicKey: uint256 - key for identification of signing box
 
