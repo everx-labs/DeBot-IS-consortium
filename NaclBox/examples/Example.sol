@@ -9,7 +9,7 @@ import "NaclBox.sol";
 contract ExampleContract {
 
 	uint256 m_signingBox;
-	uint256 m_curve256PublicKey;
+	uint256 m_curve25519PublicKey;
 
 	function start() public {
 		SigningBoxInput.get(tvm.functionId(setSigningBox),"Select signing box",[]);
@@ -19,8 +19,8 @@ contract ExampleContract {
 		m_signingBox = publicKey;
 		NaclBox.getPublicKey(tvm.functionId(setCurve256PublicKey),m_signingBox);
 	}
-	function setCurve256PublicKey(uint256 publicKey) public {
-		m_curve256PublicKey = publicKey;
+	function setCurve256PublicKey(uint256 encryptPublicKey) public {
+		m_curve25519PublicKey = publicKey;
 	}
     
 }

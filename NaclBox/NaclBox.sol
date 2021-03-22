@@ -1,8 +1,8 @@
 pragma solidity >= 0.6.0;
 interface INaclBox {
-function getPublicKey(uint32 answerId, uint256 publicKey) external returns (uint256 publicKey);
-function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 their_public, uint256 publicKey) external returns (bytes encrypted, uint256 publicKey);
-function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 their_public, uint256 publicKey) external returns (bytes decrypted);
+function getEncryptPublicKey(uint32 answerId, uint256 signPublicKey) external returns (uint256 encryptPublicKey);
+function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) external returns (bytes encrypted, uint256 encryptPublicKey);
+function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) external returns (bytes decrypted);
 }
 
 library NaclBox {
@@ -14,13 +14,13 @@ library NaclBox {
 		address a = address.makeAddrStd(DEBOT_WC, DEBOT_ADDR);
 		INaclBox(a).getPublicKey(answerId, publicKey);
 	}
-	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 their_public, uint256 publicKey) public pure {
+	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) public pure {
 		address a = address.makeAddrStd(DEBOT_WC, DEBOT_ADDR);
-		INaclBox(a).encrypt(answerId, decrypted, nonce, their_public, publicKey);
+		INaclBox(a).encrypt(answerId, decrypted, nonce, their_public, signPublicKey);
 	}
-	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 their_public, uint256 publicKey) public pure {
+	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) public pure {
 		address a = address.makeAddrStd(DEBOT_WC, DEBOT_ADDR);
-		INaclBox(a).decrypt(answerId, encrypted, nonce, their_public, publicKey);
+		INaclBox(a).decrypt(answerId, encrypted, nonce, theirEncryptPublicKey, signPublicKey);
 	}
 }
 
@@ -28,7 +28,7 @@ library NaclBox {
 contract NaclBoxABI is INaclBox {
 
 	function getPublicKey(uint32 answerId, uint256 publicKey) override returns (uint256 publicKey) {}
-	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 their_public, uint256 publicKey) override returns (bytes encrypted, uint256 publicKey) {}
-	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 their_public, uint256 publicKey) override returns (bytes decrypted) {}
+	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) override returns (bytes encrypted, uint256 encryptPublicKey) {}
+	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) override returns (bytes decrypted) {}
 
 }

@@ -20,11 +20,11 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 arguments: 
 
 	answerId: uint32 - function id of result callback
-        publicKey: uint256 - handle to signing box
+        signPublicKey: uint256 - handle to signing box
 
 returns: 
 
-	pubkey: uint256 - curve256 public key deduce from signing box keys
+	encryptPublicKey: uint256 - curve256 public key deduce from signing box keys
 
 `encrypt` - Public key authenticated encryption. Encrypt and authenticate a message using the senders secret key, the receivers public key, and a nonce.
 
@@ -33,13 +33,13 @@ arguments:
 	answerId: uint32 - function id of result callback
     	decrypted: bytes - data that must be encrypted encoded
     	nonce: bytes - nonce	
-        their_public: uint256 - receiver's public key
-        publicKey: uint256 - handle to signing box
+        theirEncryptPublicKey: uint256 - receiver's public key
+        signPublicKey: uint256 - handle to signing box
 
 returns: 
 
 	encrypted: bytes - encrypted data
-	pubkey: uint256 - curve256 public key deduce from signing box keys
+	encryptPublicKey: uint256 - curve256 public key deduce from signing box keys
 
 `decrypt` - Decrypt and verify the cipher text using the receivers secret key, the senders public key, and the nonce.
 
@@ -48,8 +48,8 @@ arguments:
 	answerId: uint32 - function id of result callback
     	encrypted: bytes - data that must be decrypted
     	nonce: bytes - nonce	
-        their_public: uint256 - receiver's public key
-        publicKey: uint256 - handle to signing box
+        theirEncryptPublicKey: uint256 - receiver's public key
+        signPublicKey: uint256 - handle to signing box
 
 returns: 
 
@@ -61,9 +61,9 @@ returns:
 
 ```jsx
 interface INaclBox {
-	function getPublicKey(uint32 answerId, uint256 publicKey) external returns (uint256 publicKey);
-	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 their_public, uint256 publicKey) external returns (bytes encrypted, uint256 publicKey);
-	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 their_public, uint256 publicKey) external returns (bytes decrypted);
+	function getEncryptPublicKey(uint32 answerId, uint256 signPublicKey) external returns (uint256 encryptPublicKey);
+	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) external returns (bytes encrypted, uint256 encryptPublicKey);
+	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) external returns (bytes decrypted);
 }
 ```
 
@@ -76,16 +76,16 @@ namespace tvm { namespace schema {
 
 struct EncryptResult {
 	bytes encrypted
-	uint256 publicKey
+	uint256 encryptPublicKey
 };
 
 __interface INaclBox {
 	[[internal, answer_id]]
-	uint256 getPublicKey(uint256 publicKey);
+	uint256 getPublicKey(uint256 signPublicKey);
 	[[internal, answer_id]]
-	EncryptResult encrypt(bytes decrypted, bytes nonce, uint256 their_public, uint256 publicKey);
+	EncryptResult encrypt(bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey);
 	[[internal, answer_id]]
-	bytes decrypt(bytes encrypted, bytes nonce, uint256 their_public, uint256 publicKey);
+	bytes decrypt(bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey);
 }
 
 }
