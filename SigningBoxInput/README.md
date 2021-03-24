@@ -10,11 +10,11 @@
 
 ## Description
 
-Interface for getting signing box and sign a data.
+Interface for getting signing box.
 
 ## Functions
 
-`get` - prints prompt message to the user and returns public key for selected SigningBox
+`get` - prints prompt message to the user and returns handle for selected SigningBox
 
 arguments:
 
@@ -24,30 +24,17 @@ arguments:
 
 returns:
 
-	{ publicKey: uint256 }
-
-`sign` - prints prompt message to the user, send data for signing and returns signature
-
-arguments:
-
-	answerId: uint32 - id of function callback.
-	prompt: bytes - utf-8 string to print to the user before input
-	data: bytes - data for signing
-	publicKey: uint256 - key for identification of signing box
-
-returns:
-
-	{ signature: bytes }
+	{ handle: uint32 }
 
 ## Declaration in Solidity
 
+```solidity
 interface ISignBoxInput {
 
-	function get(uint32 answerId, string prompt, uint256[] possiblePublicKeys) external returns (uint256 publicKey);
-	
-	function sign(uint32 answerId, string prompt, data: bytes, uint256[] publicKey) external returns (bytes signature);
+	function get(uint32 answerId, string prompt, uint256[] possiblePublicKeys) external returns (uint32 handle);
 
 }
+```
 
 ## Declaration in C++
 

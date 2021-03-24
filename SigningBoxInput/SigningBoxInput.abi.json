@@ -10,19 +10,7 @@
 				{"name":"possiblePublicKeys","type":"uint256[]"}
 			],
 			"outputs": [
-				{"name":"publicKey","type":"uint256"}
-			]
-		},
-		{
-			"name": "sign",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"},
-				{"name":"data","type":"bytes"},
-				{"name":"publicKey","type":"uint256"}
-			],
-			"outputs": [
-				{"name":"signature","type":"bytes"}
+				{"name":"handle","type":"uint32"}
 			]
 		}
 	],
