@@ -20,7 +20,7 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 arguments: 
 
 	answerId: uint32 - function id of result callback
-        signPublicKey: uint256 - handle to signing box
+        edHandle: uint32 - handle to signing box
 
 returns: 
 
@@ -34,7 +34,7 @@ arguments:
     	decrypted: bytes - data that must be encrypted encoded
     	nonce: bytes - nonce	
         theirEncryptPublicKey: uint256 - receiver's public key
-        signPublicKey: uint256 - handle to signing box
+        edHandle: uint32 - handle to signing box
 
 returns: 
 
@@ -49,7 +49,7 @@ arguments:
     	encrypted: bytes - data that must be decrypted
     	nonce: bytes - nonce	
         theirEncryptPublicKey: uint256 - receiver's public key
-        signPublicKey: uint256 - handle to signing box
+        edHandle: uint32 - handle to signing box
 
 returns: 
 
@@ -61,9 +61,9 @@ returns:
 
 ```jsx
 interface INaclBox {
-	function getEncryptPublicKey(uint32 answerId, uint256 signPublicKey) external returns (uint256 encryptPublicKey);
-	function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) external returns (bytes encrypted, uint256 encryptPublicKey);
-	function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey) external returns (bytes decrypted);
+function getEncryptPublicKey(uint32 answerId, uint32 edHandle) external returns (uint256 encryptPublicKey);
+function encrypt(uint32 answerId, bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint32 edHandle) external returns (bytes encrypted, uint256 encryptPublicKey);
+function decrypt(uint32 answerId, bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint32 edHandle) external returns (bytes decrypted);
 }
 ```
 
@@ -81,11 +81,11 @@ struct EncryptResult {
 
 __interface INaclBox {
 	[[internal, answer_id]]
-	uint256 getPublicKey(uint256 signPublicKey);
+	uint256 getPublicKey(uint32 edHandle);
 	[[internal, answer_id]]
-	EncryptResult encrypt(bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey);
+	EncryptResult encrypt(bytes decrypted, bytes nonce, uint256 theirEncryptPublicKey, uint32 edHandle);
 	[[internal, answer_id]]
-	bytes decrypt(bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint256 signPublicKey);
+	bytes decrypt(bytes encrypted, bytes nonce, uint256 theirEncryptPublicKey, uint32 edHandle);
 }
 
 }
