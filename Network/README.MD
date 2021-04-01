@@ -58,7 +58,7 @@ namespace tvm { namespace schema {
 struct Response
 {
     int32 status_сode;
-    string[] headers;
+    string headers[];
     string content;
 }
 
