@@ -17,14 +17,17 @@ library Terminal {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		ITerminal(addr).input(answerId, prompt, multiline);
 	}
+
 	function print(uint32 answerId, string message) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		ITerminal(addr).print(answerId, message);
 	}
+
 	function printf(uint32 answerId, string fmt, TvmCell fargs) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		ITerminal(addr).printf(answerId, fmt, fargs);
 	}
+
 }
 
 contract TerminalABI is ITerminal {
