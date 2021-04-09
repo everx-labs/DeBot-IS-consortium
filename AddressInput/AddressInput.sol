@@ -2,7 +2,7 @@ pragma ton-solidity >=0.35.0;
 
 interface IAddressInput {
 
-	function get(uint32 answerId, string prompt) external returns (address value);
+    function get(uint32 answerId, string prompt) external returns (address value);
 
 }
 
@@ -23,3 +23,4 @@ contract AddressInputABI is IAddressInput {
     function get(uint32 answerId, string prompt) external override returns (address value) {}
 
 }
+

@@ -7,18 +7,18 @@ import "../AmountInput.sol";
 
 contract ExampleContract is Debot {
 
-	event Amount(uint128 amount);
+    event Amount(uint128 amount);
 
     function start() public override {
-		AmountInput.get(tvm.functionId(setAmount), "Enter amount of tons:",  9, 1e9, 100e9);
-	}
+        AmountInput.get(tvm.functionId(setAmount), "Enter amount of tons:",  9, 1e9, 100e9);
+    }
 
-	function setAmount(uint128 value) public pure {
+    function setAmount(uint128 value) public pure {
         // TODO: continue here
-		emit Amount(value);
-	}
+        emit Amount(value);
+    }
 
-	function getVersion() public override returns (string name, uint24 semver) {
+    function getVersion() public override returns (string name, uint24 semver) {
         (name, semver) = ("AddressInput Example DeBot", _version(1, 0, 0));
     }
 
@@ -27,3 +27,4 @@ contract ExampleContract is Debot {
     }
 
 }
+

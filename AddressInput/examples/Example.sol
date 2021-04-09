@@ -7,17 +7,17 @@ import "../AddressInput.sol";
 
 contract ExampleContract is Debot {
 
-	event Obtained(address value);
+    event Obtained(address value);
 
     function start() public override {
-		AddressInput.get(tvm.functionId(setAddress), "Enter wallet address:");
-	}
+        AddressInput.get(tvm.functionId(setAddress), "Enter wallet address:");
+    }
 
-	function setAddress(address value) public pure {
-		emit Obtained(value);
-	}
+    function setAddress(address value) public pure {
+        emit Obtained(value);
+    }
 
-	function getVersion() public override returns (string name, uint24 semver) {
+    function getVersion() public override returns (string name, uint24 semver) {
         (name, semver) = ("AddressInput Example DeBot", _version(1, 0, 0));
     }
 
@@ -25,3 +25,4 @@ contract ExampleContract is Debot {
         return (major << 16) | (minor << 8) | (fix);
     }
 }
+

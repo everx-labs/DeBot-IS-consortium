@@ -28,14 +28,14 @@ contract ExampleContract is Debot {
     function handleMenu1(uint32 index) public {
         emit Selected(index, 'menu 1');
         _menu();
-	}
+    }
 
     function handleMenu2(uint32 index) public {
         emit Selected(index, 'menu 2');
         _menu();
-	}
-    
-	function getVersion() public override returns (string name, uint24 semver) {
+    }
+
+    function getVersion() public override returns (string name, uint24 semver) {
         (name, semver) = ("Menu Example DeBot", _version(1, 0, 0));
     }
 
@@ -44,3 +44,4 @@ contract ExampleContract is Debot {
     }
 
 }
+

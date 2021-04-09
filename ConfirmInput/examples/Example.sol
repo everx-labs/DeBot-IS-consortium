@@ -7,18 +7,18 @@ import "../ConfirmInput.sol";
 
 contract ExampleContract is Debot {
 
-	event Confirm(bool value);
+    event Confirm(bool value);
 
     function start() public override {
-		ConfirmInput.get(tvm.functionId(setConfirm), "Say yes or no:");
-	}
+        ConfirmInput.get(tvm.functionId(setConfirm), "Say yes or no:");
+    }
 
-	function setConfirm(bool value) public pure {
+    function setConfirm(bool value) public pure {
         // TODO: continue here
-		emit Confirm(value);
-	}
+        emit Confirm(value);
+    }
 
-	function getVersion() public override returns (string name, uint24 semver) {
+    function getVersion() public override returns (string name, uint24 semver) {
         (name, semver) = ("AddressInput Example DeBot", _version(1, 0, 0));
     }
 
@@ -27,3 +27,4 @@ contract ExampleContract is Debot {
     }
 
 }
+

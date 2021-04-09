@@ -7,18 +7,18 @@ import "../NumberInput.sol";
 
 contract ExampleContract is Debot {
 
-	event Number(int256 value);
+    event Number(int256 value);
 
     function start() public override {
-		NumberInput.get(tvm.functionId(setNumber), "Enter number:", -10, 100);
-	}
+        NumberInput.get(tvm.functionId(setNumber), "Enter number:", -10, 100);
+    }
 
-	function setNumber(int256 value) public pure {
+    function setNumber(int256 value) public pure {
         // TODO: continue here
-		emit Number(value);
-	}
+        emit Number(value);
+    }
 
-	function getVersion() public override returns (string name, uint24 semver) {
+    function getVersion() public override returns (string name, uint24 semver) {
         (name, semver) = ("AddressInput Example DeBot", _version(1, 0, 0));
     }
 
@@ -27,3 +27,4 @@ contract ExampleContract is Debot {
     }
 
 }
+
