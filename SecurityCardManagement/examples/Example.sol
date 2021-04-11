@@ -9,12 +9,12 @@ contract ExampleContract {
 	function start() public {
 		uint128 p1;
 		uint16 iv;
-		uint32 ecs;
+		uint32 cs;
 		uint256 pubkey;
 		bytes recoveryData;
 
 		SecurityCardManagemenet.getBlockHashes(tvm.functionId(setBlockHashes));
-		SecurityCardManagemenet.turnOnWallet(tvm.functionId(setVerify),p1,iv,ecs);
+		SecurityCardManagemenet.turnOnWallet(tvm.functionId(setVerify),p1,iv,cs);
 		SecurityCardManagemenet.setRecoveryData(tvm.functionId(setRecoveryRes), recoveryData);
 		SecurityCardManagemenet.getRecoveryData(tvm.functionId(setRecovery));
 	}
@@ -30,5 +30,5 @@ contract ExampleContract {
 
  	function setRecovery(bytes recoveryData){
 	}
-    
+
 }
