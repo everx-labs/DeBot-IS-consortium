@@ -1,5 +1,5 @@
 > :warning: **This Interface should be implemented by DeBot Engine**
-# JsonDeserialize Interface
+# Json Interface
 
 **Status**: Proposed
 
