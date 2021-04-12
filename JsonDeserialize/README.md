@@ -3,9 +3,9 @@
 
 **Status**: Proposed
 
-| Name      		| ID                                                                |
-| :--------------------	| :---------------------------------------------------------------- |
-| JsonDeserialize       | 442288826041d564ccedc579674f17c1b0a3452df799656a9167a41ab270ec19  |
+| Name              | ID                                                                |
+| :-----------------| :---------------------------------------------------------------- |
+| JsonDeserialize   | 442288826041d564ccedc579674f17c1b0a3452df799656a9167a41ab270ec19  |
 
 ## Description
 
@@ -16,25 +16,23 @@ Allows to deserialize json into the structure.
 
 `deserialize` - deserialize json into the structure.
 
-arguments: 
+arguments:
 
-    answerId: uint32 - function id of result callback. Callback function should have two input parameters: "result" of type bool and "obj" of type <structName>.
+    answerId: uint32 - function id of result callback. Callback function should have two input parameters: "result" of type bool and "obj" of type <StructName>.
 
-    json: string - json string
-    
-    structName: string - the name of the structure into which json will be deserialized
+    json: string - json utf8 string.
 
-returns: 
+returns:
 
-     result: bool - result of operation
-				true - operation succeeded
-				false - operation failed
+     result: bool - result of operation:
+        true - operation succeeded;
+        false - operation failed.
 
-     obj: <structName> - structure of type structName
+     obj: <StructName> - deserialised json into structure of type <StructName>
 
->Note: type of obj parameter is set by structName input parameter. And input parameters of answerId function should have two input parameters: "result" of type bool and "obj" of type structName.
+> Note: type of obj parameter is set by `StructName` input parameter. And input parameters of answerId function should have two input parameters: "result" of type bool and "obj" of type `StructName`.
 
-		
+
 ## Declaration in Solidity
 
 ```jsx
@@ -42,7 +40,7 @@ returns:
 
 interface IJsonDeserialize {
 
-    function deserialize(uint32 answerId, string json, string structName) external returns (bool result);
+    function deserialize(uint32 answerId, string json) external returns (bool result);
 
 }
 ```
@@ -55,8 +53,8 @@ namespace tvm { namespace schema {
 __interface IJsonDeserialize {
 
 	[[internal, answer_id]]
-	bool_t deserialize(string json, string structName);
-	
+	bool_t deserialize(string json);
+
 };
 
 }}
