@@ -7,22 +7,32 @@ import "../AddressInput.sol";
 
 contract ExampleContract is Debot {
 
-    event Obtained(address value);
-
     function start() public override {
         AddressInput.get(tvm.functionId(setAddress), "Enter wallet address:");
     }
 
     function setAddress(address value) public pure {
-        emit Obtained(value);
+        // TODO: continue here
     }
 
-    function getVersion() public override returns (string name, uint24 semver) {
-        (name, semver) = ("AddressInput Example DeBot", _version(1, 0, 0));
+    function getDebotInfo() public functionID(0xDEB) override view returns(
+        string name, string version, string publisher, string key, string author,
+        address support, string hello, string language, string dabi, bytes icon
+    ) {
+        name = "AddressInput example DeBot";
+        version = "0.2.0";
+        publisher = "TON Labs";
+        key = "How to use the AddressInput interface";
+        author = "TON Labs";
+        support = address.makeAddrStd(0, 0x841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94);
+        hello = "Hello, i am an example DeBot.";
+        language = "en";
+        dabi = "";
+        icon = "";
     }
 
-    function _version(uint24 major, uint24 minor, uint24 fix) private pure inline returns (uint24) {
-        return (major << 16) | (minor << 8) | (fix);
+    function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
+        return [ AddressInput.ID ];
     }
+
 }
-

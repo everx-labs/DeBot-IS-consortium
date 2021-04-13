@@ -7,8 +7,6 @@ import "../Menu.sol";
 
 contract ExampleContract is Debot {
 
-    event Selected(uint32 index, string subMenu);
-
     function start() public override {
         _menu();
     }
@@ -19,29 +17,33 @@ contract ExampleContract is Debot {
             MenuItem("menu 2", "desc for menu 2", tvm.functionId(handleMenu2))
         ]);
     }
-    /*
-    * Public
-    */
-
-    function quit() public {}
 
     function handleMenu1(uint32 index) public {
-        emit Selected(index, 'menu 1');
-        _menu();
+        // TODO: continue here
     }
 
     function handleMenu2(uint32 index) public {
-        emit Selected(index, 'menu 2');
-        _menu();
+        // TODO: continue here
     }
 
-    function getVersion() public override returns (string name, uint24 semver) {
-        (name, semver) = ("Menu Example DeBot", _version(1, 0, 0));
+    function getDebotInfo() public functionID(0xDEB) override view returns(
+        string name, string version, string publisher, string key, string author,
+        address support, string hello, string language, string dabi, bytes icon
+    ) {
+        name = "Menu example DeBot";
+        version = "0.2.0";
+        publisher = "TON Labs";
+        key = "How to use the Menu interface";
+        author = "TON Labs";
+        support = address.makeAddrStd(0, 0x841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94);
+        hello = "Hello, i am an example DeBot.";
+        language = "en";
+        dabi = "";
+        icon = "";
     }
 
-    function _version(uint24 major, uint24 minor, uint24 fix) private pure inline returns (uint24) {
-        return (major << 16) | (minor << 8) | (fix);
+    function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
+        return [ Menu.ID ];
     }
 
 }
-
