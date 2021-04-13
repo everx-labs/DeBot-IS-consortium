@@ -23,7 +23,6 @@ The browser should call several functions from the security card library to get 
 arguments: 
 
 	answerId: uint32  - function id of result callback
-	sn	: uint192 - card serial number
 
 returns: 
 
@@ -70,7 +69,7 @@ returns:
 
 ```jsx
 interface ISecurityCardManagement {
-    function getBlockHashes(uint32 answerId, uint192 sn) public returns (uint256 h2, uint256 h3); 
+    function getBlockHashes(uint32 answerId) public returns (uint256 h2, uint256 h3); 
     function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 cs) public returns (uint256 pubkey);
     function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
@@ -90,7 +89,7 @@ struct blockHashRes {
 __interface ISecurityCardManagement {
 
 	[[internal, answer_id]]
-	blockHashRes getBlockHashes(uint192 sn);
+	blockHashRes getBlockHashes();
 	[[internal, answer_id]]
 	uint256 turnOnWallet(uint128 p1, uint16 iv, uint32 sc);
 	[[internal, answer_id]]
