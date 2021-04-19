@@ -23,10 +23,10 @@ contract Example is Debot {
     function getDebotInfo() public functionID(0xDEB) view override returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon) {
-        name = "Network Example";
+        name = "QRCode Example";
         version = "0.1.0";
         publisher = "TON Labs";
-        key = "Example Debot for Network Interface";
+        key = "Example DeBot for QRCode Interface";
         author = "TON Labs";
         support = address(0);
         hello = "Hello, I'm example DeBot.";
