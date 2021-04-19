@@ -24,7 +24,7 @@ arguments:
 
 returns:
 
-	statusCode: int32 - response status code.
+    statusCode: int32 - response status code.
     retHeaders: string[] - array of utf8 strings with response headers.
     content: string - response body as utf8 string.
 
@@ -39,7 +39,7 @@ arguments:
 
 returns:
 
-	statusCode: int32 - response status code.
+    statusCode: int32 - response status code.
     retHeaders: string[] - array of utf8 strings with response headers.
     content: string - response body as utf8 string.
 
@@ -87,7 +87,7 @@ __interface INetwork {
 
 ### Solidity
 
-TODO: Add example
+Example/Example.sol
 
 ### C++
 
