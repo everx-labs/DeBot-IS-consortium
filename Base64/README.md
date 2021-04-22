@@ -1,5 +1,5 @@
 > :warning: **This Interface should be implemented by DeBot Engine**
-# Base64 Interface
+# Base64 System Interface
 
 **Status**: Proposed
 
@@ -41,8 +41,6 @@ returns:
 ## Declaration in Solidity
 
 ```jsx
-
-
 interface IBase64 {
 
     function encode(uint32 answerId, bytes data) external returns (string base64);
