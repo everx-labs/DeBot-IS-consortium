@@ -2,7 +2,7 @@ pragma ton-solidity >=0.35.0;
 
 interface ISecurityCardManagement {
     function getBlockHashes(uint32 answerId, uint192 sn) external returns (uint256 h2, uint256 h3);
-    function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 cs) external returns (uint256 pubkey);
+    function turnOnWallet(uint32 answerId, uint192 sn, uint128 p1, uint16 iv, uint32 ecs) external returns (uint256 pubkey);
     function setRecoveryData(uint32 answerId, bytes recoveryData) external return (bool result);
     function getRecoveryData(uint32 answerId) external return (bytes recoveryData);
 }
@@ -16,9 +16,9 @@ library SecurityCardManagemenet {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_SCMANAGEMENT);
 		ISecurityCardManagement(addr).getBlockHashes(answerId, sn);
 	}
-	function turnOnWallet(uint32 answerId, uint128 p1, uint16 iv, uint32 cs) public pure {
+	function turnOnWallet(uint32 answerId, uint192 sn, uint128 p1, uint16 iv, uint32 ecs) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_SCMANAGEMENT);
-		ISecurityCardManagement(addr).verifyPassword(answerId, p1, iv, cs);
+		ISecurityCardManagement(addr).verifyPassword(answerId, sn, p1, iv, ecs);
 	}
 	function setRecoveryData(uint32 answerId, bytes recoveryData) public pure {
 		address addr = address.makeAddrStd(DEBOT_WC, ID_SCMANAGEMENT);
