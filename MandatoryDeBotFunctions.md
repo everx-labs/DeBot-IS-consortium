@@ -26,7 +26,7 @@ returns:
 
     language: bytes - (ISO-639) utf-8 string with debot interface language, e.g. "en"
 
-    icon: bytes - base64 encoded PNG image (144x144 px)
+    icon: bytes - utf8-string with encoded PNG image (144x144 px). The string format is "data:image/png;base64,<image>", where `image` - image bytes encoded in base64. See example below.
 ---
 
 `getRequiredInterfaces` - returns array of interfaces used by debot. Debot Browser should check if it supports all interfaces from this array. If anyone is not supported debot should not be started. 
