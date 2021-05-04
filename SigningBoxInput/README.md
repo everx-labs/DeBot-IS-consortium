@@ -24,7 +24,7 @@ arguments:
 
 returns:
 
-	{ handle: uint32 }
+	{ handle: uint32, pubkey: uint256 }
 
 ## Declaration in Solidity
 

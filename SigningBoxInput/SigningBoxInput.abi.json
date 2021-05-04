@@ -10,7 +10,8 @@
 				{"name":"possiblePublicKeys","type":"uint256[]"}
 			],
 			"outputs": [
-				{"name":"handle","type":"uint32"}
+				{"name":"handle","type":"uint32"},
+				{"name":"pubkey","type":"uint256"}
 			]
 		}
 	],
