@@ -10,7 +10,7 @@
 
 ## Description
 
-Interface for getting signing box.
+Interface for getting signing box which can be used to sign external messages and other arbitrary data by handle without accessing the keys directly. 
 
 ## Functions
 
@@ -19,17 +19,17 @@ Interface for getting signing box.
 arguments:
 
 	answerId: uint32 - id of function callback.
-	prompt: bytes - utf-8 string to print to the user before input
-	possiblePublicKeys: uint256[] - keys for identification of signing box
+	prompt: bytes - utf-8 string to print to the user before input.
+	possiblePublicKeys: uint256[] - keys for identification of signing box. Can be empty.
 
 returns:
 
-	{ handle: uint32, pubkey: uint256 }
+	{ handle: uint32 }
 
 ## Declaration in Solidity
 
 ```solidity
-interface ISignBoxInput {
+interface ISigningBoxInput {
 
 	function get(uint32 answerId, string prompt, uint256[] possiblePublicKeys) external returns (uint32 handle);
 
@@ -38,14 +38,21 @@ interface ISignBoxInput {
 
 ## Declaration in C++
 
-TODO: Add declaration
+namespace tvm { namespace schema {
+
+__interface ISigningBoxInput {
+	[[internal, answer_id]]
+	(uint32) get(string prompt, vector<uint256> possiblePublicKeys);
+}
+
+}};
 
 
 ## Code Example
 
 ### Solidity
 
-TODO: Add example
+examples/Example.sol
 
 
 ### C++
