@@ -31,7 +31,7 @@ returns:
 ```solidity
 interface ISigningBoxInput {
 
-	function get(uint32 answerId, string prompt, uint256[] possiblePublicKeys) external returns (uint32 handle);
+	function get(uint32 answerId, string prompt, uint256[] possiblePublicKeys) external returns (uint32 handle, uint256 pubkey);
 
 }
 ```
