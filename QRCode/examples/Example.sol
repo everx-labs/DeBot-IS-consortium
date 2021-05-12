@@ -8,7 +8,7 @@ import "../QRCode.sol";
 contract Example is Debot {
 
     function start() public override {
-        QRCode.scan(tvm.functionId(setResult));
+        QRCode.scan(tvm.functionId(setResult), false);
     }
 
     function setResult(string value) public {

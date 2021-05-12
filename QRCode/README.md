@@ -20,6 +20,7 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 arguments:
 
 	answerId: uint32 - function id of result callback.
+	fastScan: bool - scan immediately after call interface.
 
 returns:
 
@@ -29,7 +30,7 @@ returns:
 
 ```jsx
 interface IQRCode {
-	function scan(uint32 answerId) external returns (string value);
+	function scan(uint32 answerId, bool fastScan) external returns (string value);
 }
 ```
 
@@ -41,7 +42,7 @@ namespace tvm { namespace schema {
 __interface IQRCode {
 
 	[[internal, answer_id]]
-	string scan();
+	string scan(fastScan: bool);
 
 };
 

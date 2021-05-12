@@ -5,7 +5,8 @@
 		{
 			"name": "scan",
 			"inputs": [
-				{"name":"answerId","type":"uint32"}
+				{"name":"answerId","type":"uint32"},
+				{"name":"fastScan","type":"bool"}
 			],
 			"outputs": [
 				{"name":"value","type":"bytes"}
