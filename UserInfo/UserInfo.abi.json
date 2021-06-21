@@ -21,6 +21,15 @@
 			]
 		},
 		{
+			"name": "getSigningBox",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"value","type":"uint32"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],
