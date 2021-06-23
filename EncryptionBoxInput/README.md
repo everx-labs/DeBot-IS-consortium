@@ -43,7 +43,7 @@ returns:
 ## Declaration in Solidity
 
 ```solidity
-interface EncryptionBoxInput {
+interface IEncryptionBoxInput {
 
 	function get(uint32 answerId, string prompt, string algorithm, TvmCell params) external returns (uint32 handle);
     function getSupportedAlgorithms() external returns (string[] names);
@@ -54,7 +54,7 @@ interface EncryptionBoxInput {
 
 namespace tvm { namespace schema {
 
-__interface EncryptionBoxInput {
+__interface IEncryptionBoxInput {
 	[[internal, answer_id]]
 	(uint32) get(string prompt, string algorithm, cell params);
     [[internal, answer_id]]
