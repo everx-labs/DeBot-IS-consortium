@@ -7,9 +7,9 @@ import "SecurityCardManagement.sol";
 contract ExampleContract {
 
 	function start() public {
-		uint128 p1;
-		uint16 iv;
-		uint32 cs;
+		bytes p1;
+		bytes iv;
+		bytes cs;
 		uint256 pubkey;
 		bytes recoveryData;
 
