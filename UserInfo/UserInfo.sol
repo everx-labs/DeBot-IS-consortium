@@ -34,5 +34,5 @@ contract UserInfoABI is IUserInfo {
 
     function getAccount(uint32 answerId) external override returns (address value) {}
     function getPublicKey(uint32 answerId) external override returns (uint256 value) {}
-    function getSigningBox(uint32 answerId) external override returns (uint32 value) {}
+    function getSigningBox(uint32 answerId) external override returns (uint32 handle) {}
 }
