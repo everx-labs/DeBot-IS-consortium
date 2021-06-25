@@ -4,7 +4,7 @@ interface IUserInfo {
 
     function getAccount(uint32 answerId) external returns (address value);
     function getPublicKey(uint32 answerId) external returns (uint256 value);
-    function getSigningBox(uint32 answerId) external returns (uint32 value);
+    function getSigningBox(uint32 answerId) external returns (uint32 handle);
 
 }
 
@@ -36,4 +36,3 @@ contract UserInfoABI is IUserInfo {
     function getPublicKey(uint32 answerId) external override returns (uint256 value) {}
     function getSigningBox(uint32 answerId) external override returns (uint32 value) {}
 }
-
