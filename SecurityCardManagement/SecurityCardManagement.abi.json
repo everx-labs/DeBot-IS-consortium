@@ -18,9 +18,9 @@
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"sn","type":"uint192"},
-				{"name":"p1","type":"uint128"},
-				{"name":"iv","type":"uint16"},
-				{"name":"cs","type":"uint32"}
+				{"name":"p1","type":"bytes"},
+				{"name":"iv","type":"bytes"},
+				{"name":"cs","type":"bytes"}
 			],
 			"outputs": [
 				{"name":"pubkey","type":"uint256"}
