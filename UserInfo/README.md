@@ -42,7 +42,7 @@ arguments:
 
 returns:
 
-	value: uint32 - handle to signing keypair, can be 0.
+	handle: uint32 - handle to signing keypair, can be 0.
 
 Important: this interface can be extended in future to retrieve more information about user.
 
