@@ -2,9 +2,9 @@ pragma ton-solidity >=0.35.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "Debot.sol";
-import "DateInput.sol";
-import "Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
+import "../DateInput.sol";
 
 contract ExampleContract is Debot {
 
@@ -14,7 +14,7 @@ contract ExampleContract is Debot {
             Date(1, 1, 2021, 0), Date(0, 0, 0, int128(now)));
     }
 
-    function setDate(Date date) public pure {
+    function setDate(Date date) public {
         // TODO: continue here
         Terminal.print(0, format("{}/{}/{}, unixtime: {}", date.day, date.month, date.year, date.unixtime));
     }
