@@ -1,0 +1,31 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "get",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"},
+				{"components":[{"name":"hrs","type":"uint8"},{"name":"mins","type":"uint8"},{"name":"timestamp","type":"uint32"}],"name":"minTime","type":"tuple"},
+				{"components":[{"name":"hrs","type":"uint8"},{"name":"mins","type":"uint8"},{"name":"timestamp","type":"uint32"}],"name":"maxTime","type":"tuple"},
+				{"name":"interval","type":"uint8"},
+				{"name":"timeZoneOffset","type":"int16"}
+			],
+			"outputs": [
+				{"components":[{"name":"hrs","type":"uint8"},{"name":"mins","type":"uint8"},{"name":"timestamp","type":"uint32"}],"name":"time","type":"tuple"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
