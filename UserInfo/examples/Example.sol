@@ -3,17 +3,19 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "../Debot.sol";
-import "../Terminal.sol";
+import "../../Terminal/Terminal.sol";
 import "../UserInfo.sol";
 
 contract ExampleContract is Debot {
 
     address m_wallet;
     uint256 m_pubkey;
+    uint32 m_sbHandle;
 
     function start() public override {
         UserInfo.getAccount(tvm.functionId(setDefaultAccount));
         UserInfo.getPublicKey(tvm.functionId(setDefaultPubkey));
+        UserInfo.getSigningBox(tvm.functionId(setSigningBox));
     }
 
     function setDefaultAccount(address value) public {
@@ -26,14 +28,19 @@ contract ExampleContract is Debot {
         m_pubkey = value;
     }
 
+    function setSigningBox(uint32 value) public {
+        Terminal.print(0, format("Signing box handle is {}", value));
+        m_sbHandle = value;
+    }
+
     function getDebotInfo() public functionID(0xDEB) override view returns(
-        string name, string version, string publisher, string key, string author,
+        string name, string version, string publisher, string caption, string author,
         address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "UserInfo example DeBot";
-        version = "0.1.0";
+        version = "0.2.0";
         publisher = "TON Labs";
-        key = "How to use UserInfo interface";
+        caption = "How to use UserInfo interface";
         author = "TON Labs";
         support = address(0);
         hello = "Hello, i am an example DeBot.";

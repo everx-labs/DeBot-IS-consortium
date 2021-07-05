@@ -34,6 +34,16 @@ returns:
 
 	value: uint256 - user default public key, can be 0.
 
+`getSigningBox` - allows DeBot to receive handle to keypair which can be used to sign external messages to the address returned by `UserInfo.getAccount`. This function can return zero handle. In that case DeBot should not use it to sign messages and should implement other ways to recevie signing keypair (e.g using `SigningBoxHandle` interface or delegate DEngine to receive signing box from browser).
+
+arguments:
+
+    answerId: uint32 - function id of callback.
+
+returns:
+
+	handle: uint32 - handle to signing keypair, can be 0.
+
 Important: this interface can be extended in future to retrieve more information about user.
 
 ## Declaration in Solidity
@@ -43,6 +53,7 @@ interface IUserInfo {
 
     function getAccount(uint32 answerId) external returns (address value);
     function getPublicKey(uint32 answerId) external returns (uint256 value);
+    function getSigningBox(uint32 answerId) external returns (uint32 handle);
 }
 ```
 
@@ -56,6 +67,8 @@ __interface IUserInfo {
 	address getAccount();
 	[[internal, answer_id]]
 	uint256 getPublicKey();
+    [[internal, answer_id]]
+	uint32 getSigningBox();
 }
 
 };

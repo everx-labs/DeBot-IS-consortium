@@ -4,6 +4,7 @@ interface IUserInfo {
 
     function getAccount(uint32 answerId) external returns (address value);
     function getPublicKey(uint32 answerId) external returns (uint256 value);
+    function getSigningBox(uint32 answerId) external returns (uint32 handle);
 
 }
 
@@ -22,12 +23,16 @@ library UserInfo {
         IUserInfo(addr).getPublicKey(answerId);
     }
 
+    function getSigningBox(uint32 answerId) public pure {
+        address addr = address.makeAddrStd(DEBOT_WC, ID);
+        IUserInfo(addr).getSigningBox(answerId);
+    }
+
 }
 
 contract UserInfoABI is IUserInfo {
 
     function getAccount(uint32 answerId) external override returns (address value) {}
     function getPublicKey(uint32 answerId) external override returns (uint256 value) {}
-
+    function getSigningBox(uint32 answerId) external override returns (uint32 handle) {}
 }
-
