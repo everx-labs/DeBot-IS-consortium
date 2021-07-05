@@ -1,4 +1,4 @@
-pragma solidity >= 0.6.0;
+pragma ton-solidity >=0.44.0;
 
 interface IHex {
 

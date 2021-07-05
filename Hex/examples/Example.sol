@@ -1,4 +1,4 @@
-pragma solidity >= 0.6.0;
+pragma ton-solidity >=0.44.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
@@ -15,7 +15,7 @@ contract ExampleContract {
     }
 
     function setEncode(string hexstr) public pure {
-        require(base64=="616161",100);
+        require(hexstr=="616161",100);
     }
 
     function setDecode(bytes data) public pure {
