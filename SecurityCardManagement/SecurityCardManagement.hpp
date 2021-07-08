@@ -17,7 +17,10 @@ __interface ISecurityCardManagement {
 	bool_t setRecoveryData(bytes recoveryData);
 	[[internal, answer_id]]
 	bytes getRecoveryData();
-
+	[[internal, answer_id]]
+	uint192 getSerialNumber();
+	[[internal, answer_id]]
+	bytes getTonWalletAppletState();
 }
 };
 
