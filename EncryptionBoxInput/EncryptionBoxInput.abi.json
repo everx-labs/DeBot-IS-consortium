@@ -15,8 +15,19 @@
 			]
 		},
 		{
+			"name": "remove",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"handle","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"removed","type":"bool"}
+			]
+		},
+		{
 			"name": "getSupportedAlgorithms",
 			"inputs": [
+				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"names","type":"bytes[]"}
