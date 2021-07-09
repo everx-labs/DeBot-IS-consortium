@@ -15,18 +15,44 @@ Interface for creating new encryption box that can encrypt/decrypt data using de
 
 ## Functions
 
-`get` - prints prompt message to the user and returns handle to opened encryption box. Encryption key must be derived from signing keypair selected by user. Browser should choose arbitrary hdpath for derivation and keep it in secret.
+`getNaclSecretBox` - prints prompt message to the user and returns handle to opened Nacl secret box.
 
 arguments:
 
     answerId: uint32 - id of function callback.
     prompt: bytes - utf-8 string to print to the user before input, OPTIONAL (empty string is similar to null).
-    algorithm: bytes - utf-8 string with a name of encryption algorithm. Can be one of the following value: "NaclBox",  "NaclSecretBox", "Chacha20" - or other algorithm name supported by Browser.
-    params: TvmCell - packed algorithm parameters.
+    nonce: bytes - bytes of nonce.
 
 returns:
 
 	handle: uint32 - id of registered encryption box.
+
+`getNaclBox` - prints prompt message to the user and returns handle to Nacl box.
+
+arguments:
+
+    answerId: uint32 - id of function callback.
+    prompt: bytes - utf-8 string to print to the user before input, OPTIONAL (empty string is similar to null).
+    nonce: bytes - bytes of nonce.
+    theirPubkey: uinit256 - receiver's public key. 
+
+returns:
+
+	handle: uint32 - id of registered encryption box.
+
+`getChaCha20Box` - prints prompt message to the user and returns handle to ChaCha20 box.
+
+arguments:
+
+    answerId: uint32 - id of function callback.
+    prompt: bytes - utf-8 string to print to the user before input, OPTIONAL (empty string is similar to null).
+    nonce: bytes - 96-bit nonce.
+
+returns:
+
+	handle: uint32 - id of registered encryption box.
+
+Note: Encryption secret key must be derived from signing keypair selected by user. Browser should choose arbitrary hdpath for derivation and keep it in secret.
 
 Note: encryption box handle can be used later to encrypt/decrypt data. Use Sdk.encrypt or Sdk.decrypt functions.
 
@@ -41,7 +67,7 @@ returns:
 
     removed: bool - true if handle was found and successfully removed. Otherwise false.
 
-`getSupportedAlgorithms` - returns a list of algorithm names supported by DeBot Browser which can be used as `algorithm` argument in `EncryptionBoxInput.get` function.
+`getSupportedAlgorithms` - returns a list of algorithms supported by DeBot Browser.
 
 arguments:
 
@@ -56,7 +82,9 @@ returns:
 ```solidity
 interface IEncryptionBoxInput {
 
-	function get(uint32 answerId, string prompt, string algorithm, TvmCell params) external returns (uint32 handle);
+	function getNaclSecretBox(uint32 answerId, string prompt, bytes nonce) external returns (uint32 handle);
+    function getNaclBox(uint32 answerId, string prompt, bytes nonce, uint256 theirPubkey) external returns (uint32 handle);
+    function getChaCha20Box(uint32 answerId, string prompt, bytes nonce) external returns (uint32 handle);
     function remove(uint32 answerId, uint32 handle) external returns (bool removed);
     function getSupportedAlgorithms() external returns (string[] names);
 }
@@ -68,7 +96,11 @@ namespace tvm { namespace schema {
 
 __interface IEncryptionBoxInput {
 	[[internal, answer_id]]
-	uint32 get(string prompt, string algorithm, cell params);
+	uint32 getNaclSecretBox(string prompt, bytes nonce);
+    [[internal, answer_id]]
+	uint32 getNaclBox(string prompt, string algorithm, bytes nonce, uint256 theirPubkey);
+    [[internal, answer_id]]
+	uint32 getChaCha20Box(string prompt, bytes nonce);
     [[internal, answer_id]]
     bool remove(uint32 handle);
     [[internal, answer_id]]

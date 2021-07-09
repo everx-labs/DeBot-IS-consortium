@@ -12,17 +12,21 @@ contract ExampleContract is Debot {
 
     string m_openedData;
 
+    uint256 m_public = 0x5f88dfedff20eef951ff26f4e5a88526929b195af091791a45cc8c6cb14961e4;
+    uint256 m_private= 0xdcfe6f38f47ffbea6a2a51981c33ed655f7b849706544838101ea789ac7845ea;
+
     function start() public override {
         EncryptionBoxInput.getSupportedAlgorithms(tvm.functionId(setAlgorithms));
-        TvmBuilder algorithmParams;
-        string nonce = "akunamatataa";
-        uint256 theirPubkey = 0x357ba881d0b02857a188d2f09a5334d04dd3800fcf9d7af527fccc94979c5540;
-        algorithmParams.store(nonce, theirPubkey);
-        EncryptionBoxInput.get(
+        string nonce = "abcdefghijklmnopqrstuvwx";
+        uint256 theirPubkey = m_public;
+        Terminal.print(
+            0, format("Opening encryption box for NaclBox algorithm with parameters:\nnonce: {}\ntheir pubkey: {}", nonce, theirPubkey)
+        );
+        EncryptionBoxInput.getNaclBox(
             tvm.functionId(setEncryptionBox), 
             "Choose encryption keys", 
-            "NaclBox", 
-            algorithmParams.toCell()
+            bytes(nonce),
+            theirPubkey
         );
     }
 
@@ -34,7 +38,7 @@ contract ExampleContract is Debot {
     }
 
     function setEncryptionBox(uint32 handle) public {
-        Terminal.print(0, format("Encryption Box Handle {}", handle));
+        Terminal.print(0, format("Handle opened: {}", handle));
         m_boxHandle = handle;
         
         m_openedData = "Data to encrypt";

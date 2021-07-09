@@ -3,12 +3,34 @@
 	"header": ["time"],
 	"functions": [
 		{
-			"name": "get",
+			"name": "getNaclBox",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"},
-				{"name":"algorithm","type":"bytes"},
-				{"name":"params","type":"cell"}
+				{"name":"nonce","type":"bytes"},
+				{"name":"theirPubkey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"handle","type":"uint32"}
+			]
+		},
+		{
+			"name": "getNaclSecretBox",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"},
+				{"name":"nonce","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"handle","type":"uint32"}
+			]
+		},
+		{
+			"name": "getChaCha20Box",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"},
+				{"name":"nonce","type":"bytes"}
 			],
 			"outputs": [
 				{"name":"handle","type":"uint32"}
