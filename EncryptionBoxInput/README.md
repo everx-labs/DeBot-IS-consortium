@@ -1,7 +1,8 @@
 
 # EncryptionBoxInput Interface
 
-**Status**: Proposed
+**Status**: Proposed.
+**Revision**: 1.
 
 | Name               | ID                                                                |
 | :----------------- | :---------------------------------------------------------------- |
