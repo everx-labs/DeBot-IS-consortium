@@ -2,8 +2,8 @@ pragma ton-solidity >=0.40.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../Debot.sol";
-import "../../Terminal/Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "../UserInfo.sol";
 
 contract ExampleContract is Debot {
@@ -19,18 +19,18 @@ contract ExampleContract is Debot {
     }
 
     function setDefaultAccount(address value) public {
-        Terminal.print(0, format("User account is {}", value));
+        Terminal.print(0, format("User account {}", value));
         m_wallet = value;
     }
 
     function setDefaultPubkey(uint256 value) public {
-        Terminal.print(0, format("User public key is {}", value));
+        Terminal.print(0, format("User public key {}", value));
         m_pubkey = value;
     }
 
-    function setSigningBox(uint32 value) public {
-        Terminal.print(0, format("Signing box handle is {}", value));
-        m_sbHandle = value;
+    function setSigningBox(uint32 handle) public {
+        Terminal.print(0, format("Signing box handle {}", handle));
+        m_sbHandle = handle;
     }
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
