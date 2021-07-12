@@ -83,7 +83,7 @@ arguments:
 
 returns: 
 
-	result : string - result of operation
+	state : string - result of operation
 	
 ## Declaration in Solidity
 
@@ -94,7 +94,7 @@ interface ISecurityCardManagement {
     function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
 	function getSerialNumber(uint32 answerId) external returns (uint192 serialNumber);
-	function getTonWalletAppletState(uint32 answerId) external returns (string result);
+	function getTonWalletAppletState(uint32 answerId) external returns (string state);
 }
 ```
 

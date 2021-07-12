@@ -60,7 +60,7 @@
 				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
-				{"name":"result","type":"bytes"}
+				{"name":"state","type":"bytes"}
 			]
 		},
 		{

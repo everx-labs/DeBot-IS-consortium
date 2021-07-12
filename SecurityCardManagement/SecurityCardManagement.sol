@@ -6,7 +6,7 @@ interface ISecurityCardManagement {
     function setRecoveryData(uint32 answerId, bytes recoveryData) external returns (bool result);
     function getRecoveryData(uint32 answerId) external returns (bytes recoveryData);
 	function getSerialNumber(uint32 answerId) external returns (uint192 serialNumber);
-	function getTonWalletAppletState(uint32 answerId) external returns (string result);
+	function getTonWalletAppletState(uint32 answerId) external returns (string state);
 }
 
 library SecurityCardManagement {
@@ -47,5 +47,5 @@ contract SecurityCardManagementABI is ISecurityCardManagement {
     function setRecoveryData(uint32 answerId, bytes recoveryData) external override returns (bool result) {}
     function getRecoveryData(uint32 answerId) external override returns (bytes recoveryData) {}
 	function getSerialNumber(uint32 answerId) external override returns (uint192 serialNumber) {}
-	function getTonWalletAppletState(uint32 answerId) external override returns (string result) {}
+	function getTonWalletAppletState(uint32 answerId) external override returns (string state) {}
 }
