@@ -33,25 +33,49 @@
 			]
 		},
 		{
-			"name": "chacha20",
+			"name": "getAccountsDataByHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"data","type":"bytes"},
-				{"name":"nonce","type":"bytes"},
-				{"name":"key","type":"uint256"}
+				{"name":"codeHash","type":"uint256"},
+				{"name":"gt","type":"address"}
 			],
 			"outputs": [
-				{"name":"output","type":"bytes"}
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "encrypt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"},
+				{"name":"data","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"name":"encrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "decrypt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"},
+				{"name":"data","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"name":"decrypted","type":"bytes"}
 			]
 		},
 		{
 			"name": "signHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
+				{"name":"sbHandle","type":"uint32"},
 				{"name":"hash","type":"uint256"}
 			],
 			"outputs": [
-				{"name":"arg1","type":"bytes"}
+				{"name":"signature","type":"bytes"}
 			]
 		},
 		{
@@ -65,23 +89,15 @@
 			]
 		},
 		{
-			"name": "compress7z",
+			"name": "substring",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"uncompressed","type":"bytes"}
+				{"name":"str","type":"bytes"},
+				{"name":"start","type":"uint32"},
+				{"name":"count","type":"uint32"}
 			],
 			"outputs": [
-				{"name":"comp","type":"bytes"}
-			]
-		},
-		{
-			"name": "uncompress7z",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"compressed","type":"bytes"}
-			],
-			"outputs": [
-				{"name":"uncomp","type":"bytes"}
+				{"name":"substr","type":"bytes"}
 			]
 		},
 		{
@@ -182,18 +198,6 @@
 			]
 		},
 		{
-			"name": "substring",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"str","type":"bytes"},
-				{"name":"start","type":"uint32"},
-				{"name":"count","type":"uint32"}
-			],
-			"outputs": [
-				{"name":"substr","type":"bytes"}
-			]
-		},
-		{
 			"name": "naclBox",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
@@ -231,25 +235,15 @@
 			]
 		},
 		{
-			"name": "getAccountsByHash",
+			"name": "chacha20",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"codeHash","type":"bytes"},
-				{"name":"gt","type":"address"}
+				{"name":"data","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"key","type":"uint256"}
 			],
 			"outputs": [
-				{"components":[{"name":"id","type":"address"}],"name":"accounts","type":"tuple[]"}
-			]
-		},
-		{
-			"name": "getAccountsDataByHash",
-			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"codeHash","type":"bytes"},
-				{"name":"gt","type":"address"}
-			],
-			"outputs": [
-				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
+				{"name":"output","type":"bytes"}
 			]
 		},
 		{
