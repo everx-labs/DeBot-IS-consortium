@@ -62,6 +62,7 @@ arguments:
 
 returns:
 
+    result: uint32 - result code of operation. 0 if succeeded, otherwise SDK error code.
     encrypted: bytes - encrypted data bytes.
 
 `decrypt` - decrypt data with defined encryption box.
@@ -73,6 +74,7 @@ arguments:
 
 returns:
 
+    result: uint32 - result code of operation. 0 if succeeded, otherwise SDK error code.
     decrypted: bytes - decrypted data bytes.
 
 ### Signing
