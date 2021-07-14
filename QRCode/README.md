@@ -25,11 +25,31 @@ returns:
 
 	value: bytes - utf8 string with qrcode data.
 
+`draw` - prints text as QR Code to the user.
+
+Note: DeBot Browsers can choose data correction level by itself.
+
+arguments:
+
+	answerId: uint32 - function id of result callback.
+    text: bytes - utf-8 string to print.
+
+returns:
+
+	result: uint8 - one of the QRStatus enum value.
+
+enum QRStatus {
+    Success = 0,
+    DataTooLong = 1,
+    InvalidCharacter = 2,
+}
+
 ## Declaration in Solidity
 
 ```jsx
 interface IQRCode {
 	function scan(uint32 answerId) external returns (string value);
+    function draw(uint32 answerId, string text) external returns (QRStatus result);
 }
 ```
 
@@ -37,11 +57,17 @@ interface IQRCode {
 
 ```cpp
 namespace tvm { namespace schema {
-
+    enum QRStatus {
+        Success,
+        DataTooLong,
+        InvalidCharacter,
+    }
 __interface IQRCode {
 
 	[[internal, answer_id]]
 	string scan();
+    [[internal, answer_id]]
+    QRStatus draw(string text);
 
 };
 

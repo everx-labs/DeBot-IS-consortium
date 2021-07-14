@@ -1,7 +1,14 @@
 pragma ton-solidity >=0.35.0;
 
+enum QRStatus {
+    Success,
+    DataTooLong,
+    InvalidCharacter
+}
+
 interface IQRCode {
 	function scan(uint32 answerId) external returns (string value);
+    function draw(uint32 answerId, string text) external returns (QRStatus result);
 }
 
 library QRCode {
@@ -12,8 +19,14 @@ library QRCode {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IQRCode(addr).scan(answerId);
     }
+
+    function draw(uint32 answerId, string text) public pure {
+        address addr = address.makeAddrStd(DEBOT_WC, ID);
+        IQRCode(addr).draw(answerId, text);
+    }
 }
 
 contract QRCodeABI is IQRCode {
     function scan(uint32 answerId) external override returns (string value) {}
+    function draw(uint32 answerId, string text) external override returns (QRStatus result) {}
 }

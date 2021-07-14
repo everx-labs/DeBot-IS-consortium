@@ -2,7 +2,8 @@ pragma ton-solidity >=0.40.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "../QRCode.sol";
 
 contract Example is Debot {
@@ -13,11 +14,16 @@ contract Example is Debot {
 
     function setResult(string value) public {
         // TODO: continue here, validate value and so on...
+        Terminal.print(0, format("{}", value));
+        QRCode.draw(tvm.functionId(setDrawResult), format("{}", address(this)));
+    }
 
+    function setDrawResult(QRStatus result) public pure {
+        require(result == QRStatus.Success, 101);
     }
 
     function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
-        return [ QRCode.ID ];
+        return [ Terminal.ID, QRCode.ID ];
     }
 
     function getDebotInfo() public functionID(0xDEB) view override returns(

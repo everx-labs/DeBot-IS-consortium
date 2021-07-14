@@ -10,6 +10,23 @@
 			"outputs": [
 				{"name":"value","type":"bytes"}
 			]
+		},
+		{
+			"name": "draw",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"text","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint8"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
 		}
 	],
 	"data": [
