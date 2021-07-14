@@ -15,7 +15,7 @@ struct Date:
 
     day: uint8 - index of the day within a month. Must be in range [1, 31].
 
-    month: uint8 - number of month. Must be in range [1, 12].
+    month: uint8 - index of month within a year. Must be in range [1, 12].
 
     year: uint16 - index of years relatively to AD.
 
