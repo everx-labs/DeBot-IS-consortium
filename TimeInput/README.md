@@ -13,7 +13,7 @@ Allows to input day time.
 
 struct Time:
 
-    hrs: uint8 - number of the day. Must be in range [0, 24).
+    hrs: uint8 - index of an hour within a day. Must be in range [0, 24).
 
     mins: uint8 - number of minutes. Must be in range [0, 60].
 
