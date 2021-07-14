@@ -13,7 +13,7 @@ Allows to input Date.
 
 struct Date:
 
-    day: uint8 - number of the day. Must be in range [1, 31].
+    day: uint8 - index of the day within a month. Must be in range [1, 31].
 
     month: uint8 - number of month. Must be in range [1, 12].
 
