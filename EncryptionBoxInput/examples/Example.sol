@@ -5,29 +5,20 @@ pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "../EncryptionBoxInput.sol";
+import "Sdk.sol";
 
 contract ExampleContract is Debot {
 
     uint32 m_boxHandle;
-
     string m_openedData;
-
+    uint m_currentBoxNum;
     uint256 m_public = 0x5f88dfedff20eef951ff26f4e5a88526929b195af091791a45cc8c6cb14961e4;
     uint256 m_private= 0xdcfe6f38f47ffbea6a2a51981c33ed655f7b849706544838101ea789ac7845ea;
-
+    string nonce = "abcdefghijklmnopqrstuvwx";
+    
     function start() public override {
+        m_currentBoxNum = 0;
         EncryptionBoxInput.getSupportedAlgorithms(tvm.functionId(setAlgorithms));
-        string nonce = "abcdefghijklmnopqrstuvwx";
-        uint256 theirPubkey = m_public;
-        Terminal.print(
-            0, format("Opening encryption box for NaclBox algorithm with parameters:\nnonce: {}\ntheir pubkey: {}", nonce, theirPubkey)
-        );
-        EncryptionBoxInput.getNaclBox(
-            tvm.functionId(setEncryptionBox), 
-            "Choose encryption keys", 
-            bytes(nonce),
-            theirPubkey
-        );
     }
 
     function setAlgorithms(string[] names) public {
@@ -35,29 +26,87 @@ contract ExampleContract is Debot {
         for (string name: names) {
             Terminal.print(0, format("{}", name));
         }
+        _nextBox();
     }
 
-    function setEncryptionBox(uint32 handle) public {
-        Terminal.print(0, format("Handle opened: {}", handle));
+    function getNaclBox() public {
+        EncryptionBoxInput.getNaclBox(
+            tvm.functionId(setBox), 
+            "Choose encryption keys", 
+            bytes(nonce),
+            m_public
+        );
+    }
+
+    function getNaclSecretBox() public {
+        EncryptionBoxInput.getNaclSecretBox(
+            tvm.functionId(setBox), 
+            "Choose encryption keys", 
+            bytes(nonce)
+        );
+    }
+
+    function getChaCha20Box() public {
+        EncryptionBoxInput.getChaCha20Box(
+            tvm.functionId(setBox), 
+            "Choose encryption keys", 
+            bytes(nonce)
+        );
+    }
+
+    function setBox(uint32 handle) public {
+        Terminal.print(0, format("Handle created: {}", handle));
         m_boxHandle = handle;
-        
         m_openedData = "Data to encrypt";
-        // TODO: Use Sdk interface to encrypt.
-        // Sdk.encrypt(tvm.function(setEncryptionResult), m_boxHandle, m_openedData);
+        Sdk.encrypt(tvm.functionId(setEncryptionResult), m_boxHandle, m_openedData);
     }
 
-    function setEncryptionResult(bytes encrypted) public {
-        // TOOD: Use Sdk interface to decrypt data.
-        // Sdk.decrypt(tvm.function(setDecryptionResult), m_boxHandle, encrypted);
+    function setEncryptionResult(uint32 result, bytes encrypted) public {
+        if (result != 0) {
+            Terminal.print(tvm.functionId(Debot.start), format("Failed to encrypt: error {}", result));
+            return;
+        }
+        Terminal.print(0, "Encrypt succeeded");
+        Sdk.decrypt(tvm.functionId(setDecryptionResult), m_boxHandle, encrypted);
     }
 
-    function setDecryptionResult(bytes decrypted) public {
-        require(tvm.hash(decrypted) == tvm.hash(bytes(m_openedData)), 400);
+    function setDecryptionResult(uint32 result, bytes decrypted) public {
+        if (result != 0) {
+            Terminal.print(tvm.functionId(Debot.start), format("Failed to encrypt: error {}", result));
+            return;
+        }
+        require(tvm.hash(decrypted) == tvm.hash(bytes(m_openedData)), 400, "invalid decrypted data");
+        Terminal.print(0, "Decrypt succeeded");
         EncryptionBoxInput.remove(tvm.functionId(setRemoveResult), m_boxHandle);
     }
 
-    function setRemoveResult(bool removed) public pure {
+    function setRemoveResult(bool removed) public {
         require(removed, 401);
+        Terminal.print(0, "Handle removed");
+        m_boxHandle = 0;
+        _nextBox();
+    }
+
+    function _nextBox() private {
+        if (m_currentBoxNum == 0) {
+            Terminal.print(
+                tvm.functionId(getChaCha20Box), 
+                format("Creating ChaCha20 with parameters:\nnonce: {}", nonce)
+            );
+        } else if (m_currentBoxNum == 1) {
+            Terminal.print(
+                tvm.functionId(getNaclSecretBox), 
+                format("Creating NaclSecretBox with parameters:\nnonce: {}", nonce)
+            );
+        } else if (m_currentBoxNum == 2) {
+            Terminal.print(
+                tvm.functionId(getNaclBox), 
+                format("Creating NaclBox with parameters:\nnonce: {}\ntheir pubkey: {}", nonce, m_public)
+            );
+        } else {
+            Terminal.print(tvm.functionId(Debot.start), "All tests passed. Restarting");
+        }
+        m_currentBoxNum++;
     }
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
