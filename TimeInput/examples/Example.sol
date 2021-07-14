@@ -11,12 +11,12 @@ contract ExampleContract is Debot {
     function start() public override {
         TimeInput.get(tvm.functionId(setTime), 
             "Choose a day time:", 
-            Time(15, 30, 0), Time(23, 55, 0), 1, 0);
+            Time(15, 30, 0), Time(23, 55, 0), 1);
     }
 
-    function setTime(Time time) public {
+    function setTime(Time time, int16 localTimeZone) public {
         // TODO: continue here
-        Terminal.print(0, format("{}:{}, timestamp: {}", time.hrs, time.mins, time.timestamp));
+        Terminal.print(0, format("{}:{}, timestamp: {}, time zone: {}", time.hr, time.min, time.timestamp, localTimeZone));
     }
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
