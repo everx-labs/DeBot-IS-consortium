@@ -19,7 +19,7 @@ struct Date:
 
     year: uint16 - index of years relatively to AD.
 
-    unixtime: int128 - extended unixtime in seconds for a defined day, month, year.
+    unixtime: int128 - extended unixtime in seconds for a defined day, month, year. Note: DeBot Browser should use `unixtime` if it is not zero otherwise a combination of `day`, `month` and `year`.
 
 
 `get` - allows to get date selected by user.
