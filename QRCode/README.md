@@ -27,16 +27,16 @@ returns:
 
 `draw` - prints text as QR Code to the user.
 
-Note: DeBot Browsers can choose data correction level by itself.
+Note: DeBot Browsers can manually choose data correction level.
 
 arguments:
 
-	answerId: uint32 - function id of result callback.
+    answerId: uint32 - function id of result callback.
     text: bytes - utf-8 string to print.
 
 returns:
 
-	result: uint8 - one of the QRStatus enum value.
+	result: uint8 - one of the `QRStatus` value.
 
 enum QRStatus {
     Success = 0,
@@ -47,6 +47,12 @@ enum QRStatus {
 ## Declaration in Solidity
 
 ```jsx
+enum QRStatus {
+    Success,
+    DataTooLong,
+    InvalidCharacter
+}
+
 interface IQRCode {
 	function scan(uint32 answerId) external returns (string value);
     function draw(uint32 answerId, string text) external returns (QRStatus result);
@@ -60,7 +66,7 @@ namespace tvm { namespace schema {
     enum QRStatus {
         Success,
         DataTooLong,
-        InvalidCharacter,
+        InvalidCharacter
     }
 __interface IQRCode {
 
