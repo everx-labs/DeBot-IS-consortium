@@ -15,7 +15,7 @@ struct Time:
 
     hrs: uint8 - index of an hour within a day. Must be in range [0, 24).
 
-    mins: uint8 - number of minutes. Must be in range [0, 60].
+    mins: uint8 - index of a minute within an hour. Must be in range [0, 60].
 
     timestamp: uint32 - timestamp in seconds inside a 24 hours. Must be in range [0, 86400]. Used instead of hrs, mins.
 
