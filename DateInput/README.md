@@ -17,7 +17,7 @@ struct Date:
 
     month: uint8 - number of month. Must be in range [1, 12].
 
-    year: uint16 - number of years.
+    year: uint16 - index of years relatively to AD.
 
     unixtime: int128 - extended unixtime in seconds for a defined day, month, year.
 
