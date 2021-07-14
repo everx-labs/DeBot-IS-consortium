@@ -20,7 +20,7 @@ struct Time:
     timestamp: uint32 - timestamp in seconds inside a 24 hours. Must be in range [0, 86400]. Used instead of hrs, mins.
 
 
-`get` - allows to get timestamp inside a day selected by user.
+`get` - allows to get the timestamp within a day selected by the user.
 
 arguments:
 
