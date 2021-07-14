@@ -44,8 +44,8 @@ returns:
 
 ```jsx
 struct Time {
-    uint8 hrs;
-    uint8 mins;
+    uint8 hr;
+    uint8 min;
     uint32 timestamp;
 }
 
