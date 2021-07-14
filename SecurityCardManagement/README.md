@@ -65,7 +65,26 @@ returns:
 
 	recoveryData : bytes - recovery data
 
+`getSerialNumber` - get serial number of touched card
 
+arguments: 
+
+	answerId: uint32 - function id of result callback	
+
+returns: 
+
+	serialNumber : uint192 - card serial number
+
+`getTonWalletAppletState` - get card applet state
+
+arguments: 
+
+	answerId: uint32 - function id of result callback	
+
+returns: 
+
+	state : string - result of operation
+	
 ## Declaration in Solidity
 
 ```jsx
@@ -74,6 +93,8 @@ interface ISecurityCardManagement {
     function turnOnWallet(uint32 answerId, uint192 sn, bytes p1, bytes iv, bytes cs) public returns (uint256 pubkey);
     function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
+	function getSerialNumber(uint32 answerId) external returns (uint192 serialNumber);
+	function getTonWalletAppletState(uint32 answerId) external returns (string state);
 }
 ```
 
@@ -90,13 +111,17 @@ struct blockHashRes {
 __interface ISecurityCardManagement {
 
 	[[internal, answer_id]]
-	blockHashRes getBlockHashes();
+	blockHashRes getBlockHashes(uint192 sn);
 	[[internal, answer_id]]
-	uint256 turnOnWallet(uint192 sn. bytes p1, bytes iv, bytes esc);
+	uint256 turnOnWallet(uint192 sn, bytes p1, bytes iv, bytes esc);
 	[[internal, answer_id]]
 	bool_t setRecoveryData(bytes recoveryData);
 	[[internal, answer_id]]
 	bytes getRecoveryData();
+	[[internal, answer_id]]
+	uint192 getSerialNumber();
+	[[internal, answer_id]]
+	bytes getTonWalletAppletState();
 
 }
 };

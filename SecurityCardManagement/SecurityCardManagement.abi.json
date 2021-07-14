@@ -46,6 +46,24 @@
 			]
 		},
 		{
+			"name": "getSerialNumber",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"serialNumber","type":"uint192"}
+			]
+		},
+		{
+			"name": "getTonWalletAppletState",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"state","type":"bytes"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],
