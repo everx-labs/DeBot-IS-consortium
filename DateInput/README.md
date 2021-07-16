@@ -1,4 +1,4 @@
-# DateInput Interface
+# DateTimeInput Interface
 
 **Status**: Accepted
 
@@ -9,20 +9,11 @@
 
 ## Description
 
-Allows to input Date.
+Allows to input date and time.
 
-struct Date:
+`getDate` - returns date selected by user.
 
-    day: uint8 - index of the day within a month. Must be in range [1, 31].
-
-    month: uint8 - index of month within a year. Must be in range [1, 12].
-
-    year: uint16 - index of years relatively to AD.
-
-    unixtime: int128 - extended unixtime in seconds for a defined day, month, year. Note: DeBot Browser should use `unixtime` if it is not zero otherwise a combination of `day`, `month` and `year`.
-
-
-`get` - allows to get date selected by user.
+Note: function accepts date in unixtime (seconds from the midnight UTC-0 of 1st Jan 1970) which is int128 bits long, negative values are allowed. Date unixtime includes day, month, year and 0 hours, 0 minutes and 0 seconds.
 
 arguments:
 
@@ -30,13 +21,15 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input.
 
-    minDate: Date - minimum date that can be chosen. NOTE: Date.unixtime can be zero if day, month and year are defined.
+    minDate: int128 - minimum date that can be chosen.
     
-    maxDate: Date - maximum date that can be chosen. NOTE: Date.unixtime can be zero if day, month and year are defined.
+    maxDate: int128 - maximum date that can be chosen.
+
+    timeZoneOffset: int16 - time zone offset related to UTC-0 in minutes. There is a special value 0x7FFF which defines local user time zone.
 
 returns:
 
-	date: Date - chosen date.
+	date: int128 - chosen date.
 
 ## Declaration in Solidity
 
