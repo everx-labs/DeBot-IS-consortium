@@ -9,17 +9,23 @@ import "../QRCode.sol";
 contract Example is Debot {
 
     function start() public override {
-        QRCode.scan(tvm.functionId(setResult));
+        QRCode.scan(tvm.functionId(setResult), "Scan QRode with DeBot address");
     }
 
-    function setResult(string value) public {
+    function setResult(string value, QRStatus result) public {
+        if (result != QRStatus.Success) {
+            Terminal.print(0, "Failed to scan QRCode.");
+            return;
+        }
         // TODO: continue here, validate value and so on...
         Terminal.print(0, format("{}", value));
-        QRCode.draw(tvm.functionId(setDrawResult), format("{}", address(this)));
+        QRCode.draw(tvm.functionId(setDrawResult), "DeBot address", format("{}", address(this)));
     }
 
-    function setDrawResult(QRStatus result) public pure {
-        require(result == QRStatus.Success, 101);
+    function setDrawResult(QRStatus result) public {
+        if (result != QRStatus.Success) {
+            Terminal.print(0, "Failed to draw QRCode.");
+        }
     }
 
     function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
