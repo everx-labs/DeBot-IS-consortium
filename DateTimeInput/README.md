@@ -48,7 +48,7 @@ arguments:
 returns:
 
 	time: uint32 - chosen timestamp without time zone correction.
-    timeZoneOffset: int16 - time zone offset in minutes. USe this value for correct date and time representation for the user.
+    timeZoneOffset: int16 - time zone offset in minutes. Use this value for correct date and time representation for the user.
 
 Note: to get datetime timestamp (UTC-0) DeBot should call `getDate` and `getTime` and then summ return values (`date` + `time`).
 
