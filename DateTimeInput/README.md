@@ -51,6 +51,9 @@ returns:
     timeZoneOffset: int16 - time zone offset in minutes. USe this value for correct date and time representation for the user.
 
 Note: to get datetime timestamp (UTC-0) DeBot should call `getDate` and `getTime` and then summ return values (`date` + `time`).
+
+Note: to find the time related to specified time zone, add `timeZoneOffset` to calculated datetime timestamp.
+
 ## Declaration in Solidity
 
 ```jsx
