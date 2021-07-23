@@ -19,17 +19,48 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 
 arguments:
 
-	answerId: uint32 - function id of result callback.
+    answerId: uint32 - function id of result callback.
+    prompt: bytes - utf-8 string with message to the user. Optional, empty string `""` is treated like `null`.
 
 returns:
 
-	value: bytes - utf8 string with qrcode data.
+    value: bytes - utf8 string with qrcode data.
+    result: uint8 - one of the `QRStatus` value. `Success` on success and `ScannerError` on error.
+
+`draw` - prints text as QR Code to the user.
+
+Note: DeBot Browsers can manually choose data correction level.
+
+arguments:
+
+    answerId: uint32 - function id of result callback.
+    prompt: bytes - utf-8 string with message to the user. Optional, empty string `""` is treated like `null`.
+    text: bytes - utf-8 string to print as QRCode.
+
+returns:
+
+    result: uint8 - one of the `QRStatus` value. `Success` on success and `ScannerError` on error.
+
+enum QRStatus {
+    Success = 0,
+    DataTooLong = 1,
+    InvalidCharacter = 2,
+    ScannerError = 3
+}
 
 ## Declaration in Solidity
 
 ```jsx
+enum QRStatus {
+    Success,
+    DataTooLong,
+    InvalidCharacter,
+    ScannerError
+}
+
 interface IQRCode {
-	function scan(uint32 answerId) external returns (string value);
+    function scan(uint32 answerId, string prompt) external returns (string value, QRStatus result);
+    function draw(uint32 answerId, string prompt, string text) external returns (QRStatus result);
 }
 ```
 
@@ -37,11 +68,19 @@ interface IQRCode {
 
 ```cpp
 namespace tvm { namespace schema {
+enum QRStatus {
+    Success,
+    DataTooLong,
+    InvalidCharacter,
+    ScannerError
+}
 
 __interface IQRCode {
 
-	[[internal, answer_id]]
-	string scan();
+    [[internal, answer_id]]
+    (string, QRStatus) scan(string prompt);
+    [[internal, answer_id]]
+    QRStatus draw(string text, string prompt);
 
 };
 
