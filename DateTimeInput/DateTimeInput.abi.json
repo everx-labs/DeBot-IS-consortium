@@ -1,0 +1,44 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "getDate",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"},
+				{"name":"minDate","type":"int128"},
+				{"name":"maxDate","type":"int128"}
+			],
+			"outputs": [
+				{"name":"date","type":"int128"}
+			]
+		},
+		{
+			"name": "getTime",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"},
+				{"name":"minTime","type":"uint32"},
+				{"name":"maxTime","type":"uint32"},
+				{"name":"interval","type":"uint8"},
+				{"name":"inTimeZoneOffset","type":"int16"}
+			],
+			"outputs": [
+				{"name":"time","type":"uint32"},
+				{"name":"timeZoneOffset","type":"int16"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
