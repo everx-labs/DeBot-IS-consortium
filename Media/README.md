@@ -19,7 +19,7 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user on top of media.
 
-    data: bytes - utf-8 string with encoded media according to RFC2397.
+    data: bytes - utf-8 string with encoded media according to [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397).
     
 returns:
 
