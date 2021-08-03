@@ -11,11 +11,14 @@ contract ExampleContract is Debot {
     address m_wallet;
     uint256 m_pubkey;
     uint32 m_sbHandle;
+    string m_tokenId;
+    string m_tokenPlatform;
 
     function start() public override {
         UserInfo.getAccount(tvm.functionId(setDefaultAccount));
         UserInfo.getPublicKey(tvm.functionId(setDefaultPubkey));
         UserInfo.getSigningBox(tvm.functionId(setSigningBox));
+        UserInfo.getNotificationToken(tvm.functionId(setNotificationToken));
     }
 
     function setDefaultAccount(address value) public {
@@ -31,6 +34,12 @@ contract ExampleContract is Debot {
     function setSigningBox(uint32 handle) public {
         Terminal.print(0, format("Signing box handle {}", handle));
         m_sbHandle = handle;
+    }
+
+    function setNotificationToken(string id, string platform) public {
+        Terminal.print(0, format("User token id {}, token type {}", id, platform));
+        m_tokenId = id;
+        m_tokenPlatform = platform;
     }
 
     function getDebotInfo() public functionID(0xDEB) override view returns(

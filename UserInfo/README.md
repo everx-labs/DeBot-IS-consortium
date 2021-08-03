@@ -44,6 +44,18 @@ returns:
 
 	handle: uint32 - handle to signing keypair, can be 0.
 
+`getNotificationToken` - allows DeBot to receive user push notification token and its type (e.g. "APNS"). Method should be implemented without user interaction if possible. If user has no notification token then the method should return empty strings.
+
+arguments:
+
+    answerId: uint32 - function id of callback.
+
+returns:
+
+    id: string - Token ID. iOS device push tokens are strings with 64 hexadecimal symbols, android device push tokens can differ in length
+
+    platform: string - Token type - "FCM", "APNS", etc
+
 Important: this interface can be extended in future to retrieve more information about user.
 
 ## Declaration in Solidity
@@ -54,6 +66,7 @@ interface IUserInfo {
     function getAccount(uint32 answerId) external returns (address value);
     function getPublicKey(uint32 answerId) external returns (uint256 value);
     function getSigningBox(uint32 answerId) external returns (uint32 handle);
+    function getNotificationToken(uint32 answerId) external returns (string id, string platform);
 }
 ```
 
