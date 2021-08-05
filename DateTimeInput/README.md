@@ -21,6 +21,8 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input.
 
+    defDate: int128 - date by default.
+
     minDate: int128 - minimum date that can be chosen.
     
     maxDate: int128 - maximum date that can be chosen.
@@ -37,9 +39,31 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input.
 
+    defTime: uint32 - time by default.
+
     minTime: uint32 - minimum time that can be chosen.
     
     maxTime: uint32 - maximum time that can be chosen.
+
+    interval: uint8 - minimal allowed interval between neibour times in minutes. Valid values are {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30}.
+
+returns:
+
+    time: uint32 - chosen timestamp.
+
+`getDateTime`- allow to select date and time.
+
+arguments:
+
+    answerId: uint32 - function id of result callback.
+    
+    prompt: bytes - utf-8 string to print to the user before input.
+
+    defDatetime:  int128 - unixtime, default date and time.
+    
+    minDatetime: int128 - unixtime, minimum allowed date and time to choose.
+
+    maxDatetime: int128 - unixtime, maximum allowed date and time to choose.
 
     interval: uint8 - minimal allowed interval between neibour times in minutes. Valid values are {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30}.
 
@@ -47,19 +71,51 @@ arguments:
 
 returns:
 
-	time: uint32 - chosen timestamp without time zone correction.
+    datetime: int128 - unixtime of chozen date and time.
+
     timeZoneOffset: int16 - time zone offset in minutes. Use this value for correct date and time representation for the user.
 
-Note: to get datetime timestamp (UTC-0) DeBot should call `getDate` and `getTime` and then summ return values (`date` + `time`).
+`getTimeZoneOffset` - returns user time zone offset in minutes.
 
-Note: to find the time related to specified time zone, add `timeZoneOffset` to calculated datetime timestamp.
+arguments:
+
+    answerId: uint32 - function id of result callback.
+
+returns:
+
+    timeZoneOffset: int16 - user time zone offset in minutes.
+
 
 ## Declaration in Solidity
 
 ```jsx
 interface IDateTimeInput {
-	function getDate(uint32 answerId, string prompt, int128 minDate, int128 maxDate) external returns (int128 date);
-    function getTime(uint32 answerId, string prompt, uint32 minTime, uint32 maxTime, uint8 interval, int16 inTimeZoneOffset) external returns (uint32 time, int16 timeZoneOffset);
+	function getDate(
+        uint32 answerId,
+        string prompt,
+        int128 defDate,
+        int128 minDate,
+        int128 maxDate
+    ) external returns (int128 date);
+    function getTime(
+        uint32 answerId,
+        string prompt,
+        int128 defTime,
+        uint32 minTime,
+        uint32 maxTime,
+        uint8 interval,
+        int16 inTimeZoneOffset
+    ) external returns (uint32 time);
+    function getDateTime(
+        uint32 answerId,
+        string prompt,
+        int128 defDatetime,
+        int128 minDatetime,
+        int128 maxDatetime,
+        uint8 interval,
+        int16 inTimeZoneOffset
+    ) external returns (int128 datetime, int16 timeZoneOffset);
+    function getTimeZoneOffset(uint32 answerId) external returns (int16 timeZoneOffset);
 }
 ```
 

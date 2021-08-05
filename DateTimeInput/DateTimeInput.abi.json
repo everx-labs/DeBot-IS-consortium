@@ -7,6 +7,7 @@
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"},
+				{"name":"defDate","type":"int128"},
 				{"name":"minDate","type":"int128"},
 				{"name":"maxDate","type":"int128"}
 			],
@@ -19,13 +20,37 @@
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"},
+				{"name":"defTime","type":"int128"},
 				{"name":"minTime","type":"uint32"},
 				{"name":"maxTime","type":"uint32"},
+				{"name":"interval","type":"uint8"}
+			],
+			"outputs": [
+				{"name":"time","type":"uint32"}
+			]
+		},
+		{
+			"name": "getDateTime",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"},
+				{"name":"defDatetime","type":"int128"},
+				{"name":"minDatetime","type":"int128"},
+				{"name":"maxDatetime","type":"int128"},
 				{"name":"interval","type":"uint8"},
 				{"name":"inTimeZoneOffset","type":"int16"}
 			],
 			"outputs": [
-				{"name":"time","type":"uint32"},
+				{"name":"datetime","type":"int128"},
+				{"name":"timeZoneOffset","type":"int16"}
+			]
+		},
+		{
+			"name": "getTimeZoneOffset",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
 				{"name":"timeZoneOffset","type":"int16"}
 			]
 		},
