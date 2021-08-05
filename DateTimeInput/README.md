@@ -103,8 +103,7 @@ interface IDateTimeInput {
         int128 defTime,
         uint32 minTime,
         uint32 maxTime,
-        uint8 interval,
-        int16 inTimeZoneOffset
+        uint8 interval
     ) external returns (uint32 time);
     function getDateTime(
         uint32 answerId,
