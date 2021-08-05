@@ -5,6 +5,15 @@
 		{
 			"name": "scan",
 			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"value","type":"bytes"}
+			]
+		},
+		{
+			"name": "read",
+			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"}
 			],
