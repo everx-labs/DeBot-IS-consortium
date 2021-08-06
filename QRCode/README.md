@@ -17,15 +17,29 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 
 `scan` - scans qrcode by camera or from image and returns its decoded data as string.
 
+`[Deprecated]` Don't use this method. It will be removed soon. Use `read` instead.
+
 arguments:
 
     answerId: uint32 - function id of result callback.
+
+returns:
+
+    value: bytes - utf8 string with qrcode data.
+
+`read` - scans qrcode by camera or from image and returns its decoded data as string.
+
+arguments:
+
+    answerId: uint32 - function id of result callback.
+    
     prompt: bytes - utf-8 string with message to the user. Optional, empty string `""` is treated like `null`.
 
 returns:
 
     value: bytes - utf8 string with qrcode data.
-    result: uint8 - one of the `QRStatus` value. `Success` on success and `ScannerError` on error.
+
+    result: uint8 - one of the `QRStatus` value. `Success` on success.
 
 `draw` - prints text as QR Code to the user.
 
@@ -45,7 +59,9 @@ enum QRStatus {
     Success = 0,
     DataTooLong = 1,
     InvalidCharacter = 2,
-    ScannerError = 3
+    ScannerError = 3,
+    Canceled = 4,
+    NotSupported = 5
 }
 
 ## Declaration in Solidity
@@ -55,11 +71,14 @@ enum QRStatus {
     Success,
     DataTooLong,
     InvalidCharacter,
-    ScannerError
+    ScannerError,
+    Canceled,
+    NotSupported
 }
 
 interface IQRCode {
-    function scan(uint32 answerId, string prompt) external returns (string value, QRStatus result);
+    function scan(uint32 answerId) external returns (string value);
+    function read(uint32 answerId, string prompt) external returns (string value, QRStatus result);
     function draw(uint32 answerId, string prompt, string text) external returns (QRStatus result);
 }
 ```
@@ -72,13 +91,17 @@ enum QRStatus {
     Success,
     DataTooLong,
     InvalidCharacter,
-    ScannerError
+    ScannerError,
+    Canceled,
+    NotSupported
 }
 
 __interface IQRCode {
 
     [[internal, answer_id]]
-    (string, QRStatus) scan(string prompt);
+    (string) scan();
+    [[internal, answer_id]]
+    (string, QRStatus) read(string prompt);
     [[internal, answer_id]]
     QRStatus draw(string text, string prompt);
 
