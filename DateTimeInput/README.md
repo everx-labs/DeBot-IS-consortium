@@ -21,7 +21,7 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input.
 
-    defDate: int128 - date by default.
+    defaultDate: int128 - date by default.
 
     minDate: int128 - minimum date that can be chosen.
     
@@ -39,13 +39,13 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input.
 
-    defTime: uint32 - time by default.
+    defaultTime: uint32 - time by default.
 
     minTime: uint32 - minimum time that can be chosen.
     
     maxTime: uint32 - maximum time that can be chosen.
 
-    interval: uint8 - minimal allowed interval between neibour times in minutes. Valid values are {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30}.
+    minuteInterval: uint8 - minimal allowed minuteInterval between neibour times in minutes. Valid values are {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30}.
 
 returns:
 
@@ -59,13 +59,13 @@ arguments:
     
     prompt: bytes - utf-8 string to print to the user before input.
 
-    defDatetime:  int128 - unixtime, default date and time.
+    defaultDatetime:  int128 - unixtime, default date and time.
     
     minDatetime: int128 - unixtime, minimum allowed date and time to choose.
 
     maxDatetime: int128 - unixtime, maximum allowed date and time to choose.
 
-    interval: uint8 - minimal allowed interval between neibour times in minutes. Valid values are {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30}.
+    minuteInterval: uint8 - minimal allowed minuteInterval between neibour times in minutes. Valid values are {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30}.
 
     inTimeZoneOffset: int16 - time zone offset related to UTC-0 in minutes. There is a special value 0x7FFF which defines local user time zone.
 
@@ -93,25 +93,25 @@ interface IDateTimeInput {
 	function getDate(
         uint32 answerId,
         string prompt,
-        int128 defDate,
+        int128 defaultDate,
         int128 minDate,
         int128 maxDate
     ) external returns (int128 date);
     function getTime(
         uint32 answerId,
         string prompt,
-        int128 defTime,
+        int128 defaultTime,
         uint32 minTime,
         uint32 maxTime,
-        uint8 interval
+        uint8 minuteInterval
     ) external returns (uint32 time);
     function getDateTime(
         uint32 answerId,
         string prompt,
-        int128 defDatetime,
+        int128 defaultDatetime,
         int128 minDatetime,
         int128 maxDatetime,
-        uint8 interval,
+        uint8 minuteInterval,
         int16 inTimeZoneOffset
     ) external returns (int128 datetime, int16 timeZoneOffset);
     function getTimeZoneOffset(uint32 answerId) external returns (int16 timeZoneOffset);
