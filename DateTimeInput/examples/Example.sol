@@ -10,9 +10,9 @@ contract ExampleContract is Debot {
 
     int128 m_datestamp;
     function start() public override {
-        DateTimeInput.getDate(tvm.functionId(setDate), 
+        DateTimeInput.getDate(tvm.functionId(setDate),
             "Choose a day in 2021 from the begining until current day:", 
-            1609448400, int128(now));
+            int128(now), 1609448400, int128(now));
     }
 
     function setDate(int128 date) public {
@@ -21,12 +21,12 @@ contract ExampleContract is Debot {
         m_datestamp = date;
         DateTimeInput.getTime(tvm.functionId(setTime), 
             "Choose a day time (local):", 
-            55800, 86100, 1, 0x7FFF);
+            55800, 55800, 86100, 1);
     }
 
-    function setTime(uint32 time, int16 timeZoneOffset) public {
+    function setTime(uint32 time) public {
         // TODO: continue here
-        Terminal.print(0, format("Time timestamp: {}, time zone: {}", time, timeZoneOffset));
+        Terminal.print(0, format("Time timestamp: {}", time));
 
         Terminal.print(0, format("Date + time : {}", time + m_datestamp));
     }
