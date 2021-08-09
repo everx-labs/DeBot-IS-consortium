@@ -6,7 +6,9 @@
 			"name": "get",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
+				{"name":"prompt","type":"bytes"},
+				{"name":"permitted","type":"bytes[]"},
+				{"name":"banned","type":"bytes[]"}
 			],
 			"outputs": [
 				{"name":"value","type":"bytes"}
@@ -16,7 +18,9 @@
 			"name": "select",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"prompt","type":"bytes"}
+				{"name":"prompt","type":"bytes"},
+				{"name":"permitted","type":"bytes[]"},
+				{"name":"banned","type":"bytes[]"}
 			],
 			"outputs": [
 				{"name":"value","type":"bytes"}

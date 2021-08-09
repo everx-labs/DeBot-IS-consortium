@@ -9,7 +9,7 @@
 
 ## Description
 
-Allows to input the country code (ISO 3166-1 alpha-2).
+Allows you to input the country code (ISO 3166-1 alpha-2) and customize the list of countries.
 
 ## Functions
 
@@ -24,6 +24,10 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input
 
+    permitted: string[] - if not empty, list of country codes permitted for input
+
+    banned: string[] - if not empty, list of country codes banned for input
+
 returns:
 
     value: string - country code (ISO 3166-1 alpha-2) entered by user
@@ -36,6 +40,10 @@ arguments:
 
     prompt: bytes - utf-8 string to print to the user before input
 
+    permitted: string[] - if not empty, country codes from which to create a list
+
+    banned: string[] - if not empty, country codes to exclude from the list
+
 returns:
 
     value: string - country code (ISO 3166-1 alpha-2) selected by user
@@ -44,8 +52,8 @@ returns:
 
 ```jsx
 interface ICountryInput {
-    function get(uint32 answerId, string prompt) external returns (string value);
-    function select(uint32 answerId, string prompt) external returns (string value);
+    function get(uint32 answerId, string prompt, string[] permitted, string[] banned) external returns (string value);
+    function select(uint32 answerId, string prompt, string[] permitted, string[] banned) external returns (string value);
 }
 ```
 
@@ -57,10 +65,10 @@ namespace tvm { namespace schema {
     __interface ICountryInput {
 
         [[internal, answer_id]]
-        string get(string prompt);
+        string get(string prompt, string[] permitted, string[] banned);
 
         [[internal, answer_id]]
-        string select(string prompt);
+        string select(string prompt, string[] permitted, string[] banned);
 
     };
 
