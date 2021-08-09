@@ -32,28 +32,12 @@ returns:
 
     value: string - country code (ISO 3166-1 alpha-2) entered by user
 
-`select` - allows to choose the country code from list.
-
-arguments:
-
-    answerId: uint32 - function id of result callback
-
-    prompt: bytes - utf-8 string to print to the user before input
-
-    permitted: string[] - if not empty, country codes from which to create a list
-
-    banned: string[] - if not empty, country codes to exclude from the list
-
-returns:
-
-    value: string - country code (ISO 3166-1 alpha-2) selected by user
 
 ## Declaration in Solidity
 
 ```jsx
 interface ICountryInput {
     function get(uint32 answerId, string prompt, string[] permitted, string[] banned) external returns (string value);
-    function select(uint32 answerId, string prompt, string[] permitted, string[] banned) external returns (string value);
 }
 ```
 
@@ -66,9 +50,6 @@ namespace tvm { namespace schema {
 
         [[internal, answer_id]]
         string get(string prompt, string[] permitted, string[] banned);
-
-        [[internal, answer_id]]
-        string select(string prompt, string[] permitted, string[] banned);
 
     };
 

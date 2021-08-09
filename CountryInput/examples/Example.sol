@@ -14,11 +14,8 @@ contract ExampleContract is Debot {
         // or if Russia, Bulgaria and Cuba permitted for input:
         // CountryInput.get(tvm.functionId(setCountryCode), "Enter your country code:", ['RU', 'BG', 'CU'], []);
 
-        // or if it wants to show to the user list of the country codes
-        // CountryInput.select(tvm.functionId(setCountryCode), "Select your country:", [], []);
-
         // or if the drop-down list of countries should not include North Korea and Lebanon
-        // CountryInput.select(tvm.functionId(setCountryCode), "Select your country:", [], ['KP', 'LB']);
+        // CountryInput.get(tvm.functionId(setCountryCode), "Enter your country:", [], ['KP', 'LB']);
     }
 
     function setCountryCode(string value) public pure {
