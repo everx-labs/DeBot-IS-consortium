@@ -9,7 +9,9 @@ import "../CountryInput.sol";
 contract ExampleContract is Debot {
 
     function start() public override {
-        CountryInput.get(tvm.functionId(setCountryCode), "Select your country:");
+        CountryInput.get(tvm.functionId(setCountryCode), "Enter your country code:");
+        // or if it wants to show to the user list of the country codes
+        // CountryInput.select(tvm.functionId(setCountryCode), "Select your country:");
     }
 
     function setCountryCode(string value) public pure {

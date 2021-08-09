@@ -16,7 +16,7 @@ Allows to input the country code (ISO 3166-1 alpha-2).
 Since DeBot is a smart contract then all functions work asyncronously by design. It means that they don't return anything despite the fact that all have `returns` value in their specification. Result callback will be called later and it must have arguments defined in `returns` section.
 
 
-`get` - allows to get the country code selected by the user.
+`get` - allows to get the country code entered by the user.
 
 arguments:
 
@@ -26,13 +26,26 @@ arguments:
 
 returns:
 
-    value: string - country code selected by user
+    value: string - country code (ISO 3166-1 alpha-2) entered by user
+
+`select` - allows to choose the country code from list.
+
+arguments:
+
+    answerId: uint32 - function id of result callback
+
+    prompt: bytes - utf-8 string to print to the user before input
+
+returns:
+
+    value: string - country code (ISO 3166-1 alpha-2) selected by user
 
 ## Declaration in Solidity
 
 ```jsx
 interface ICountryInput {
     function get(uint32 answerId, string prompt) external returns (string value);
+    function select(uint32 answerId, string prompt) external returns (string value);
 }
 ```
 
@@ -45,6 +58,9 @@ namespace tvm { namespace schema {
 
         [[internal, answer_id]]
         string get(string prompt);
+
+        [[internal, answer_id]]
+        string select(string prompt);
 
     };
 

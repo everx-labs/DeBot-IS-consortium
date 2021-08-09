@@ -13,6 +13,16 @@
 			]
 		},
 		{
+			"name": "select",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"prompt","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"value","type":"bytes"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],

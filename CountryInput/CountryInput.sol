@@ -3,6 +3,7 @@ pragma ton-solidity >=0.35.0;
 interface ICountryInput {
 
     function get(uint32 answerId, string prompt) external returns (string value);
+    function select(uint32 answerId, string prompt) external returns (string value);
 
 }
 
@@ -16,10 +17,16 @@ library CountryInput {
         ICountryInput(addr).get(answerId, prompt);
     }
 
+    function select(uint32 answerId, string prompt) public pure {
+        address addr = address.makeAddrStd(DEBOT_WC, ID);
+        ICountryInput(addr).select(answerId, prompt);
+    }
+
 }
 
 contract CountryInputABI is ICountryInput {
 
     function get(uint32 answerId, string prompt) external override returns (string value) {}
+    function select(uint32 answerId, string prompt) external override returns (string value) {}
 
 }
