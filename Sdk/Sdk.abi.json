@@ -71,7 +71,7 @@
 			"name": "signHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"sbHandle","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"},
 				{"name":"hash","type":"uint256"}
 			],
 			"outputs": [

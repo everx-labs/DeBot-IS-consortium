@@ -6,7 +6,7 @@ import "../Sdk.sol";
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/UserInfo/UserInfo.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/encryption-box-input/EncryptionBoxInput/EncryptionBoxInput.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/EncryptionBoxInput/EncryptionBoxInput.sol";
 
 contract ExampleContract is Debot {
     address addr = address.makeAddrStd(-1, 0x3333333333333333333333333333333333333333333333333333333333333333);
@@ -60,18 +60,18 @@ contract ExampleContract is Debot {
 	}
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
-        string name, string version, string publisher, string key, string author,
+        string name, string version, string publisher, string caption, string author,
         address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "Sdk interface example";
         version = "0.1.0";
         publisher = "TON Labs";
-        key = "How to use Sdk interface";
+        caption = "How to use Sdk interface";
         author = "TON Labs";
         support = address(0);
         hello = "Hello, i am an example DeBot.";
         language = "en";
-        dabi = "";
+        dabi = m_debotAbi.get();
         icon = "";
     }
 

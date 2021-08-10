@@ -84,7 +84,7 @@ returns:
 arguments: 
 
     answerId: uint32 - function id of result callback.
-    sbHandle: uint32 - signing box handle.
+    boxHandle: uint32 - signing box handle.
     hash: uint256 - data hash to sign.
 
 returns: 
@@ -295,7 +295,7 @@ function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) ex
 function encrypt(uint32 answerId, uint32 boxHandle, bytes data) external returns (uint32 result, bytes encrypted);
 function decrypt(uint32 answerId, uint32 boxHandle, bytes data) external returns (uint32 result, bytes decrypted);
 // signing
-function signHash(uint32 answerId, uint32 sbHandle, uint256 hash) external returns (bytes signature);
+function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external returns (bytes signature);
 // crypto utils
 function genRandom(uint32 answerId, uint32 length) external returns (bytes buffer);
 // string

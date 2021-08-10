@@ -15,7 +15,7 @@ function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) ex
 function encrypt(uint32 answerId, uint32 boxHandle, bytes data) external returns (uint32 result, bytes encrypted);
 function decrypt(uint32 answerId, uint32 boxHandle, bytes data) external returns (uint32 result, bytes decrypted);
 // signing
-function signHash(uint32 answerId, uint32 sbHandle, uint256 hash) external returns (bytes signature);
+function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external returns (bytes signature);
 // crypto utils
 function genRandom(uint32 answerId, uint32 length) external returns (bytes buffer);
 // string
@@ -83,9 +83,9 @@ library Sdk {
         ISdk(addr).decrypt(answerId, boxHandle, data);
     }
 
-    function signHash(uint32 answerId, uint32 sbHandle, uint256 hash) public pure {
+    function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) public pure {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
-        ISdk(addr).signHash(answerId, sbHandle, hash);
+        ISdk(addr).signHash(answerId, boxHandle, hash);
     }
     function genRandom(uint32 answerId, uint32 length) public pure {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
@@ -164,7 +164,7 @@ function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) ex
 function encrypt(uint32 answerId, uint32 boxHandle, bytes data) external override returns (uint32 result, bytes encrypted) {}
 function decrypt(uint32 answerId, uint32 boxHandle, bytes data) external override returns (uint32 result, bytes decrypted) {}
 // signing
-function signHash(uint32 answerId, uint32 sbHandle, uint256 hash) external override returns (bytes signature) {}
+function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external override returns (bytes signature) {}
 // crypto utils
 function genRandom(uint32 answerId, uint32 length) external override returns (bytes buffer) {}
 // string
