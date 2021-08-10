@@ -14,12 +14,12 @@
 			]
 		},
 		{
-			"name": "getSupportedMediatypes",
+			"name": "getSupportedMediaTypes",
 			"inputs": [
 				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
-				{"name":"mediatypes","type":"bytes"}
+				{"name":"mediaTypes","type":"bytes"}
 			]
 		},
 		{

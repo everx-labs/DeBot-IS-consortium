@@ -10,11 +10,11 @@ contract ExampleContract is Debot {
 
     string m_pngBase64;
     function start() public override {
-        Media.getSupportedMediatypes(tvm.functionId(setMediatypes));
+        Media.getSupportedMediaTypes(tvm.functionId(setMediaTypes));
     }
 
-    function setMediatypes(string[] mediatypes) public {
-        for (string mtype: mediatypes) {
+    function setMediaTypes(string[] mediaTypes) public {
+        for (string mtype: mediaTypes) {
             Terminal.print(0, mtype);
         }
         Media.output(tvm.functionId(setResult), "PNG image", format("data:image/png;base64,{}", m_pngBase64));

@@ -2,13 +2,13 @@ pragma ton-solidity >= 0.40.0;
 
 enum MediaStatus {
     Success,
-    UnsupportedMediatype,
+    UnsupportedMediaType,
     InvalidDataScheme
 }
 
 interface IMedia {
     function output(uint32 answerId, string prompt, string data) external returns (MediaStatus result);
-    function getSupportedMediatypes(uint32 answerId) external returns (string mediatypes);
+    function getSupportedMediaTypes(uint32 answerId) external returns (string mediaTypes);
 }
 
 library Media {
@@ -21,9 +21,9 @@ library Media {
         IMedia(addr).output(answerId, prompt, data);
     }
 
-    function getSupportedMediatypes(uint32 answerId) public pure {
+    function getSupportedMediaTypes(uint32 answerId) public pure {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
-        IMedia(addr).getSupportedMediatypes(answerId);
+        IMedia(addr).getSupportedMediaTypes(answerId);
     }
 
 }
@@ -31,7 +31,7 @@ library Media {
 contract MediaABI is IMedia {
 
     function output(uint32 answerId, string prompt, string data) external override returns (MediaStatus result) {}
-    function getSupportedMediatypes(uint32 answerId) external override returns (string mediatypes) {}
+    function getSupportedMediaTypes(uint32 answerId) external override returns (string mediaTypes) {}
 
 }
 
