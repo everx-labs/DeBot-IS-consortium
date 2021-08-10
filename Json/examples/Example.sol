@@ -1,10 +1,9 @@
-pragma ton-solidity >=0.40.0;
+pragma ton-solidity >=0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-// Update paths to next files:
-import "../Debot.sol";
-import "../Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "../Json.sol";
 
 contract Example is Debot {
@@ -46,23 +45,17 @@ contract Example is Debot {
     }
 
     function getDebotInfo() public functionID(0xDEB) view override returns(
-        string name, string version, string publisher, string key, string author,
+        string name, string version, string publisher, string caption, string author,
         address support, string hello, string language, string dabi, bytes icon) {
-        name = "Test DeBot 7";
+        name = "Json example DeBot";
         version = "0.1.0";
         publisher = "TON Labs";
-        key = "Test for Json interface";
+        caption = "Test for Json interface";
         author = "TON Labs";
         support = address(0);
-        hello = "Test DeBot 7";
+        hello = "Hello, i am an example DeBot";
         language = "en";
         dabi = m_debotAbi.get();
         icon = "";
     }
-
-    function getVersion() public override returns (string name, uint24 semver) {
-        name = "Test DeBot 7";
-        semver = 1 << 8;
-    }
-
 }

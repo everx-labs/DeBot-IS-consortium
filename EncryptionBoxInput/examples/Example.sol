@@ -110,13 +110,13 @@ contract ExampleContract is Debot {
     }
 
     function getDebotInfo() public functionID(0xDEB) override view returns(
-        string name, string version, string publisher, string key, string author,
+        string name, string version, string publisher, string caption, string author,
         address support, string hello, string language, string dabi, bytes icon
     ) {
         name = "EncryptionBoxInput example DeBot";
         version = "0.1.0";
         publisher = "TON Labs";
-        key = "How to use EncryptionBoxInput interface";
+        caption = "How to use EncryptionBoxInput interface";
         author = "TON Labs";
         support = address(0);
         hello = "Hello, i am an example DeBot.";

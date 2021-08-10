@@ -1,9 +1,9 @@
-pragma ton-solidity >=0.40.0;
+pragma ton-solidity >=0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../Debot.sol";
-import "../Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "../Network.sol";
 
 contract Example is Debot {
@@ -31,12 +31,12 @@ contract Example is Debot {
     }
 
     function getDebotInfo() public functionID(0xDEB) view override returns(
-        string name, string version, string publisher, string key, string author,
+        string name, string version, string publisher, string caption, string author,
         address support, string hello, string language, string dabi, bytes icon) {
         name = "Network Example";
         version = "0.1.0";
         publisher = "TON Labs";
-        key = "Example Debot for Network Interface";
+        caption = "Example Debot for Network Interface";
         author = "TON Labs";
         support = address(0);
         hello = "Hello, I'm example DeBot.";
