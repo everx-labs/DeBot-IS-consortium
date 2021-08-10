@@ -25,7 +25,7 @@ returns:
 
 	result: MediaStatus - status of media output.
 
-`getSupportedMediatypes` - returns array of supported mediatypes.
+`getSupportedMediaTypes` - returns array of supported media types.
 
 arguments:
 
@@ -33,20 +33,20 @@ arguments:
     
 returns:
 
-	mediatypes: bytes[] - array of strings with supported mediatypes. Each string is in the format of "type/subtype". E.g. ["image/png", "image/jpg"].
+	mediaTypes: bytes[] - array of strings with supported media types. Each string is in the format of "type/subtype". E.g. ["image/png", "image/jpg"].
 
 ## Declaration in Solidity
 
 ```jsx
 enum MediaStatus {
     Success,
-    UnsupportedMediatype,
+    UnsupportedMediaType,
     InvalidDataScheme
 }
 
 interface IMedia {
     function output(uint32 answerId, string prompt, string data) external returns (MediaStatus result);
-    function getSupportedMediatypes(uint32 answerId) external returns (string mediatypes);
+    function getSupportedMediaTypes(uint32 answerId) external returns (string mediaTypes);
 }
 ```
 
