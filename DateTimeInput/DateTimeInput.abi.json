@@ -20,7 +20,7 @@
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
 				{"name":"prompt","type":"bytes"},
-				{"name":"defaultTime","type":"int128"},
+				{"name":"defaultTime","type":"uint32"},
 				{"name":"minTime","type":"uint32"},
 				{"name":"maxTime","type":"uint32"},
 				{"name":"minuteInterval","type":"uint8"}

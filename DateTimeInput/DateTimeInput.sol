@@ -13,7 +13,7 @@ interface IDateTimeInput {
     function getTime(
         uint32 answerId,
         string prompt,
-        int128 defaultTime,
+        uint32 defaultTime,
         uint32 minTime,
         uint32 maxTime,
         uint8 minuteInterval
@@ -64,8 +64,8 @@ library DateTimeInput {
         uint32 answerId,
         string prompt,
         int128 defaultDatetime,
-        uint32 minDatetime,
-        uint32 maxDatetime,
+        int128 minDatetime,
+        int128 maxDatetime,
         uint8 minuteInterval,
         int16 inTimeZoneOffset
     ) public pure {
@@ -95,7 +95,7 @@ contract DateTimeInputABI is IDateTimeInput {
     function getTime(
         uint32 answerId,
         string prompt,
-        int128 defaultTime,
+        uint32 defaultTime,
         uint32 minTime,
         uint32 maxTime,
         uint8 minuteInterval
