@@ -6,11 +6,12 @@
 			"name": "getBlockHashes",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"sn","type":"uint192"}
+				{"name":"_sn","type":"uint192"}
 			],
 			"outputs": [
 				{"name":"h2","type":"uint256"},
-				{"name":"h3","type":"uint256"}
+				{"name":"h3","type":"uint256"},
+				{"name":"sn","type":"uint192"}
 			]
 		},
 		{
@@ -61,6 +62,17 @@
 			],
 			"outputs": [
 				{"name":"state","type":"bytes"}
+			]
+		},
+		{
+			"name": "createKeyForHmac",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"p1","type":"bytes"},
+				{"name":"cs","type":"bytes"},
+				{"name":"sn","type":"uint192"}
+			],
+			"outputs": [
 			]
 		},
 		{
