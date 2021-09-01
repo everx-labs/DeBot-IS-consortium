@@ -11,7 +11,7 @@ struct blockHashsRes {
 __interface ISecurityCardManagement {
 
 	[[internal, answer_id]]
-	blockHashRes getBlockHashes(uint192 sn);
+	blockHashRes getBlockHashes();
 	[[internal, answer_id]]
 	uint256 turnOnWallet(uint192 sn, bytes p1, bytes iv, bytes esc);
 	[[internal, answer_id]]

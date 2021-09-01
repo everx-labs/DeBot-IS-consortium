@@ -5,8 +5,7 @@
 		{
 			"name": "getBlockHashes",
 			"inputs": [
-				{"name":"answerId","type":"uint32"},
-				{"name":"_sn","type":"uint192"}
+				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"h2","type":"uint256"},

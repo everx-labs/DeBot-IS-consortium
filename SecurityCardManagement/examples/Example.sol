@@ -14,7 +14,7 @@ contract ExampleContract {
 		uint256 pubkey;
 		bytes recoveryData;
 
-		SecurityCardManagemenet.getBlockHashes(tvm.functionId(setBlockHashes), sn);
+		SecurityCardManagemenet.getBlockHashes(tvm.functionId(setBlockHashes));
 		SecurityCardManagemenet.turnOnWallet(tvm.functionId(setVerify), p1, iv, cs);
 		SecurityCardManagemenet.setRecoveryData(tvm.functionId(setRecoveryRes), recoveryData);
 		SecurityCardManagemenet.getRecoveryData(tvm.functionId(setRecovery));

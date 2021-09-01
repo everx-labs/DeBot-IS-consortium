@@ -21,7 +21,6 @@ The browser should call `getHashes` function from the security card library to g
 arguments:
 
 	answerId: uint32 - function id of result callback
-	sn: uint192 - card serial number
 
 returns:
 
@@ -123,7 +122,7 @@ namespace tvm { namespace schema {
 	__interface ISecurityCardManagement {
 
 		[[internal, answer_id]]
-		blockHashRes getBlockHashes(uint192 sn);
+		blockHashRes getBlockHashes();
 		[[internal, answer_id]]
 		uint256 turnOnWallet(uint192 sn, bytes p1, bytes iv, bytes esc);
 		[[internal, answer_id]]
