@@ -15,26 +15,26 @@ Allows to manage security card.
 
 Since DeBot is a smart contract then all functions work asyncronously by design. It means that they don't return anything despite the fact that all have `returns` value in their specification. Result callback will be called later and it must have arguments defined in `returns` section.
 
-`getBlockHashes` - get H2 and H3 hashes from security card. 
-The browser should call several functions from the security card library to get H2 and H3. The workflow:
-1. get H2 using the getHashOfEncryptedPassword function;
-2. get H3 using getHashOfCommonSecret function.
+`getBlockHashes` - get H2, H3 hashes and serial number from security card.
+The browser should call `getHashes` function from the security card library to get H2, H3 and serial number.
 
-arguments: 
+arguments:
 
-	answerId: uint32  - function id of result callback
+	answerId: uint32 - function id of result callback
 
-returns: 
+returns:
 
 	h2: uint256 - H2 hash
 	h3: uint256 - H3 hash
+	sn: uint192 - card serial number
 
-`turnOnWallet` - verify and setup security card initial data. 
+
+`turnOnWallet` - verify and setup security card initial data.
 Before forwarding the request to a security card, a browser must request a pin code and send it to the card with other data.
 
-arguments: 
+arguments:
 
-	answerId: uint32 - function id of result callback	
+	answerId: uint32 - function id of result callback
 	sn      : uint192 - card serial number
 	p1      : bytes - authentication password (128 bytes)
 	iv      : bytes - vector for AES128 CBC initialization for encrypting P1 (16 bytes)
@@ -48,7 +48,7 @@ returns:
 
 arguments: 
 
-	answerId: uint32 - function id of result callback	
+	answerId: uint32 - function id of result callback
 	recoveryData : bytes - recovery data
 
 returns: 
@@ -59,7 +59,7 @@ returns:
 
 arguments: 
 
-	answerId: uint32 - function id of result callback	
+	answerId: uint32 - function id of result callback
 
 returns: 
 
@@ -69,7 +69,7 @@ returns:
 
 arguments: 
 
-	answerId: uint32 - function id of result callback	
+	answerId: uint32 - function id of result callback
 
 returns: 
 
@@ -79,12 +79,25 @@ returns:
 
 arguments: 
 
-	answerId: uint32 - function id of result callback	
+	answerId: uint32 - function id of result callback
 
 returns: 
 
 	state : string - result of operation
-	
+
+`createKeyForHmac` - create secret key for HMAC SHA256. This key is saved into Android keystore or iOS keychain and then is used by the app to sign APDU commands data fields. 
+
+arguments: 
+
+	answerId: uint32  - function id of result callback
+	p1:       bytes   - authentication password (128 bytes) 
+	cs:       bytes   - common secret(32 bytes)
+	sn:       uint192 - card serial number
+
+returns:
+
+    void
+
 ## Declaration in Solidity
 
 ```jsx
@@ -95,6 +108,7 @@ interface ISecurityCardManagement {
     function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
 	function getSerialNumber(uint32 answerId) external returns (uint192 serialNumber);
 	function getTonWalletAppletState(uint32 answerId) external returns (string state);
+	function createKeyForHmac(uint32 answerId, bytes p1, bytes cs, uint192 sn) external;
 }
 ```
 
@@ -103,27 +117,30 @@ interface ISecurityCardManagement {
 ```cpp
 namespace tvm { namespace schema {
 
-struct blockHashRes {
-	uint256 h2;
-	uint256 h3;
-};
+	struct blockHashRes {
+		uint256 h2;
+		uint256 h3;
+		uint192 sn;
+	};
 
-__interface ISecurityCardManagement {
+	__interface ISecurityCardManagement {
 
-	[[internal, answer_id]]
-	blockHashRes getBlockHashes(uint192 sn);
-	[[internal, answer_id]]
-	uint256 turnOnWallet(uint192 sn, bytes p1, bytes iv, bytes esc);
-	[[internal, answer_id]]
-	bool_t setRecoveryData(bytes recoveryData);
-	[[internal, answer_id]]
-	bytes getRecoveryData();
-	[[internal, answer_id]]
-	uint192 getSerialNumber();
-	[[internal, answer_id]]
-	bytes getTonWalletAppletState();
+		[[internal, answer_id]]
+		blockHashRes getBlockHashes();
+		[[internal, answer_id]]
+		uint256 turnOnWallet(uint192 sn, bytes p1, bytes iv, bytes esc);
+		[[internal, answer_id]]
+		bool_t setRecoveryData(bytes recoveryData);
+		[[internal, answer_id]]
+		bytes getRecoveryData();
+		[[internal, answer_id]]
+		uint192 getSerialNumber();
+		[[internal, answer_id]]
+		bytes getTonWalletAppletState();
+		[[internal, answer_id]]
+		void createKeyForHmac(bytes p1, bytes cs, uint192 sn);
 
-}
+	}
 };
 ```
 

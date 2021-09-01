@@ -5,12 +5,13 @@ namespace tvm { namespace schema {
 struct blockHashsRes {
 	uint256 h2;
 	uint256 h3;
+	uint192 sn;
 };
 
 __interface ISecurityCardManagement {
 
 	[[internal, answer_id]]
-	blockHashRes getBlockHashes(uint192 sn);
+	blockHashRes getBlockHashes();
 	[[internal, answer_id]]
 	uint256 turnOnWallet(uint192 sn, bytes p1, bytes iv, bytes esc);
 	[[internal, answer_id]]
@@ -21,6 +22,7 @@ __interface ISecurityCardManagement {
 	uint192 getSerialNumber();
 	[[internal, answer_id]]
 	bytes getTonWalletAppletState();
+	[[internal, answer_id]]
+	void createKeyForHmac(bytes p1, bytes cs, uint192 sn);
 }
 };
-
