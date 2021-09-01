@@ -94,6 +94,10 @@ arguments:
 	cs:       bytes   - common secret(32 bytes)
 	sn:       uint192 - card serial number
 
+returns:
+
+    void
+
 ## Declaration in Solidity
 
 ```jsx
