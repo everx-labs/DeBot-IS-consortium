@@ -1,4 +1,4 @@
-pragma ton-solidity >=0.44.0;
+pragma ton-solidity <=0.47.0;
 
 interface IBase64 {
 
