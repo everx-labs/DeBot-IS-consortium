@@ -1,0 +1,30 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "collection",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"collectionType","type":"uint8"},
+				{"name":"queryFilter","type":"bytes"},
+				{"name":"limit","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"status","type":"uint8"},
+				{"components":[{"name":"root","type":"cell"}],"name":"objects","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
