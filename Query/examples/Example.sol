@@ -10,26 +10,41 @@ import {TonMessageLib} from "../TonMessageLib.sol";
 contract ExampleContract is Debot {
 
     using TonMessageLib for TvmCell;
-        
+    
+    uint32 m_limit;
+
     function start() public override {
+        m_limit = 50;
         Query.collection(
             tvm.functionId(setQueryResult), 
             Collection.Messages, 
             format("{ src: { eq: \"{}\" } msg_type: { eq: 0 } }", address(this)), 
-            50
+            m_limit,
+            0
         );
     }
 
-    function setQueryResult(QueryStatus status, Object[] objects) public {
+    function setQueryResult(QueryStatus status, Object[] objects, uint256 nextId) public {
         if (status != QueryStatus.Success) {
             Terminal.print(tvm.functionId(Debot.start), "Accounts query failed.");
             return;
         }
 
-        Terminal.print(0, format("I've sent {} internal messages:", objects.length));
-        for (Object obj: objects) {
-            TvmCell message = obj.root;
-            Terminal.print(0, format("{:t} tons to address {}", message.balance(), message.dst()));
+        if (objects.length != 0) {
+            for (Object obj: objects) {
+                TvmCell message = obj.root;
+                Terminal.print(0, format("Sent {:t} tons to address {}", message.balance(), message.dst()));
+            }
+
+            Query.collection(
+                tvm.functionId(setQueryResult),
+                Collection.Messages,
+                format("{ src: { eq: \"{}\" } msg_type: { eq: 0 } }", address(this)),
+                m_limit,
+                nextId
+            );
+        } else {
+            Terminal.print(0, "Done.");
         }
     }
 

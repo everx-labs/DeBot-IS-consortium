@@ -8,11 +8,13 @@
 				{"name":"answerId","type":"uint32"},
 				{"name":"collectionType","type":"uint8"},
 				{"name":"queryFilter","type":"bytes"},
-				{"name":"limit","type":"uint32"}
+				{"name":"limit","type":"uint32"},
+				{"name":"paginationId","type":"uint256"}
 			],
 			"outputs": [
 				{"name":"status","type":"uint8"},
-				{"components":[{"name":"root","type":"cell"}],"name":"objects","type":"tuple[]"}
+				{"components":[{"name":"root","type":"cell"}],"name":"objects","type":"tuple[]"},
+				{"name":"nextId","type":"uint256"}
 			]
 		},
 		{

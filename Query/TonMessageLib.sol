@@ -55,13 +55,13 @@ library TonMessageLib {
             }
         }
         uint eitherbitBody = slice.loadUnsigned(1);
-        TvmSlice body;
+        TvmSlice sbody;
         if (eitherbitBody == 0) {
-            body = slice;
+            sbody = slice;
         } else {
-            body = slice.loadRefAsSlice();
+            sbody = slice.loadRefAsSlice();
         }
-        return body;
+        return sbody;
     }
 
     //

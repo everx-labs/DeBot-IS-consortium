@@ -6,7 +6,7 @@
 
 | Name      | ID                                                                |
 | :---------| :---------------------------------------------------------------- |
-| Query     | b49e3d1b18b039effe4a8f2a3b52c696d10e851f438bf64d8c2924daa2886812  |
+| Query     | 5c6fd81616cdfb963632109c42144a3a885c8d0f2e8deb5d8e15872fb92f2811  |
 
 
 ## Description
@@ -26,11 +26,13 @@ arguments:
         See Query.sol for details.
     queryFilter: bytes - utf-8 string with object query.
     limit: uint32 - maximum number of objects that can be returned in result array.
+    paginationId: uint256 - id for pagination. Should be 0 for the first query.
 
 returns:
 
 	status: uint8 - on of the `QueryStatus` variants. See `Query.sol` for details.
     objects: Objects[] - array of cells. Every cell is a root of tree of cells and contains data structure according to `CollectionType` variant: message, transaction, account.
+    nextId: uint256 - next pagination Id to continue receiving query results.
 
 ## Declaration in Solidity
 
@@ -60,8 +62,9 @@ interface IQuery {
         uint32 answerId,
         Collection collectionType,
         string queryFilter,
-        uint32 limit
-    ) external returns (QueryStatus status, Object[] objects);
+        uint32 limit,
+        uint256 paginationId
+    ) external returns (QueryStatus status, Object[] objects, uint256 nextId);
 
 }
 ```
