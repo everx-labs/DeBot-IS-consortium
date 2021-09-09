@@ -68,6 +68,17 @@
 			]
 		},
 		{
+			"name": "getEncryptionBoxInfo",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"components":[{"name":"hdpath","type":"bytes"},{"name":"algorithm","type":"bytes"},{"name":"options","type":"bytes"},{"name":"publicInfo","type":"bytes"}],"name":"info","type":"tuple"}
+			]
+		},
+		{
 			"name": "signHash",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
