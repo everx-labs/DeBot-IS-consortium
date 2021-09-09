@@ -79,6 +79,16 @@
 			]
 		},
 		{
+			"name": "getSigningBoxInfo",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"key","type":"uint256"}
+			]
+		},
+		{
 			"name": "genRandom",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
