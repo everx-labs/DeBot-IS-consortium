@@ -96,6 +96,7 @@
 				{"name":"boxHandle","type":"uint32"}
 			],
 			"outputs": [
+				{"name":"result","type":"uint32"},
 				{"name":"key","type":"uint256"}
 			]
 		},

@@ -25,7 +25,7 @@ function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) external return
 // signing
 function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external returns (bytes signature);
 // signing box info
-function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) external returns (uint256 key);
+function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) external returns (uint32 result, uint256 key);
 // crypto utils
 function genRandom(uint32 answerId, uint32 length) external returns (bytes buffer);
 // string
@@ -184,7 +184,7 @@ function decrypt(uint32 answerId, uint32 boxHandle, bytes data) external overrid
 function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) external override returns (uint32 result, EncryptionBoxInfoResult info) {}
 // signing
 function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external override returns (bytes signature) {}
-function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) external override returns (uint256 key) {}
+function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) external override returns (uint32 result, uint256 key) {}
 // crypto utils
 function genRandom(uint32 answerId, uint32 length) external override returns (bytes buffer) {}
 // string

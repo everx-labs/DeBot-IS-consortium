@@ -28,7 +28,14 @@ contract ExampleContract is Debot {
     function setSigningBox(uint32 handle) public {
         string signingData = "Data to sign";
         m_sbHandle = handle;
+        Sdk.getSigningBoxInfo(tvm.functionId(checkSingingBoxInfo), handle);
         Sdk.signHash(tvm.functionId(setSign), handle, tvm.hash(bytes(signingData)));
+    }
+
+    function checkSingingBoxInfo(uint32 result, uint256 key) public {
+        // TODO: use box public key
+        require(result == 0);
+        Terminal.print(0, format("Signing public key: {}", key));
     }
 
 	function setBalance(uint128 nanotokens) public {
