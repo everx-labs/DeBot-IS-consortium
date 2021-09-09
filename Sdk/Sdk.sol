@@ -5,6 +5,13 @@ struct AccData {
     TvmCell data;
 }
 
+struct EncryptionBoxInfoResult {
+    string hdpath;
+    string algorithm;
+    string options;
+    string publicInfo;
+}
+
 interface ISdk {
 // accounts
 function getBalance(uint32 answerId, address addr) external returns (uint128 nanotokens);
@@ -14,6 +21,7 @@ function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) ex
 // encryption
 function encrypt(uint32 answerId, uint32 boxHandle, bytes data) external returns (uint32 result, bytes encrypted);
 function decrypt(uint32 answerId, uint32 boxHandle, bytes data) external returns (uint32 result, bytes decrypted);
+function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) external returns (uint32 result, EncryptionBoxInfoResult info);
 // signing
 function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external returns (bytes signature);
 // signing box info
@@ -83,6 +91,10 @@ library Sdk {
     function decrypt(uint32 answerId, uint32 boxHandle, bytes data) public pure {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).decrypt(answerId, boxHandle, data);
+    }
+    function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) public pure {
+        address addr = address.makeAddrStd(DEBOT_WC, ID);
+        ISdk(addr).getEncryptionBoxInfo(answerId, boxHandle);
     }
 
     function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) public pure {
@@ -169,6 +181,7 @@ function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) ex
 // encryption
 function encrypt(uint32 answerId, uint32 boxHandle, bytes data) external override returns (uint32 result, bytes encrypted) {}
 function decrypt(uint32 answerId, uint32 boxHandle, bytes data) external override returns (uint32 result, bytes decrypted) {}
+function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) external override returns (uint32 result, EncryptionBoxInfoResult info) {}
 // signing
 function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) external override returns (bytes signature) {}
 function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) external override returns (uint256 key) {}
