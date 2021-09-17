@@ -19,9 +19,7 @@ struct QueryOrderBy {
 
 enum QueryStatus {
     Success,
-    InvalidFilter,
-    InvalidLimit,
-    InvalidSorting,
+    FilterError,
     NetworkError,
     UnknownError
 }
