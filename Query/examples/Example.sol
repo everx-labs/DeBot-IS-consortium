@@ -28,7 +28,7 @@ contract ExampleContract is Debot {
 
     function setQueryResult(QueryStatus status, JsonLib.Value[] objects) public {
         if (status != QueryStatus.Success) {
-            Terminal.print(tvm.functionId(Debot.start), "Accounts query failed.");
+            Terminal.print(tvm.functionId(Debot.start), "Messages query failed.");
             return;
         }
 
