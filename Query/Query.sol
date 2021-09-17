@@ -1,5 +1,5 @@
 pragma ton-solidity >= 0.47.0;
-import "../libraries/JsonLib.sol";
+import "JsonLib.sol";
 
 enum QueryCollection {
     Accounts,
