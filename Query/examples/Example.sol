@@ -2,10 +2,8 @@ pragma ton-solidity >=0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-//import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-//import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
-import "Debot.sol";
-import "Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "../Query.sol";
 import "../../libraries/JsonLib.sol";
 
