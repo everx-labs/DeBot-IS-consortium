@@ -14,7 +14,7 @@
 			],
 			"outputs": [
 				{"name":"status","type":"uint8"},
-				{"components":[{"name":"kind","type":"uint8"},{"name":"value","type":"bytes"},{"name":"object","type":"map(uint256,cell)"},{"components":[{"name":"cell","type":"cell"}],"name":"array","type":"tuple[]"}],"name":"objects","type":"tuple[]"}
+				{"components":[{"name":"kind","type":"uint8"},{"name":"value","type":"cell"},{"name":"object","type":"map(uint256,cell)"},{"components":[{"name":"cell","type":"cell"}],"name":"array","type":"tuple[]"}],"name":"objects","type":"tuple[]"}
 			]
 		},
 		{

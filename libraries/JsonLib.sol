@@ -7,7 +7,8 @@ library JsonLib {
         Bool,
         Array,
         Object,
-        Null
+        Null,
+        Cell
     }
 
     struct Cell {
@@ -16,7 +17,7 @@ library JsonLib {
 
     struct Value {
         ValKind kind;
-        bytes value;
+        TvmCell value;
         mapping(uint256 => TvmCell) object;
         Cell[] array;
     }
@@ -29,7 +30,7 @@ library JsonLib {
         optional(int) num;
         if (val.kind == ValKind.Number) {
             num = val.value.toSlice().decode(int);
-        } 
+        }
         return num;
     }
 
@@ -49,10 +50,18 @@ library JsonLib {
         return boolean;
     }
 
+    function as_cell(Value val) internal pure returns (optional(TvmCell)) {
+        optional(TvmCell) cell;
+        if (val.kind == ValKind.Cell) {
+            cell = val.value;
+        }
+        return cell;
+    }
+
     function as_object(Value val) internal pure returns (optional(mapping(uint256 => TvmCell))) {
         optional(mapping(uint256 => TvmCell)) object;
         if (val.kind == ValKind.Object) {
-            object = val.value.toSlice().decode(mapping(uint256 => TvmCell));
+            object = val.object;
         } 
         return object;
     }
