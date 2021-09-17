@@ -49,15 +49,20 @@ library JsonLib {
         return boolean;
     }
 
-    function as_object(Value val) internal pure returns (optional(mapping(uint256 => Value))) {
-        optional(mapping(uint256 => Value)) object;
+    function as_object(Value val) internal pure returns (optional(mapping(uint256 => TvmCell))) {
+        optional(mapping(uint256 => TvmCell)) object;
         if (val.kind == ValKind.Object) {
-            object = val.value.toSlice().decode(mapping(uint256 => Value));
+            object = val.value.toSlice().decode(mapping(uint256 => TvmCell));
         } 
         return object;
     }
 
-    function get(mapping(uint256 => Value) object, string key) internal pure returns (optional(Value)) {
-        return object.fetch(sha256(key));
+    function get(mapping(uint256 => TvmCell) object, string key) internal pure returns (optional(Value)) {
+        optional(TvmCell) cell = object.fetch(sha256(key));
+        optional(Value) val; 
+        if (cell.hasValue()) {
+            val = cell.get().toSlice().decode(Value);
+        }
+        return val;
     }
 }
