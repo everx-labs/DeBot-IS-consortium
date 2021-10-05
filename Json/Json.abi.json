@@ -1,0 +1,38 @@
+{
+	"ABI version": 2,
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "deserialize",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"json","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"bool"}
+			]
+		},
+		{
+			"name": "parse",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"json","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"bool"},
+				{"components":[{"name":"kind","type":"uint8"},{"name":"value","type":"cell"},{"name":"object","type":"map(uint256,cell)"},{"components":[{"name":"cell","type":"cell"}],"name":"array","type":"tuple[]"}],"name":"obj","type":"tuple"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
