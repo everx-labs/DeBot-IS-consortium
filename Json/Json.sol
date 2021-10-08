@@ -1,5 +1,5 @@
 pragma ton-solidity >= 0.47.0;
-import "../libraries/JsonLib.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/libraries/JsonLib.sol";
 
 interface IJson {
 
