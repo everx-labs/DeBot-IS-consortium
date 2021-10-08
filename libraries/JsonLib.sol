@@ -66,6 +66,14 @@ library JsonLib {
         return object;
     }
 
+    function as_array(Value val) internal pure returns (optional(Cell[])) {
+        optional(Cell[]) array;
+        if (val.kind == ValKind.Array) {
+            array = val.array;
+        } 
+        return array;
+    }
+
     function get(mapping(uint256 => TvmCell) object, string key) internal pure returns (optional(Value)) {
         optional(TvmCell) cell = object.fetch(sha256(key));
         optional(Value) val; 
@@ -73,5 +81,16 @@ library JsonLib {
             val = cell.get().toSlice().decode(Value);
         }
         return val;
+    }
+
+    function decodeObjectValue(TvmCell cell) internal pure returns (optional(Value) val, optional(string) name) {
+        TvmSlice slice = cell.toSlice();
+        val = slice.decode(Value);
+        name = slice.decode(string);
+    }
+
+    function decodeArrayValue(TvmCell cell) internal pure returns (optional(Value) val) {
+        TvmSlice slice = cell.toSlice();
+        val = slice.decode(Value);
     }
 }
