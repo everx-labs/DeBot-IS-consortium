@@ -17,6 +17,7 @@ Since DeBot is a smart contract then all functions work asyncronously by design.
 
 `getBlockHashes` - get H2, H3 hashes and serial number from security card.
 The browser should call `getHashes` function from the security card library to get H2, H3 and serial number.
+This will not work if the card applet has the status: "TonWalletApplet is personalized.".
 
 arguments:
 
@@ -98,17 +99,61 @@ returns:
 
     void
 
+`getCardList` - get the list of serial numbers of the cards for which we have keys in Android keystore/iOS keychain.
+The browser should call `getAllSerialNumbers` function from the security card library to get the list of serial numbers of the cards.
+
+arguments: 
+
+	answerId: uint32 - function id of result callback
+
+returns: 
+
+	list : uint192[] - array of serial numbers of the cards
+
+`deleteCard` - delete key for given serialNumber from Android keystore/iOS keychain.
+The browser should call `deleteKeyForHmac` function from the security card library to get operation execution status (and `finishDeleteKeyFromKeyChainAfterInterruption` function if it is necessary).
+
+arguments: 
+
+	answerId: uint32 - function id of result callback
+	sn:       uint192 - serial number of the card to delete
+
+returns: 
+
+	result: bool - result of operation
+
+`isCardExists` - checks whether the key for this serial number exists in the Android keystore/iOS keychain.
+The browser should call `isKeyForHmacExist` function from the security card library to get operation execution status 
+
+arguments: 
+
+	answerId: uint32 - function id of result callback
+	sn:       uint192 - serial number of the card for checking
+
+returns: 
+
+	result: bool - result of operation
+
 ## Declaration in Solidity
 
 ```jsx
 interface ISecurityCardManagement {
-    function getBlockHashes(uint32 answerId) public returns (uint256 h2, uint256 h3); 
-    function turnOnWallet(uint32 answerId, uint192 sn, bytes p1, bytes iv, bytes cs) public returns (uint256 pubkey);
-    function setRecoveryData(uint32 answerId, bytes recoveryData) public return (bool result);
-    function getRecoveryData(uint32 answerId) public return (bytes recoveryData);
+    function getBlockHashes(uint32 answerId) external returns (uint256 h2, uint256 h3, uint192 sn);
+    function turnOnWallet(uint32 answerId, uint192 sn, bytes p1, bytes iv, bytes cs) external returns (uint256 pubkey);
+    function setRecoveryData(uint32 answerId, bytes recoveryData) external returns (bool result);
+    function getRecoveryData(uint32 answerId) external returns (bytes recoveryData);
 	function getSerialNumber(uint32 answerId) external returns (uint192 serialNumber);
 	function getTonWalletAppletState(uint32 answerId) external returns (string state);
-	function createKeyForHmac(uint32 answerId, bytes p1, bytes cs, uint192 sn) external;
+	function createKeyForHmac(
+		uint32 answerId,
+		bytes p1,
+		bytes cs,
+		uint192 sn
+	) external;
+	function getCardList(uint32 answerId) external returns (uint192[] list);
+	function deleteCard(uint32 answerId, uint192 sn) external returns (bool result);
+	function isCardExists(uint32 answerId, uint192 sn) external returns (bool result);
+
 }
 ```
 
@@ -139,6 +184,12 @@ namespace tvm { namespace schema {
 		bytes getTonWalletAppletState();
 		[[internal, answer_id]]
 		void createKeyForHmac(bytes p1, bytes cs, uint192 sn);
+		[[internal, answer_id]]
+		uint192[] getCardList();
+		[[internal, answer_id]]
+		bool_t deleteCard(uint192 sn);
+		[[internal, answer_id]]
+		bool_t isCardExists(uint192 sn);
 
 	}
 };

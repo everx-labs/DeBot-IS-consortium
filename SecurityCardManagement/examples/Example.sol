@@ -19,6 +19,9 @@ contract ExampleContract {
 		SecurityCardManagemenet.setRecoveryData(tvm.functionId(setRecoveryRes), recoveryData);
 		SecurityCardManagemenet.getRecoveryData(tvm.functionId(setRecovery));
 		SecurityCardManagemenet.createKeyForHmac(tvm.functionId(handleKeyCreation), p1, cs, sn);
+		SecurityCardManagemenet.getCardList(tvm.functionId(setSnList));
+		SecurityCardManagemenet.deleteCard(tvm.functionId(checkDeletion), sn);
+		SecurityCardManagemenet.isCardExists(tvm.functionId(checkExisting), sn);
 	}
 
 	function setBlockHashes(uint256 h2, uint256 h3, uint192 sn) public {
@@ -34,6 +37,15 @@ contract ExampleContract {
 	}
 
 	function handleKeyCreation() public {
+	}
+
+	function setSnList(uint192[] list) public {
+	}
+
+	function checkDeletion(bool result) public {
+	}
+
+	function checkExisting(bool result) public {
 	}
 
 }
