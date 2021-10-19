@@ -30,5 +30,7 @@ __interface ISecurityCardManagement {
 	bool_t deleteCard(uint192 sn);
 	[[internal, answer_id]]
 	bool_t isCardExists(uint192 sn);
+	[[internal, answer_id]]
+	uint256 getPublicKey();
 }
 };

@@ -22,6 +22,7 @@ contract ExampleContract {
 		SecurityCardManagemenet.getCardList(tvm.functionId(setSnList));
 		SecurityCardManagemenet.deleteCard(tvm.functionId(checkDeletion), sn);
 		SecurityCardManagemenet.isCardExists(tvm.functionId(checkExisting), sn);
+		SecurityCardManagemenet.getPublicKey(tvm.functionId(setKey));
 	}
 
 	function setBlockHashes(uint256 h2, uint256 h3, uint192 sn) public {
@@ -46,6 +47,9 @@ contract ExampleContract {
 	}
 
 	function checkExisting(bool result) public {
+	}
+
+	function setKey(uint256 pubkey) public {
 	}
 
 }

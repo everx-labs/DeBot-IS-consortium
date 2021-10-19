@@ -99,7 +99,7 @@ returns:
 
     void
 
-`getCardList` - get the list of serial numbers of the cards for which we have keys in Android keystore/iOS keychain.
+`getCardList` - get the list of serial numbers of the user's cards for which we have keys in Android keystore/iOS keychain.
 The browser should call `getAllSerialNumbers` function from the security card library to get the list of serial numbers of the cards.
 
 arguments: 
@@ -134,6 +134,16 @@ returns:
 
 	result: bool - result of operation
 
+`getPublicKey` - allows to get the public key of the card
+
+arguments:
+
+    answerId: uint32 - function id of result callback
+
+returns:
+
+	pubkey: uint256 - public key of the card
+
 ## Declaration in Solidity
 
 ```jsx
@@ -153,6 +163,7 @@ interface ISecurityCardManagement {
 	function getCardList(uint32 answerId) external returns (uint192[] list);
 	function deleteCard(uint32 answerId, uint192 sn) external returns (bool result);
 	function isCardExists(uint32 answerId, uint192 sn) external returns (bool result);
+	function getPublicKey(uint32 answerId) external returns (uint256 pubkey);
 
 }
 ```
@@ -190,6 +201,8 @@ namespace tvm { namespace schema {
 		bool_t deleteCard(uint192 sn);
 		[[internal, answer_id]]
 		bool_t isCardExists(uint192 sn);
+		[[internal, answer_id]]
+		uint256 getPublicKey();
 
 	}
 };

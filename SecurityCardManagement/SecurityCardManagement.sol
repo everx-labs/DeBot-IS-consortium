@@ -16,6 +16,7 @@ interface ISecurityCardManagement {
 	function getCardList(uint32 answerId) external returns (uint192[] list);
 	function deleteCard(uint32 answerId, uint192 sn) external returns (bool result);
 	function isCardExists(uint32 answerId, uint192 sn) external returns (bool result);
+	function getPublicKey(uint32 answerId) external returns (uint256 pubkey);
 
 }
 
@@ -72,6 +73,11 @@ library SecurityCardManagement {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		ISecurityCardManagement(addr).isCardExists(answerId, sn);
 	}
+
+	function getPublicKey(uint32 answerId) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ID);
+		ISecurityCardManagement(addr).getPublicKey(answerId);
+	}
 }
 
 contract SecurityCardManagementABI is ISecurityCardManagement {
@@ -90,4 +96,5 @@ contract SecurityCardManagementABI is ISecurityCardManagement {
 	function getCardList(uint32 answerId) external override returns (uint192[] list) {}
 	function deleteCard(uint32 answerId, uint192 sn) external override returns (bool result) {}
 	function isCardExists(uint32 answerId, uint192 sn) external override returns (bool result) {}
+	function getPublicKey(uint32 answerId) external override returns (uint256 pubkey) {}
 }
