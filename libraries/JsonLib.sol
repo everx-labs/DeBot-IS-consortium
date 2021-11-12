@@ -22,11 +22,11 @@ library JsonLib {
         Cell[] array;
     }
 
-    function is_null(Value val) internal pure returns (bool) {
+    function is_null(Value val) internal returns (bool) {
         return val.kind == ValKind.Null;
     }
 
-    function as_number(Value val) internal pure returns (optional(int)) {
+    function as_number(Value val) internal returns (optional(int)) {
         optional(int) num;
         if (val.kind == ValKind.Number) {
             num = val.value.toSlice().decode(int);
@@ -34,15 +34,15 @@ library JsonLib {
         return num;
     }
 
-    function as_string(Value val) internal pure returns (optional(string)) {
+    function as_string(Value val) internal returns (optional(string)) {
         optional(string) str;
         if (val.kind == ValKind.String) {
             str = val.value.toSlice().decode(string);
-        } 
+        }
         return str;
     }
 
-    function as_bool(Value val) internal pure returns (optional(bool)) {
+    function as_bool(Value val) internal returns (optional(bool)) {
         optional(bool) boolean;
         if (val.kind == ValKind.Bool) {
             boolean = val.value.toSlice().decode(bool);
@@ -50,7 +50,7 @@ library JsonLib {
         return boolean;
     }
 
-    function as_cell(Value val) internal pure returns (optional(TvmCell)) {
+    function as_cell(Value val) internal returns (optional(TvmCell)) {
         optional(TvmCell) cell;
         if (val.kind == ValKind.Cell) {
             cell = val.value;
@@ -58,38 +58,38 @@ library JsonLib {
         return cell;
     }
 
-    function as_object(Value val) internal pure returns (optional(mapping(uint256 => TvmCell))) {
+    function as_object(Value val) internal returns (optional(mapping(uint256 => TvmCell))) {
         optional(mapping(uint256 => TvmCell)) object;
         if (val.kind == ValKind.Object) {
             object = val.object;
-        } 
+        }
         return object;
     }
 
-    function as_array(Value val) internal pure returns (optional(Cell[])) {
+    function as_array(Value val) internal returns (optional(Cell[])) {
         optional(Cell[]) array;
         if (val.kind == ValKind.Array) {
             array = val.array;
-        } 
+        }
         return array;
     }
 
-    function get(mapping(uint256 => TvmCell) object, string key) internal pure returns (optional(Value)) {
+    function get(mapping(uint256 => TvmCell) object, string key) internal returns (optional(Value)) {
         optional(TvmCell) cell = object.fetch(sha256(key));
-        optional(Value) val; 
+        optional(Value) val;
         if (cell.hasValue()) {
             val = cell.get().toSlice().decode(Value);
         }
         return val;
     }
 
-    function decodeObjectValue(TvmCell cell) internal pure returns (optional(Value) val, optional(string) name) {
+    function decodeObjectValue(TvmCell cell) internal returns (optional(Value) val, optional(string) name) {
         TvmSlice slice = cell.toSlice();
         val = slice.decode(Value);
         name = slice.decode(string);
     }
 
-    function decodeArrayValue(TvmCell cell) internal pure returns (optional(Value) val) {
+    function decodeArrayValue(TvmCell cell) internal returns (optional(Value) val) {
         TvmSlice slice = cell.toSlice();
         val = slice.decode(Value);
     }

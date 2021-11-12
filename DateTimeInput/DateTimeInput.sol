@@ -43,7 +43,7 @@ library DateTimeInput {
         int128 defaultDate,
         int128 minDate,
         int128 maxDate
-    ) public pure {
+    ) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IDateTimeInput(addr).getDate(answerId, prompt, defaultDate, minDate, maxDate);
     }
@@ -55,7 +55,7 @@ library DateTimeInput {
         uint32 minTime,
         uint32 maxTime,
         uint8 minuteInterval
-    ) public pure {
+    ) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IDateTimeInput(addr).getTime(answerId, prompt, defaultTime, minTime, maxTime, minuteInterval);
     }
@@ -68,14 +68,14 @@ library DateTimeInput {
         int128 maxDatetime,
         uint8 minuteInterval,
         int16 inTimeZoneOffset
-    ) public pure {
+    ) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IDateTimeInput(addr).getDateTime(
             answerId, prompt, defaultDatetime, minDatetime, maxDatetime, minuteInterval, inTimeZoneOffset
         );
     }
 
-    function getTimeZoneOffset(uint32 answerId) public pure {
+    function getTimeZoneOffset(uint32 answerId) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IDateTimeInput(addr).getTimeZoneOffset(answerId);
     }

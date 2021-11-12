@@ -17,7 +17,7 @@ library Menu {
     uint256 constant ID = 0xac1a4d3ecea232e49783df4a23a81823cdca3205dc58cd20c4db259c25605b48;
     int8 constant DEBOT_WC = -31;
 
-    function select(string title, string description, MenuItem[] items) public pure {
+    function select(string title, string description, MenuItem[] items) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IMenu(addr).select(title, description, items);
     }

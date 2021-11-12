@@ -19,17 +19,17 @@ library QRCode {
     int8 constant DEBOT_WC = -31;
     uint256 constant ID = 0x940c152ddf4f920f742507f461026dc08ac56ed3392944d6d3863a409570056b;
 
-    function scan(uint32 answerId) public pure {
+    function scan(uint32 answerId) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IQRCode(addr).scan(answerId);
     }
 
-    function read(uint32 answerId, string prompt) public pure {
+    function read(uint32 answerId, string prompt) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IQRCode(addr).read(answerId, prompt);
     }
 
-    function draw(uint32 answerId, string prompt, string text) public pure {
+    function draw(uint32 answerId, string prompt, string text) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IQRCode(addr).draw(answerId, prompt, text);
     }

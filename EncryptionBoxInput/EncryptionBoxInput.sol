@@ -14,27 +14,27 @@ library EncryptionBoxInput {
 	uint256 constant ID = 0x5b5f76b54d976d72f1ada3063d1af2e5352edaf1ba86b3b311170d4d81056d61;
 	int8 constant DEBOT_WC = -31;
 
-	function getNaclBox(uint32 answerId, string prompt, bytes nonce, uint256 theirPubkey) public pure {
+	function getNaclBox(uint32 answerId, string prompt, bytes nonce, uint256 theirPubkey) public {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		IEncryptionBoxInput(addr).getNaclBox(answerId, prompt, nonce, theirPubkey);
 	}
 
-    function getNaclSecretBox(uint32 answerId, string prompt, bytes nonce) public pure {
+    function getNaclSecretBox(uint32 answerId, string prompt, bytes nonce) public {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		IEncryptionBoxInput(addr).getNaclSecretBox(answerId, prompt, nonce);
 	}
 
-    function getChaCha20Box(uint32 answerId, string prompt, bytes nonce) public pure {
+    function getChaCha20Box(uint32 answerId, string prompt, bytes nonce) public {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		IEncryptionBoxInput(addr).getChaCha20Box(answerId, prompt, nonce);
 	}
 
-    function getSupportedAlgorithms(uint32 answerId) public pure {
+    function getSupportedAlgorithms(uint32 answerId) public {
 		address addr = address.makeAddrStd(DEBOT_WC, ID);
 		IEncryptionBoxInput(addr).getSupportedAlgorithms(answerId);
 	}
 
-    function remove(uint32 answerId, uint32 handle) public pure {
+    function remove(uint32 answerId, uint32 handle) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
 		IEncryptionBoxInput(addr).remove(answerId, handle);
     }

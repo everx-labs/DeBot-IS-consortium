@@ -67,106 +67,106 @@ library Sdk {
     uint256 constant ID = 0x8fc6454f90072c9f1f6d3313ae1608f64f4a0660c6ae9f42c68b6a79e2a1bc4b;
     int8 constant DEBOT_WC = -31;
 
-    function getBalance(uint32 answerId, address addr) public pure {
+    function getBalance(uint32 answerId, address addr) public {
         address a = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(a).getBalance(answerId, addr);
     }
-    function getAccountType(uint32 answerId, address addr) public pure {
+    function getAccountType(uint32 answerId, address addr) public {
         address a = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(a).getAccountType(answerId, addr);
     }
-    function getAccountCodeHash(uint32 answerId, address addr) public pure {
+    function getAccountCodeHash(uint32 answerId, address addr) public {
         address a = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(a).getAccountCodeHash(answerId, addr);
     }
-    function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) public pure {
+    function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).getAccountsDataByHash(answerId, codeHash, gt);
     }
 
-    function encrypt(uint32 answerId, uint32 boxHandle, bytes data) public pure {
+    function encrypt(uint32 answerId, uint32 boxHandle, bytes data) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).encrypt(answerId, boxHandle, data);
     }
-    function decrypt(uint32 answerId, uint32 boxHandle, bytes data) public pure {
+    function decrypt(uint32 answerId, uint32 boxHandle, bytes data) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).decrypt(answerId, boxHandle, data);
     }
-    function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) public pure {
+    function getEncryptionBoxInfo(uint32 answerId, uint32 boxHandle) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).getEncryptionBoxInfo(answerId, boxHandle);
     }
 
-    function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) public pure {
+    function signHash(uint32 answerId, uint32 boxHandle, uint256 hash) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).signHash(answerId, boxHandle, hash);
     }
-    function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) public pure {
+    function getSigningBoxInfo(uint32 answerId, uint32 boxHandle) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).getSigningBoxInfo(answerId, boxHandle);
     }
-    function genRandom(uint32 answerId, uint32 length) public pure {
+    function genRandom(uint32 answerId, uint32 length) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).genRandom(answerId, length);
     }
 
-    function mnemonicFromRandom(uint32 answerId, uint32 dict, uint32 wordCount) public pure {
+    function mnemonicFromRandom(uint32 answerId, uint32 dict, uint32 wordCount) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).mnemonicFromRandom(answerId, dict, wordCount);
     }
-    function mnemonicVerify(uint32 answerId, string phrase) public pure {
+    function mnemonicVerify(uint32 answerId, string phrase) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).mnemonicVerify(answerId, phrase);
     }
-    function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) public pure {
+    function mnemonicDeriveSignKeys(uint32 answerId, string phrase, string path) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).mnemonicDeriveSignKeys(answerId, phrase, path);
     }
 
     //hdkey
-    function hdkeyXprvFromMnemonic(uint32 answerId, string phrase)public pure {
+    function hdkeyXprvFromMnemonic(uint32 answerId, string phrase)public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).hdkeyXprvFromMnemonic(answerId, phrase);
     }
-    function hdkeyDeriveFromXprv(uint32 answerId, string inXprv, uint32 childIndex, bool hardened) public pure {
+    function hdkeyDeriveFromXprv(uint32 answerId, string inXprv, uint32 childIndex, bool hardened) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).hdkeyDeriveFromXprv(answerId, inXprv, childIndex, hardened);
     }
-    function hdkeyDeriveFromXprvPath(uint32 answerId, string inXprv, string path) public pure {
+    function hdkeyDeriveFromXprvPath(uint32 answerId, string inXprv, string path) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).hdkeyDeriveFromXprvPath(answerId, inXprv, path);
     }
-    function hdkeySecretFromXprv(uint32 answerId, string xprv) public pure {
+    function hdkeySecretFromXprv(uint32 answerId, string xprv) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).hdkeySecretFromXprv(answerId, xprv);
     }
-    function hdkeyPublicFromXprv(uint32 answerId, string xprv) public pure {
+    function hdkeyPublicFromXprv(uint32 answerId, string xprv) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).hdkeyPublicFromXprv(answerId, xprv);
     }
-    function naclSignKeypairFromSecretKey(uint32 answerId, uint256 secret) public pure {
+    function naclSignKeypairFromSecretKey(uint32 answerId, uint256 secret) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).naclSignKeypairFromSecretKey(answerId, secret);
     }
 
-    function substring(uint32 answerId, string str, uint32 start, uint32 count) public pure {
+    function substring(uint32 answerId, string str, uint32 start, uint32 count) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).substring(answerId, str, start, count);
     }
 
-    function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public pure {
+    function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).naclBox(answerId, decrypted, nonce, publicKey, secretKey);
     }
-    function naclBoxOpen(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public pure {
+    function naclBoxOpen(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).naclBoxOpen(answerId, decrypted, nonce, publicKey, secretKey);
     }
-    function naclKeypairFromSecret(uint32 answerId, uint256 secret) public pure {
+    function naclKeypairFromSecret(uint32 answerId, uint256 secret) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).naclKeypairFromSecret(answerId, secret);
     }
-    function chacha20(uint32 answerId, bytes data, bytes nonce, uint256 key) public pure {
+    function chacha20(uint32 answerId, bytes data, bytes nonce, uint256 key) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         ISdk(addr).chacha20(answerId, data, nonce, key);
     }
