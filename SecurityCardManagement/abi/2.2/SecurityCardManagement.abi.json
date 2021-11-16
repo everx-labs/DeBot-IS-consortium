@@ -1,0 +1,133 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "getBlockHashes",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"h2","type":"uint256"},
+				{"name":"h3","type":"uint256"},
+				{"name":"sn","type":"uint192"}
+			]
+		},
+		{
+			"name": "turnOnWallet",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"sn","type":"uint192"},
+				{"name":"p1","type":"bytes"},
+				{"name":"iv","type":"bytes"},
+				{"name":"cs","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"pubkey","type":"uint256"}
+			]
+		},
+		{
+			"name": "setRecoveryData",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"recoveryData","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"bool"}
+			]
+		},
+		{
+			"name": "getRecoveryData",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"recoveryData","type":"bytes"}
+			]
+		},
+		{
+			"name": "getSerialNumber",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"serialNumber","type":"uint192"}
+			]
+		},
+		{
+			"name": "getTonWalletAppletState",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"state","type":"string"}
+			]
+		},
+		{
+			"name": "createKeyForHmac",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"p1","type":"bytes"},
+				{"name":"cs","type":"bytes"},
+				{"name":"sn","type":"uint192"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getCardList",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"list","type":"uint192[]"}
+			]
+		},
+		{
+			"name": "deleteCard",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"sn","type":"uint192"}
+			],
+			"outputs": [
+				{"name":"result","type":"bool"}
+			]
+		},
+		{
+			"name": "isCardExists",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"sn","type":"uint192"}
+			],
+			"outputs": [
+				{"name":"result","type":"bool"}
+			]
+		},
+		{
+			"name": "getPublicKey",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"pubkey","type":"uint256"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"}
+	]
+}

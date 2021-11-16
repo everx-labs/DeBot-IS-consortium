@@ -1,0 +1,289 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "getBalance",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"name":"nanotokens","type":"uint128"}
+			]
+		},
+		{
+			"name": "getAccountType",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"name":"acc_type","type":"int8"}
+			]
+		},
+		{
+			"name": "getAccountCodeHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"name":"code_hash","type":"uint256"}
+			]
+		},
+		{
+			"name": "getAccountsDataByHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"codeHash","type":"uint256"},
+				{"name":"gt","type":"address"}
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"address"},{"name":"data","type":"cell"}],"name":"accounts","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "encrypt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"},
+				{"name":"data","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"name":"encrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "decrypt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"},
+				{"name":"data","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"name":"decrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "getEncryptionBoxInfo",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"components":[{"name":"hdpath","type":"string"},{"name":"algorithm","type":"string"},{"name":"options","type":"string"},{"name":"publicInfo","type":"string"}],"name":"info","type":"tuple"}
+			]
+		},
+		{
+			"name": "signHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"},
+				{"name":"hash","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"signature","type":"bytes"}
+			]
+		},
+		{
+			"name": "getSigningBoxInfo",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"boxHandle","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"result","type":"uint32"},
+				{"name":"key","type":"uint256"}
+			]
+		},
+		{
+			"name": "genRandom",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"length","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"buffer","type":"bytes"}
+			]
+		},
+		{
+			"name": "substring",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"str","type":"string"},
+				{"name":"start","type":"uint32"},
+				{"name":"count","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"substr","type":"string"}
+			]
+		},
+		{
+			"name": "mnemonicFromRandom",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"dict","type":"uint32"},
+				{"name":"wordCount","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"phrase","type":"string"}
+			]
+		},
+		{
+			"name": "mnemonicVerify",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"phrase","type":"string"}
+			],
+			"outputs": [
+				{"name":"valid","type":"bool"}
+			]
+		},
+		{
+			"name": "mnemonicDeriveSignKeys",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"phrase","type":"string"},
+				{"name":"path","type":"string"}
+			],
+			"outputs": [
+				{"name":"pub","type":"uint256"},
+				{"name":"sec","type":"uint256"}
+			]
+		},
+		{
+			"name": "hdkeyXprvFromMnemonic",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"phrase","type":"string"}
+			],
+			"outputs": [
+				{"name":"xprv","type":"string"}
+			]
+		},
+		{
+			"name": "hdkeyDeriveFromXprv",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"inXprv","type":"string"},
+				{"name":"childIndex","type":"uint32"},
+				{"name":"hardened","type":"bool"}
+			],
+			"outputs": [
+				{"name":"xprv","type":"string"}
+			]
+		},
+		{
+			"name": "hdkeyDeriveFromXprvPath",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"inXprv","type":"string"},
+				{"name":"path","type":"string"}
+			],
+			"outputs": [
+				{"name":"xprv","type":"string"}
+			]
+		},
+		{
+			"name": "hdkeySecretFromXprv",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"xprv","type":"string"}
+			],
+			"outputs": [
+				{"name":"sec","type":"uint256"}
+			]
+		},
+		{
+			"name": "hdkeyPublicFromXprv",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"xprv","type":"string"}
+			],
+			"outputs": [
+				{"name":"pub","type":"uint256"}
+			]
+		},
+		{
+			"name": "naclSignKeypairFromSecretKey",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"secret","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"sec","type":"uint256"},
+				{"name":"pub","type":"uint256"}
+			]
+		},
+		{
+			"name": "naclBox",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"decrypted","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"publicKey","type":"uint256"},
+				{"name":"secretKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"encrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "naclBoxOpen",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"encrypted","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"publicKey","type":"uint256"},
+				{"name":"secretKey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"decrypted","type":"bytes"}
+			]
+		},
+		{
+			"name": "naclKeypairFromSecret",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"secret","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"publicKey","type":"uint256"},
+				{"name":"secretKey","type":"uint256"}
+			]
+		},
+		{
+			"name": "chacha20",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"data","type":"bytes"},
+				{"name":"nonce","type":"bytes"},
+				{"name":"key","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"output","type":"bytes"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"}
+	]
+}

@@ -28,13 +28,6 @@
 			"outputs": [
 				{"name":"handle","type":"uint32"}
 			]
-		},
-		{
-			"name": "constructor",
-			"inputs": [
-			],
-			"outputs": [
-			]
 		}
 	],
 	"data": [

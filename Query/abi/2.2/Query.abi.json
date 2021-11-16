@@ -1,0 +1,38 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time"],
+	"functions": [
+		{
+			"name": "collection",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"collectionType","type":"uint8"},
+				{"name":"queryFilter","type":"string"},
+				{"name":"returnFilter","type":"string"},
+				{"name":"limit","type":"uint32"},
+				{"components":[{"name":"path","type":"string"},{"name":"direction","type":"uint8"}],"name":"orderBy","type":"tuple"}
+			],
+			"outputs": [
+				{"name":"status","type":"uint8"},
+				{"components":[{"name":"kind","type":"uint8"},{"name":"value","type":"cell"},{"name":"object","type":"map(uint256,cell)"},{"components":[{"name":"cell","type":"cell"}],"name":"array","type":"tuple[]"}],"name":"objects","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"}
+	]
+}

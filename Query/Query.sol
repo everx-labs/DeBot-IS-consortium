@@ -1,5 +1,5 @@
 pragma ton-solidity >= 0.47.0;
-import "JsonLib.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/libraries/JsonLib.sol";
 
 enum QueryCollection {
     Accounts,
@@ -49,12 +49,12 @@ library Query {
         string returnFilter,
         uint32 limit,
         QueryOrderBy orderBy
-    ) public pure {
+    ) public {
         address addr = address.makeAddrStd(DEBOT_WC, ID);
         IQuery(addr).collection(
             answerId,
             collectionType,
-            queryFilter, 
+            queryFilter,
             returnFilter,
             limit,
             orderBy
