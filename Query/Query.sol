@@ -35,6 +35,13 @@ interface IQuery {
         QueryOrderBy orderBy
     ) external returns (QueryStatus status, JsonLib.Value[] objects);
 
+    function waitForCollection(
+        uint32 answerId,
+        QueryCollection collectionType,
+        string queryFilter,
+        string returnFilter,
+        uint32 timeout
+    ) external returns (QueryStatus status, JsonLib.Value object);
 }
 
 library Query {
@@ -60,6 +67,23 @@ library Query {
             orderBy
         );
     }
+
+    function waitForCollection(
+        uint32 answerId,
+        QueryCollection collectionType,
+        string queryFilter,
+        string returnFilter,
+        uint32 timeout
+    ) public {
+        address addr = address.makeAddrStd(DEBOT_WC, ID);
+        IQuery(addr).waitForCollection(
+            answerId,
+            collectionType,
+            queryFilter,
+            returnFilter,
+            timeout
+        );
+    }
 }
 
 contract QueryABI is IQuery {
@@ -71,4 +95,12 @@ contract QueryABI is IQuery {
         uint32 limit,
         QueryOrderBy orderBy
     ) external override returns (QueryStatus status, JsonLib.Value[] objects) {}
+
+    function waitForCollection(
+        uint32 answerId,
+        QueryCollection collectionType,
+        string queryFilter,
+        string returnFilter,
+        uint32 timeout
+    ) external override returns (QueryStatus status, JsonLib.Value object) {}
 }

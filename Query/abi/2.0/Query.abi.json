@@ -18,6 +18,20 @@
 			]
 		},
 		{
+			"name": "waitForCollection",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"collectionType","type":"uint8"},
+				{"name":"queryFilter","type":"bytes"},
+				{"name":"returnFilter","type":"bytes"},
+				{"name":"timeout","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"status","type":"uint8"},
+				{"components":[{"name":"kind","type":"uint8"},{"name":"value","type":"cell"},{"name":"object","type":"map(uint256,cell)"},{"components":[{"name":"cell","type":"cell"}],"name":"array","type":"tuple[]"}],"name":"object","type":"tuple"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],
