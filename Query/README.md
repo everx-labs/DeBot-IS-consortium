@@ -49,7 +49,7 @@ arguments:
 returns:
 
     status: uint8 - one of the `QueryStatus` variants. See `Query.sol` for details.
-    object: JsonLib.Value - json value represents fields requested in `returnFilter` for certain `CollectionType` variant: message, transaction, account.
+    object: JsonLib.Value - json value with fields requested in `returnFilter` for certain `CollectionType` variant: message, transaction, account.
 
 ## Declaration in Solidity
 
