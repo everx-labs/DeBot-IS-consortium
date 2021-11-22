@@ -34,6 +34,23 @@ returns:
 	status: uint8 - one of the `QueryStatus` variants. See `Query.sol` for details.
     objects: JsonLib.Value[] - array of json values. Every json value represents fields requested in `returnFilter` for certain `CollectionType` variant: message, transaction, account.
 
+`waitForCollection` - returns an object that fulfills the conditions or waits for its appearance.
+
+arguments:
+
+    answerId: uint32 - id of function callback.
+    collectionType: uint8 - one of the `CollectionType` variants: 
+        Accounts (0), Messages (1), Transactions(2). 
+        See Query.sol for details.
+    queryFilter: string - utf-8 string with collection filter.
+    returnFilter: string - utf-8 string with projection (result) string.
+    timeout: uint32 - query timeout in ms.
+    
+returns:
+
+    status: uint8 - one of the `QueryStatus` variants. See `Query.sol` for details.
+    object: JsonLib.Value - json value with fields requested in `returnFilter` for certain `CollectionType` variant: message, transaction, account.
+
 ## Declaration in Solidity
 
 ```solidity
