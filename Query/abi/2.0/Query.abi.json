@@ -32,6 +32,18 @@
 			]
 		},
 		{
+			"name": "query",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"query","type":"bytes"},
+				{"name":"variables","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"status","type":"uint8"},
+				{"components":[{"name":"kind","type":"uint8"},{"name":"value","type":"cell"},{"name":"object","type":"map(uint256,cell)"},{"components":[{"name":"cell","type":"cell"}],"name":"array","type":"tuple[]"}],"name":"object","type":"tuple"}
+			]
+		},
+		{
 			"name": "constructor",
 			"inputs": [
 			],
