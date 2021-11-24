@@ -7,7 +7,7 @@
 			"name": "get",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"url","type":"bytes"},
+				{"name":"url","type":"string"},
 				{"name":"headers","type":"string[]"}
 			],
 			"outputs": [
@@ -20,9 +20,9 @@
 			"name": "post",
 			"inputs": [
 				{"name":"answerId","type":"uint32"},
-				{"name":"url","type":"bytes"},
+				{"name":"url","type":"string"},
 				{"name":"headers","type":"string[]"},
-				{"name":"body","type":"bytes"}
+				{"name":"body","type":"string"}
 			],
 			"outputs": [
 				{"name":"statusCode","type":"int32"},

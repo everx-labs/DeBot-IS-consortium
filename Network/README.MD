@@ -19,7 +19,7 @@ Interface for network requests.
 arguments:
 
     answerId: uint32 - id of callback function.
-    url: bytes - utf8 string with the name of the resource that you wish to fetch.
+    url: string - utf8 string with the name of the resource that you wish to fetch.
     headers: bytes[] - array of utf8 strings with HTTP headers that you want to add to your request.
 
 returns:
@@ -33,9 +33,9 @@ returns:
 arguments:
 
     answerId: uint32 - id of callback function.
-    url: bytes - utf8 string with the name of the resource that you wish to fetch.
-    headers: bytes[] - array of utf8 strings with HTTP headers that you want to add to your request.
-    body: bytes - utf8 string with HTTP request body.
+    url: string - utf8 string with the name of the resource that you wish to fetch.
+    headers: string[] - array of utf8 strings with HTTP headers that you want to add to your request.
+    body: string - utf8 string with HTTP request body.
 
 returns:
 
