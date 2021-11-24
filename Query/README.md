@@ -51,9 +51,25 @@ returns:
     status: uint8 - one of the `QueryStatus` variants. See `Query.sol` for details.
     object: JsonLib.Value - json value with fields requested in `returnFilter` for certain `CollectionType` variant: message, transaction, account.
 
+`query` - performs DAppServer GraphQL query and returns result provided by DAppServer.
+
+arguments:
+
+    answerId: uint32 - id of function callback.
+    query: string - GraphQL query text.
+    variables: string - Variables used in query.
+    
+returns:
+
+    status: uint8 - one of the `QueryStatus` variants. See `Query.sol` for details.
+    object: JsonLib.Value - json value provided by DAppServer.
+
 ## Declaration in Solidity
 
 ```solidity
+pragma ton-solidity >= 0.47.0;
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/libraries/JsonLib.sol";
+
 enum QueryCollection {
     Accounts,
     Messages,
@@ -72,15 +88,13 @@ struct QueryOrderBy {
 
 enum QueryStatus {
     Success,
-    InvalidFilter,
-    InvalidLimit,
-    InvalidSorting,
+    FilterError,
     NetworkError,
-    UnknownError
+    UnknownError,
+    VariablesError
 }
 
 interface IQuery {
-
     function collection(
         uint32 answerId,
         QueryCollection collectionType,
@@ -90,6 +104,19 @@ interface IQuery {
         QueryOrderBy orderBy
     ) external returns (QueryStatus status, JsonLib.Value[] objects);
 
+    function waitForCollection(
+        uint32 answerId,
+        QueryCollection collectionType,
+        string queryFilter,
+        string returnFilter,
+        uint32 timeout
+    ) external returns (QueryStatus status, JsonLib.Value object);
+
+    function query(
+        uint32 answerId,
+        string query,
+        string variables
+    ) external returns (QueryStatus status, JsonLib.Value object);
 }
 ```
 
