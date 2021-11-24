@@ -21,7 +21,8 @@ enum QueryStatus {
     Success,
     FilterError,
     NetworkError,
-    UnknownError
+    UnknownError,
+    VariablesError
 }
 
 interface IQuery {
@@ -41,6 +42,12 @@ interface IQuery {
         string queryFilter,
         string returnFilter,
         uint32 timeout
+    ) external returns (QueryStatus status, JsonLib.Value object);
+
+    function query(
+        uint32 answerId,
+        string query,
+        string variables
     ) external returns (QueryStatus status, JsonLib.Value object);
 }
 
@@ -84,6 +91,19 @@ library Query {
             timeout
         );
     }
+
+    function query(
+        uint32 answerId,
+        string query,
+        string variables
+    ) public {
+        address addr = address.makeAddrStd(DEBOT_WC, ID);
+        IQuery(addr).query(
+            answerId,
+            query,
+            variables
+        );
+    }
 }
 
 contract QueryABI is IQuery {
@@ -102,5 +122,11 @@ contract QueryABI is IQuery {
         string queryFilter,
         string returnFilter,
         uint32 timeout
+    ) external override returns (QueryStatus status, JsonLib.Value object) {}
+
+    function query(
+        uint32 answerId,
+        string query,
+        string variables
     ) external override returns (QueryStatus status, JsonLib.Value object) {}
 }
