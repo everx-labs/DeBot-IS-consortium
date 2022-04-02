@@ -66,7 +66,7 @@ enum QRStatus {
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 enum QRStatus {
     Success,
     DataTooLong,

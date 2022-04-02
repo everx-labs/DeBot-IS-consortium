@@ -3,13 +3,14 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
-import "../../Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "../CountryInput.sol";
 
 contract ExampleContract is Debot {
 
     function start() public override {
-        CountryInput.get(tvm.functionId(setCountryCode), "Enter your country code:", [], []);
+        string[] empty;
+        CountryInput.get(tvm.functionId(setCountryCode), "Enter your country code:", empty, empty);
 
         // or if Russia, Bulgaria and Cuba permitted for input:
         // CountryInput.get(tvm.functionId(setCountryCode), "Enter your country code:", ['RU', 'BG', 'CU'], []);
@@ -31,10 +32,10 @@ contract ExampleContract is Debot {
         publisher = "TON Labs";
         key = "How to use the CountryInput interface";
         author = "TON Labs";
-        support = address.makeAddrStd(0, address(0));
+        support = address(0);
         hello = "Hello, i am an example DeBot.";
         language = "en";
-        dabi = "";
+        dabi = m_debotAbi.get();
         icon = "";
     }
 

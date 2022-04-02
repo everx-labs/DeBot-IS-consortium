@@ -2,15 +2,16 @@ pragma ton-solidity >=0.40.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../Debot.sol";
-import "../Terminal.sol";
+
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "../../Terminal/Terminal.sol";
 import "../Network.sol";
 
 contract Example is Debot {
 
     function start() public override {
         string[] headers;
-        string url = "http://ptsv2.com/t/qajss-1618330246/post";
+        string url = "https://ptsv2.com/t/qajss-1618330246/post";
         headers.push("Content-Type: application/x-www-form-urlencoded");
         string body = "key1=value1";
         Network.post(tvm.functionId(setResponse), url, headers, body);

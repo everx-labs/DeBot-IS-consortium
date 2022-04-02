@@ -36,7 +36,7 @@ MenuItem {
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 
 struct MenuItem {
     string title;

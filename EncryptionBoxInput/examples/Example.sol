@@ -3,9 +3,9 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
+import "../../Terminal/Terminal.sol";
+import "../../Sdk/Sdk.sol";
 import "../EncryptionBoxInput.sol";
-import "Sdk.sol";
 
 contract ExampleContract is Debot {
 
@@ -15,7 +15,7 @@ contract ExampleContract is Debot {
     uint256 m_public = 0x5f88dfedff20eef951ff26f4e5a88526929b195af091791a45cc8c6cb14961e4;
     uint256 m_private= 0xdcfe6f38f47ffbea6a2a51981c33ed655f7b849706544838101ea789ac7845ea;
     string nonce = "abcdefghijklmnopqrstuvwx";
-    
+
     function start() public override {
         m_currentBoxNum = 0;
         EncryptionBoxInput.getSupportedAlgorithms(tvm.functionId(setAlgorithms));
@@ -31,8 +31,8 @@ contract ExampleContract is Debot {
 
     function getNaclBox() public {
         EncryptionBoxInput.getNaclBox(
-            tvm.functionId(setBox), 
-            "Choose encryption keys", 
+            tvm.functionId(setBox),
+            "Choose encryption keys",
             bytes(nonce),
             m_public
         );
@@ -40,16 +40,16 @@ contract ExampleContract is Debot {
 
     function getNaclSecretBox() public {
         EncryptionBoxInput.getNaclSecretBox(
-            tvm.functionId(setBox), 
-            "Choose encryption keys", 
+            tvm.functionId(setBox),
+            "Choose encryption keys",
             bytes(nonce)
         );
     }
 
     function getChaCha20Box() public {
         EncryptionBoxInput.getChaCha20Box(
-            tvm.functionId(setBox), 
-            "Choose encryption keys", 
+            tvm.functionId(setBox),
+            "Choose encryption keys",
             bytes(nonce)
         );
     }
@@ -70,7 +70,7 @@ contract ExampleContract is Debot {
         Sdk.decrypt(tvm.functionId(setDecryptionResult), m_boxHandle, encrypted);
     }
 
-    function setDecryptionResult(uint32 result, bytes decrypted) public {
+    function setDecryptionResult(uint32 result, bytes decrypted) view public {
         if (result != 0) {
             Terminal.print(tvm.functionId(Debot.start), format("Failed to encrypt: error {}", result));
             return;
@@ -90,17 +90,17 @@ contract ExampleContract is Debot {
     function _nextBox() private {
         if (m_currentBoxNum == 0) {
             Terminal.print(
-                tvm.functionId(getChaCha20Box), 
+                tvm.functionId(getChaCha20Box),
                 format("Creating ChaCha20 with parameters:\nnonce: {}", nonce)
             );
         } else if (m_currentBoxNum == 1) {
             Terminal.print(
-                tvm.functionId(getNaclSecretBox), 
+                tvm.functionId(getNaclSecretBox),
                 format("Creating NaclSecretBox with parameters:\nnonce: {}", nonce)
             );
         } else if (m_currentBoxNum == 2) {
             Terminal.print(
-                tvm.functionId(getNaclBox), 
+                tvm.functionId(getNaclBox),
                 format("Creating NaclBox with parameters:\nnonce: {}\ntheir pubkey: {}", nonce, m_public)
             );
         } else {

@@ -37,7 +37,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 enum MediaStatus {
     Success,
     UnsupportedMediaType,

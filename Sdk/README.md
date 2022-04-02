@@ -284,7 +284,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface ISdk {
 // accounts
 function getBalance(uint32 answerId, address addr) external returns (uint128 nanotokens);

@@ -2,11 +2,11 @@ pragma ton-solidity >=0.40.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../Sdk.sol";
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/UserInfo/UserInfo.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/EncryptionBoxInput/EncryptionBoxInput.sol";
+import "../Sdk.sol";
+import "../../Terminal/Terminal.sol";
+import "../../UserInfo/UserInfo.sol";
+import "../../EncryptionBoxInput/EncryptionBoxInput.sol";
 
 contract ExampleContract is Debot {
     address addr = address.makeAddrStd(-1, 0x3333333333333333333333333333333333333333333333333333333333333333);

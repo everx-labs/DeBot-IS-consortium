@@ -3,9 +3,9 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
+import "../../Terminal/Terminal.sol";
 import "../Json.sol";
-import "../../libraries/JsonLib.sol";
+//import "../../libraries/JsonLib.sol";
 
 contract Example is Debot {
 
@@ -24,7 +24,7 @@ contract Example is Debot {
     function start() public override {
         string json = "{\"name\":\"Joe\",\"tags\":[\"good\",\"bad\",\"ugly\"],\"age\":73,\"numbers\":[1,2,3],\"addrs\":{\"0:1111111111111111111111111111111111111111111111111111111111111111\":\"My main account\"}}";
         Json.deserialize(tvm.functionId(setResult), json);
-        Json.parse(tvm.functionId(setValue), json);
+        //Json.parse(tvm.functionId(setValue), json);
     }
 
     function setResult(bool result, Info obj) public pure {
@@ -51,7 +51,7 @@ contract Example is Debot {
 
         optional(JsonLib.Value) val;
         mapping(uint256 => TvmCell) jsonObj = obj.as_object().get();
-        
+
         val = jsonObj.get("name");
         string name = val.get().as_string().get();
         require(name =="Joe",200);
@@ -62,7 +62,7 @@ contract Example is Debot {
 
         val = jsonObj.get("addrs");
         mapping(uint256 => TvmCell) addrs = val.get().as_object().get();
-        
+
         val = addrs.get("0:1111111111111111111111111111111111111111111111111111111111111111");
         string desc1 = val.get().as_string().get();
         require(desc1 == "My main account", 205);

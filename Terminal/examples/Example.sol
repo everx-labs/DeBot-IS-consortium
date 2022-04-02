@@ -2,7 +2,7 @@ pragma ton-solidity >=0.35.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../../Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "../Terminal.sol";
 
 contract ExampleContract is Debot {
@@ -33,10 +33,10 @@ contract ExampleContract is Debot {
         publisher = "TON Labs";
         key = "How to use the Terminal interface";
         author = "TON Labs";
-        support = address.makeAddrStd(0, 0x841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94);
+        support = address(0);
         hello = "Hello, i am an example DeBot.";
         language = "en";
-        dabi = "";
+        dabi = m_debotAbi.get();
         icon = "";
     }
 

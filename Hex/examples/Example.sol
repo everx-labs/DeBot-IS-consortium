@@ -1,24 +1,46 @@
-pragma ton-solidity >=0.44.0;
+pragma ton-solidity >= 0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "Hex.sol";
 
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "../Hex.sol";
 
-contract ExampleContract {
+contract Example is Debot {
 
-    function test() public {
-        bytes data = bytes("aaa");
-        Hex.encode(tvm.functionId(setEncode), data);
-        string hexstr = "616161";
-        Hex.decode(tvm.functionId(setDecode), hexstr);
+    function start() public override {
+        Hex.encode(tvm.functionId(setEncoded), bytes("abc"));
     }
 
-    function setEncode(string hexstr) public pure {
-        require(hexstr=="616161",100);
+    function setEncoded(string hexstr) public pure {
+        require(hexstr == "616263", 101);
+        Hex.decode(tvm.functionId(setDecoded), hexstr);
     }
 
-    function setDecode(bytes data) public pure {
-        require(string(data)=="aaa",101);
+    function setDecoded(bytes data) public {
+        require(string(data) == "abc", 102);
+        // TODO: continue here
     }
-} 
+
+    function getDebotInfo() public functionID(0xDEB) override view returns(
+        string name, string version, string publisher, string caption, string author,
+        address support, string hello, string language, string dabi, bytes icon
+    ) {
+        name = "Hex example DeBot";
+        version = "1.0.0-rc.1";
+        publisher = "DeBot Consortium";
+        caption = "How to use the Hex interface";
+        author = "DeBot Consortium";
+        support = address(0);
+        hello = "Hello, i am an example Hex DeBot.";
+        language = "en";
+        dabi = m_debotAbi.get();
+        icon = "";
+    }
+
+    function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
+        return [
+            Hex.ID
+        ];
+    }
+}

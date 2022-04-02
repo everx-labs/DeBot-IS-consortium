@@ -40,7 +40,7 @@ returns:
 		
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface IBase64 {
 
     function encode(uint32 answerId, bytes data) external returns (string base64);

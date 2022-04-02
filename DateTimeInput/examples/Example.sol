@@ -3,7 +3,7 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
+import "../../Terminal/Terminal.sol";
 import "../DateTimeInput.sol";
 
 contract ExampleContract is Debot {
@@ -11,7 +11,7 @@ contract ExampleContract is Debot {
     int128 m_datestamp;
     function start() public override {
         DateTimeInput.getDate(tvm.functionId(setDate),
-            "Choose a day in 2021 from the begining until current day:", 
+            "Choose a day in 2021 from the begining until current day:",
             int128(now), 1609448400, int128(now));
     }
 
@@ -19,12 +19,12 @@ contract ExampleContract is Debot {
         // TODO: continue here
         Terminal.print(0, format("Date unixtime: {}", date));
         m_datestamp = date;
-        DateTimeInput.getTime(tvm.functionId(setTime), 
-            "Choose a day time (local):", 
+        DateTimeInput.getTime(tvm.functionId(setTime),
+            "Choose a day time (local):",
             55800, 55800, 86100, 1);
     }
 
-    function setTime(uint32 time) public {
+    function setTime(uint32 time) view public {
         // TODO: continue here
         Terminal.print(0, format("Time timestamp: {}", time));
 

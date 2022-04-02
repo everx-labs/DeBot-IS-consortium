@@ -45,7 +45,7 @@ returns:
     interfaces: uint256[] - array of interface ids
 
 ## Declaration in Solidity
-```js
+```solidity
     // Base contract for all debots
     abstract contract Debot {
 

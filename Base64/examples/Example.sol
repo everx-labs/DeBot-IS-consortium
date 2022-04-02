@@ -1,4 +1,4 @@
-pragma ton-solidity ==0.47.0;
+pragma ton-solidity >= 0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
@@ -17,7 +17,7 @@ contract ExampleContract is Debot {
     }
 
     function setDecoded(bytes data) public {
-        require(data=="abc",102);
+        require(string(data) == "abc", 102);
         // TODO: continue here
     }
 

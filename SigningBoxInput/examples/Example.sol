@@ -4,7 +4,7 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "../SigningBoxInput.sol";
 import "../../Terminal/Terminal.sol";
-import "../Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 
 contract ExampleContract is Debot {
 

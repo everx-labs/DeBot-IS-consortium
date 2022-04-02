@@ -3,7 +3,7 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
+import "../../Terminal/Terminal.sol";
 import "../UserInfo.sol";
 
 contract ExampleContract is Debot {

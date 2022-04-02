@@ -29,7 +29,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface IAddressInput {
 	function get(uint32 answerId, string prompt) external returns (address value);
 }
