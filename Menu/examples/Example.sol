@@ -4,7 +4,7 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "../Menu.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Menu/Menu.sol";
 
 contract ExampleContract is Debot {
 

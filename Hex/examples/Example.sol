@@ -4,7 +4,7 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "../Hex.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Hex/Hex.sol";
 
 contract Example is Debot {
 
