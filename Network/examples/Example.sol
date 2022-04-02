@@ -17,7 +17,7 @@ contract Example is Debot {
         Network.post(tvm.functionId(setResponse), url, headers, body);
     }
 
-    function setResponse(int32 statusCode, string[] retHeaders, string content) public {
+    function setResponse(int32 statusCode, string[] retHeaders, string content) public pure {
         require(statusCode == 200, 101);
         // TODO: analyze headers.
         for (string hdr: retHeaders) {

@@ -12,7 +12,7 @@ contract Example is Debot {
         QRCode.scan(tvm.functionId(setResult));
     }
 
-    function setResult(string value, QRStatus result) public {
+    function setResult(string value, QRStatus result) public pure {
         if (result != QRStatus.Success) {
             Terminal.print(0, "Failed to scan QRCode.");
             return;
@@ -22,7 +22,7 @@ contract Example is Debot {
         QRCode.draw(tvm.functionId(setDrawResult), "DeBot address", format("{}", address(this)));
     }
 
-    function setDrawResult(QRStatus result) public {
+    function setDrawResult(QRStatus result) public pure {
         if (result != QRStatus.Success) {
             Terminal.print(0, "Failed to draw QRCode.");
         }

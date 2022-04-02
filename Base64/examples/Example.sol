@@ -11,12 +11,12 @@ contract ExampleContract is Debot {
         Base64.encode(tvm.functionId(setEncoded), "abc");
     }
 
-    function setEncoded(string base64) public {
+    function setEncoded(string base64) public pure {
         require(base64=="YWJj",101);
         Base64.decode(tvm.functionId(setDecoded), base64);
     }
 
-    function setDecoded(bytes data) public {
+    function setDecoded(bytes data) public pure {
         require(string(data) == "abc", 102);
         // TODO: continue here
     }

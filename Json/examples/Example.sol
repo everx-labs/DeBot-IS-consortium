@@ -23,7 +23,7 @@ contract Example is Debot {
     function start() public override {
         string json = "{\"name\":\"Joe\",\"tags\":[\"good\",\"bad\",\"ugly\"],\"age\":73,\"numbers\":[1,2,3],\"addrs\":{\"0:1111111111111111111111111111111111111111111111111111111111111111\":\"My main account\"}}";
         Json.deserialize(tvm.functionId(setResult), json);
-        //Json.parse(tvm.functionId(setValue), json);
+        Json.parse(tvm.functionId(setValue), json);
     }
 
     function setResult(bool result, Info obj) public pure {
@@ -45,7 +45,7 @@ contract Example is Debot {
         require(title == "My main account", 105);
     }
 
-    function setValue(bool result, JsonLib.Value obj) public {
+    function setValue(bool result, JsonLib.Value obj) public pure {
         require(result == true, 199);
 
         optional(JsonLib.Value) val;
@@ -66,7 +66,7 @@ contract Example is Debot {
         string desc1 = val.get().as_string().get();
         require(desc1 == "My main account", 205);
 
-        for ((uint256 hash, TvmCell cell): addrs) {
+        for ((, TvmCell cell): addrs) {
             optional(string) nameOpt;
             (val, nameOpt) = JsonLib.decodeObjectValue(cell);
             string desc = val.get().as_string().get();

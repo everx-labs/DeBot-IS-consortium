@@ -13,7 +13,7 @@ contract ExampleContract is Debot {
 		SigningBoxInput.get(tvm.functionId(setSigningBoxHandle), "Enter my signing keys:", [tvm.pubkey()]);
 	}
 
-	function setSigningBoxHandle(uint32 handle) public {
+	function setSigningBoxHandle(uint32 handle) public pure {
         Terminal.print(0, format("Signing Box Handle: {}", handle));
 	}
 

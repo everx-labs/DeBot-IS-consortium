@@ -12,13 +12,13 @@ contract ExampleContract is Debot {
         Terminal.input(tvm.functionId(setText), "Enter your name:", false);
     }
 
-    function setText(string value) public {
+    function setText(string value) public pure {
         // continue here
         string result = format("Hello {}", value);
         Terminal.print(0, result);
     }
 
-    function formatPrint() public {
+    function formatPrint() public pure {
         TvmBuilder b;
         b.store(int8(1), uint32(10));
         Terminal.printf(0, "Enter number beetween {int8} and {uint32}", b.toCell());

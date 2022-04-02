@@ -17,7 +17,7 @@ contract Example is Debot {
         Hex.decode(tvm.functionId(setDecoded), hexstr);
     }
 
-    function setDecoded(bytes data) public {
+    function setDecoded(bytes data) public pure {
         require(string(data) == "abc", 102);
         // TODO: continue here
     }

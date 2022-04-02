@@ -24,7 +24,7 @@ contract ExampleContract is Debot {
             55800, 55800, 86100, 1);
     }
 
-    function setTime(uint32 time) view public {
+    function setTime(uint32 time) public view {
         // TODO: continue here
         Terminal.print(0, format("Time timestamp: {}", time));
 

@@ -12,7 +12,7 @@ contract ExampleContract is Debot {
         _menu();
     }
 
-    function _menu() private inline {
+    function _menu() private pure {
         Menu.select("Main menu", "description for menu", [
             MenuItem("menu 1", "", tvm.functionId(handleMenu1)),
             MenuItem("menu 2", "desc for menu 2", tvm.functionId(handleMenu2))

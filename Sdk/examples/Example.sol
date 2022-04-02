@@ -32,37 +32,44 @@ contract ExampleContract is Debot {
         Sdk.signHash(tvm.functionId(setSign), handle, tvm.hash(bytes(signingData)));
     }
 
-    function checkSingingBoxInfo(uint32 result, uint256 key) public {
+    function checkSingingBoxInfo(uint32 result, uint256 key) public pure {
         // TODO: use box public key
         require(result == 0);
         Terminal.print(0, format("Signing public key: {}", key));
     }
 
-	function setBalance(uint128 nanotokens) public {
+	function setBalance(uint128 nanotokens) public pure {
         Terminal.print(0, format("Balance: {:t}", nanotokens));
 	}
-	function setAccountType(int8 acc_type) public {
+
+	function setAccountType(int8 acc_type) public pure {
         Terminal.print(0, format("Account type: {}", acc_type));
     }
-	function setAccountCodeHash(uint256 code_hash) public {
+
+	function setAccountCodeHash(uint256 code_hash) public pure {
         Terminal.print(0, format("Account code hash: {}", code_hash));
     }
+
     function setEncryptionHandle(uint32 handle) public {
         string data = "Data to encrypt";
         Sdk.encrypt(tvm.functionId(setEncrypted), handle, bytes(data));
         m_ebHandle = handle;
     }
-	function setEncrypted(bytes encrypted) public {
+
+	function setEncrypted(bytes encrypted) public view {
         Terminal.print(0, format("Encrypted: {}", encrypted));
         Sdk.decrypt(tvm.functionId(setDecrypted), m_ebHandle, encrypted);
     }
-    function setDecrypted(bytes decrypted) public {
+
+    function setDecrypted(bytes decrypted) public pure {
         Terminal.print(0, format("Decrypted: {}", decrypted));
     }
-	function setSign(bytes signature) public {
+
+	function setSign(bytes signature) public pure {
         Terminal.print(0, format("Signature: {}", signature));
 	}
-	function setRandom(bytes buffer) public {
+
+	function setRandom(bytes buffer) public pure {
         Terminal.print(0, format("Random bytes: {}", buffer));
 	}
 

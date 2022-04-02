@@ -29,7 +29,7 @@ contract ExampleContract is Debot {
         _nextBox();
     }
 
-    function getNaclBox() public {
+    function getNaclBox() public view {
         EncryptionBoxInput.getNaclBox(
             tvm.functionId(setBox),
             "Choose encryption keys",
@@ -38,7 +38,7 @@ contract ExampleContract is Debot {
         );
     }
 
-    function getNaclSecretBox() public {
+    function getNaclSecretBox() public view {
         EncryptionBoxInput.getNaclSecretBox(
             tvm.functionId(setBox),
             "Choose encryption keys",
@@ -46,7 +46,7 @@ contract ExampleContract is Debot {
         );
     }
 
-    function getChaCha20Box() public {
+    function getChaCha20Box() public view {
         EncryptionBoxInput.getChaCha20Box(
             tvm.functionId(setBox),
             "Choose encryption keys",
@@ -61,7 +61,7 @@ contract ExampleContract is Debot {
         Sdk.encrypt(tvm.functionId(setEncryptionResult), m_boxHandle, m_openedData);
     }
 
-    function setEncryptionResult(uint32 result, bytes encrypted) public {
+    function setEncryptionResult(uint32 result, bytes encrypted) public view {
         if (result != 0) {
             Terminal.print(tvm.functionId(Debot.start), format("Failed to encrypt: error {}", result));
             return;
@@ -70,7 +70,7 @@ contract ExampleContract is Debot {
         Sdk.decrypt(tvm.functionId(setDecryptionResult), m_boxHandle, encrypted);
     }
 
-    function setDecryptionResult(uint32 result, bytes decrypted) view public {
+    function setDecryptionResult(uint32 result, bytes decrypted) public view {
         if (result != 0) {
             Terminal.print(tvm.functionId(Debot.start), format("Failed to encrypt: error {}", result));
             return;
