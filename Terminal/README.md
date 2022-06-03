@@ -60,7 +60,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface ITerminal {
 
 	function input(uint32 answerId, string prompt, bool multiline) external returns (string value);

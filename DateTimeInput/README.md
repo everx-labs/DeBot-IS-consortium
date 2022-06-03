@@ -88,7 +88,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface IDateTimeInput {
 	function getDate(
         uint32 answerId,

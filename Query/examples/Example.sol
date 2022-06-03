@@ -5,7 +5,7 @@ pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/SigningBoxInput/SigningBoxInput.sol";
-import "../Query.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Query/Query.sol";
 
 contract ExampleContract is Debot {
 
@@ -18,7 +18,7 @@ contract ExampleContract is Debot {
         address dst;
         uint128 val;
     }
-    
+
     Recipient[] m_recipients;
 
     //
@@ -68,7 +68,7 @@ contract ExampleContract is Debot {
     }
 
     function setBoxHandle(uint32 handle) public {
-        
+
         this.scatter{
             abiVer: 2,
             extMsg: true,
@@ -106,8 +106,8 @@ contract ExampleContract is Debot {
         m_index = 0;
         m_limit = 3;
         Query.collection(
-            tvm.functionId(setQueryResult), 
-            QueryCollection.Messages, 
+            tvm.functionId(setQueryResult),
+            QueryCollection.Messages,
             format("{\"src\":{\"eq\":\"{}\"},\"msg_type\":{\"eq\":0}}", address(this)),
             "created_lt value dst body",
             m_limit,
@@ -129,7 +129,7 @@ contract ExampleContract is Debot {
                 jsonv = jsonObj.get("value");
                 string balanceStr = jsonv.get().as_string().get();
                 (uint balance, bool ok) = stoi(balanceStr);
-                
+
                 require(ok, 103);
                 jsonv = jsonObj.get("dst");
                 string dstStr = jsonv.get().as_string().get();
@@ -148,7 +148,7 @@ contract ExampleContract is Debot {
                 uint128 val = s.decodeFunctionParams(transfer);
                 require(val == uint128(balance), 105);
             }
-            
+
             m_limit = 50;
             jsonObj = objects[objects.length - 1].as_object().get();
             jsonv = jsonObj.get("created_lt");
@@ -163,7 +163,7 @@ contract ExampleContract is Debot {
                 m_limit,
                 QueryOrderBy("created_lt", SortDirection.Ascending)
             );
-            
+
         } else {
             require(m_index == uint32(m_recipients.length), 107);
         }

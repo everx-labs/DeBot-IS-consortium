@@ -48,7 +48,7 @@ Important: this interface can be extended in future to retrieve more information
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface IUserInfo {
 
     function getAccount(uint32 answerId) external returns (address value);

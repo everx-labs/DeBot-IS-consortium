@@ -51,7 +51,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 
 
 interface IJson {

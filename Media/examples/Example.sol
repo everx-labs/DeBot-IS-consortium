@@ -4,7 +4,7 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
-import "../Media.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Media/Media.sol";
 
 contract ExampleContract is Debot {
 
@@ -13,7 +13,7 @@ contract ExampleContract is Debot {
         Media.getSupportedMediaTypes(tvm.functionId(setMediaTypes));
     }
 
-    function setMediaTypes(string[] mediaTypes) public {
+    function setMediaTypes(string[] mediaTypes) public view {
         for (string mtype: mediaTypes) {
             Terminal.print(0, mtype);
         }

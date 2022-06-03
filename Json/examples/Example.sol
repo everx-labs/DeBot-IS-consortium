@@ -4,8 +4,7 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
 import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
-import "../Json.sol";
-import "../../libraries/JsonLib.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Json/Json.sol";
 
 contract Example is Debot {
 
@@ -46,12 +45,12 @@ contract Example is Debot {
         require(title == "My main account", 105);
     }
 
-    function setValue(bool result, JsonLib.Value obj) public {
+    function setValue(bool result, JsonLib.Value obj) public pure {
         require(result == true, 199);
 
         optional(JsonLib.Value) val;
         mapping(uint256 => TvmCell) jsonObj = obj.as_object().get();
-        
+
         val = jsonObj.get("name");
         string name = val.get().as_string().get();
         require(name =="Joe",200);
@@ -62,12 +61,12 @@ contract Example is Debot {
 
         val = jsonObj.get("addrs");
         mapping(uint256 => TvmCell) addrs = val.get().as_object().get();
-        
+
         val = addrs.get("0:1111111111111111111111111111111111111111111111111111111111111111");
         string desc1 = val.get().as_string().get();
         require(desc1 == "My main account", 205);
 
-        for ((uint256 hash, TvmCell cell): addrs) {
+        for ((, TvmCell cell): addrs) {
             optional(string) nameOpt;
             (val, nameOpt) = JsonLib.decodeObjectValue(cell);
             string desc = val.get().as_string().get();

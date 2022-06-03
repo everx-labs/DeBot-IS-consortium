@@ -146,7 +146,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface ISecurityCardManagement {
     function getBlockHashes(uint32 answerId) external returns (uint256 h2, uint256 h3, uint192 sn);
     function turnOnWallet(uint32 answerId, uint192 sn, bytes p1, bytes iv, bytes cs) external returns (uint256 pubkey);

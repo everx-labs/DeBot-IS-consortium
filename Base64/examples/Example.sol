@@ -1,9 +1,9 @@
-pragma ton-solidity ==0.47.0;
+pragma ton-solidity >= 0.47.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
-import "../Base64.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Base64/Base64.sol";
 
 contract ExampleContract is Debot {
 
@@ -11,13 +11,13 @@ contract ExampleContract is Debot {
         Base64.encode(tvm.functionId(setEncoded), "abc");
     }
 
-    function setEncoded(string base64) public {
+    function setEncoded(string base64) public pure {
         require(base64=="YWJj",101);
         Base64.decode(tvm.functionId(setDecoded), base64);
     }
 
-    function setDecoded(bytes data) public {
-        require(data=="abc",102);
+    function setDecoded(bytes data) public pure {
+        require(string(data) == "abc", 102);
         // TODO: continue here
     }
 

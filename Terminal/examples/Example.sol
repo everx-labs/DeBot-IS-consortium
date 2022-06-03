@@ -2,8 +2,8 @@ pragma ton-solidity >=0.35.0;
 pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
-import "../../Debot.sol";
-import "../Terminal.sol";
+import "https://raw.githubusercontent.com/tonlabs/debots/main/Debot.sol";
+import "https://raw.githubusercontent.com/tonlabs/DeBot-IS-consortium/main/Terminal/Terminal.sol";
 
 contract ExampleContract is Debot {
 
@@ -12,13 +12,13 @@ contract ExampleContract is Debot {
         Terminal.input(tvm.functionId(setText), "Enter your name:", false);
     }
 
-    function setText(string value) public {
+    function setText(string value) public pure {
         // continue here
         string result = format("Hello {}", value);
         Terminal.print(0, result);
     }
 
-    function formatPrint() public {
+    function formatPrint() public pure {
         TvmBuilder b;
         b.store(int8(1), uint32(10));
         Terminal.printf(0, "Enter number beetween {int8} and {uint32}", b.toCell());
@@ -33,10 +33,10 @@ contract ExampleContract is Debot {
         publisher = "TON Labs";
         key = "How to use the Terminal interface";
         author = "TON Labs";
-        support = address.makeAddrStd(0, 0x841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94);
+        support = address(0);
         hello = "Hello, i am an example DeBot.";
         language = "en";
-        dabi = "";
+        dabi = m_debotAbi.get();
         icon = "";
     }
 

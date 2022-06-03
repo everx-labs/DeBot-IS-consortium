@@ -35,7 +35,7 @@ returns:
 
 ## Declaration in Solidity
 
-```jsx
+```solidity
 interface ICountryInput {
     function get(uint32 answerId, string prompt, string[] permitted, string[] banned) external returns (string value);
 }
