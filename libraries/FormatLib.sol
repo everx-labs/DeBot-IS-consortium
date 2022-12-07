@@ -1,11 +1,11 @@
 pragma ton-solidity >=0.40.0;
 
 library FormatLib {
-    function _splitAmount(uint128 amount, uint8 decimals) internal pure returns (uint128, uint128) {
+    function _splitAmount(uint128 amount, uint8 decimals) internal returns (uint128, uint128) {
         return math.divmod(amount, uint128(10)**decimals);
     }
 
-    function formatAmount(uint128 amount, uint8 decimals, uint8 round) public pure returns (string str) {
+    function formatAmount(uint128 amount, uint8 decimals, uint8 round) public returns (string str) {
         if (amount == 0) {
             string zero = "0";
             while (zero.byteLength() < round) {
@@ -38,7 +38,7 @@ library FormatLib {
         return result;
     }
 
-    function evers(uint128 amount) public pure returns (string) {
+    function evers(uint128 amount) public returns (string) {
         return formatAmount(amount, 9, 2);
     }
 }
